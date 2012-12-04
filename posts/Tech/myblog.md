@@ -1,0 +1,110 @@
+Title: Static site generators & Everything else 
+Date: 2012-12-03 14:23 
+Tags: Tech, Python
+Author: theanalyst 
+Category: Tech 
+Summary: This is the details of my blog, which is powered by Github-pages & pelican. In short another guy puts up his blog at gh-pages and blogs about it. It started as a Lorem Ipsum content to fill something to test my Pelican site, and just another rant on static generators in general. Also delivers the same kind of workflow/dotfiles voyeurism that is expected in this kind of a post. A hyperbolic description of the state of static generators follows. You have been warned before clicking the read more button …
+
+This post lists the details of my blog, which is powered by gh-pages
+and pelican. In short another guy puts up his blog at GitHub and blogs
+about it. It initially started as a Lorem Ipsum content while I was
+testing out my rough and edgy pelican theme. You have been warned!
+
+Welcome to the new avatar of my blog which is powered by [pelican][1],
+just another static site generator. For the uninitiated, static sites
+are just a bunch of html pages, reminiscent of those old times where
+people used some ftp program to put some html pages in some server
+space. Remember the saying, “the more things change, the more they
+remain the same.” It is a full circle from plain html -> dynamic
+content based websites which ‘pop’ -> Back to plain html. Well static
+site generators do just that, convert your favorite markup format into
+something a webserver can serve.
+    
+The following is my stab at the possibilities of generating a static
+website and the options available. All links actually point to some
+static site generator. (If you are the type who hates wordplay, skip
+right ahead, there is nothing here…) These days, one is [awestruc][8]
+with the number of possibilities out there, generating a static site
+is as easy as baking a [piecrust][11]. You just have to [chisel][6]
+your heart's content in the markup format of your choice and hire a
+[middleman][5] to solve the strange case of Dr.[Jekyll][2] and
+Mr.[Hyde][3], whose obsession with [Octopress][4], is [frank][9]ly
+[petrify][10]ing. (This is far from the list of possibilities, but it
+is difficult, though, to make a valid English sentence with all the
+static site generators out there. A relatively comprehensive list is
+at [nanoc][7] which, FYI, is also another static site generator.
+Choose your poison)
+
+Links apart, at the moment Jekyll *arguably* leads the pack[^lists],
+with close to ~8.2K watchers in Github, while that metric doesn’t
+actually tell the number of sites actually built using Jekyll. A more
+interesting information would be just googling Jekyll, about 4/10
+links in the first page go to *Jekyll* the static site generator, the
+rest mostly links to Jekyll the TV show, and none link to *Jekyll and
+Hyde*, the novella (condolences to R L Stevenson). This is similar to
+googling “Big Bang Theory”, TV has a higher preference than cosmology,
+of course.[^tweet] (Googling “*the* Big Bang theory” will have
+actually no first page results on cosmology at all…)
+
+Moving on, the question arises, “Why Pelican?”. It mostly boils down to these:
+
+ - Good Documentation
+ - Easy templating system
+ - Good community support
+ - Written in python
+  
+Most every site generators feature these, except for the last choice
+(which is growing at the moment though). The preference usually boils
+down to language preferences & ease of adaption to workflow. For me, I
+just wanted a static site generator in a language which I am
+comfortable in at the moment (and ability to use the editor of my
+choice),  so that should the need arise to make things work in a
+certain way, it could be done without setting my hair on fire.  
+
+Posts are written in markdown, in emacs. A simple git repository with
+post commit hooks that runs pelican on each commit, does the trick of
+generating the html pages. The config file is a simple python file
+which takes care of all the site related details, links etc.
+
+Pelican comes with a default set of themes, and a few others available
+at the [pelican-themes][18] repo, which can help in setting up a blog
+running without much hassle. Building a theme is also pretty easy, and
+it uses Jinja templating in the backend, this blog look right now is a
+customised theme built upon the existing tuxlite-tbs theme, I
+will write on that another time. (This post is already long enough as it is)
+
+For the typographically conscious, there is support from the excellent
+emacs [typo][12] mode which takes care of your punctuation marks, if
+you are the type who cares about the [em & en–dashes][13]. (Yes, we
+have a mode for everything… including a [psychotherapist][17], who can
+kill time, if not depression) That is pretty much it, as far as
+generating a site in pelican is concerned, simple.
+
+
+
+
+### Foot Notes
+[^lists]: For more info on this read,a [crowdsourced list][15] and a [HN poll][16] for static generators 
+[^tweet]: This [tweet][14], sums up the The Big Bang Theory
+popularity, its precedence in search results…
+
+
+[1]: http://docs.getpelican.com/en/3.0/ "pelican"
+[2]: http://jekyllrb.com "jekyll"
+[3]: http://ringce.com/hyde "hyde, Jekyll’s evil alter-ego in python "
+[4]: http://octopress.org "Octopress, pressing content for hackers"
+[5]: http://middlemanapp.com "Middle Man"
+[6]: https://github.com/schrockwell/chisel "Chisel"
+[7]: http://nanoc.stoneship.org "nanoc"
+[8]: http://awestruct.org "Awestruct"
+[9]: https://github.com/blahed/frank "Frank"
+[10]: https://github.com/caolan/petrify "Petrify"
+[11]: https://bolt80.com/piecrust "PieCrust"
+[12]: https://github.com/jorgenschaefer/typoel "Typographical Punctuation marks"
+[13]: http://www.smashingmagazine.com/2011/08/15/mind-your-en-and-em-dashes-typographic-etiquette/
+"Mind your em and en dashes"
+[14]: https://twitter.com/neiltyson/status/245348360259768321 "Interesting tweet, that sums up TBBT popularity"
+[15]: https://gist.github.com/4181764 "Another list, on static site generators"
+[16]: http://news.ycombinator.com/item?id=4857473 "Poll your preference"
+[17]: http://en.wikipedia.org/wiki/ELIZA "Eliza, the quintessential psychotherapist"
+[18]: https://github.com/getpelican/pelican-themes
