@@ -104,8 +104,7 @@ also another static site generator.  Choose your poison)
 [10]: https://github.com/caolan/petrify "Petrify"
 [11]: https://bolt80.com/piecrust "PieCrust"
 [12]: https://github.com/jorgenschaefer/typoel "Typographical Punctuation marks"
-[13]: http://www.smashingmagazine.com/2011/08/15/mind-your-en-and-em-dashes-typographic-etiquette/
-"Mind your em and en dashes"
+[13]: http://www.smashingmagazine.com/2011/08/15/mind-your-en-and-em-dashes-typographic-etiquette/ "Mind your em and en dashes" 
 [14]: https://twitter.com/neiltyson/status/245348360259768321 "Interesting tweet, that sums up TBBT popularity"
 [15]: https://gist.github.com/4181764 "Another list, on static site generators"
 [16]: http://news.ycombinator.com/item?id=4857473 "Poll your preference"

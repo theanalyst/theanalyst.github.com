@@ -56,12 +56,11 @@ write on that another time. (This post is already long enough as it
 is)&lt;/p&gt;
 &lt;p&gt;For the typographically conscious, there is support from the excellent
 emacs &lt;a href="https://github.com/jorgenschaefer/typoel" title="Typographical Punctuation marks"&gt;typo&lt;/a&gt; mode which takes care of your punctuation marks, if
-you are the type who cares about the &lt;a href="http://www.smashingmagazine.com/2011/08/15/mind-your-en-and-em-dashes-typographic-etiquette/"&gt;em &amp;amp; en–dashes&lt;/a&gt;. (Yes, we
+you are the type who cares about the &lt;a href="http://www.smashingmagazine.com/2011/08/15/mind-your-en-and-em-dashes-typographic-etiquette/" title="Mind your em and en dashes"&gt;em &amp;amp; en–dashes&lt;/a&gt;. (Yes, we
 have a mode for everything… including a &lt;a href="http://en.wikipedia.org/wiki/ELIZA" title="Eliza, the quintessential psychotherapist"&gt;psychotherapist&lt;/a&gt;, who can
 kill time, if not depression) That is pretty much it, as far as
 generating a site in pelican is concerned, simple.&lt;/p&gt;
 &lt;h3&gt;Foot Notes&lt;/h3&gt;
-&lt;p&gt;"Mind your em and en dashes"&lt;/p&gt;
 &lt;div class="footnote"&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
