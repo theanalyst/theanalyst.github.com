@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hyperbolic Monologues</title><link href="http://theanalyst.github.com" rel="alternate"></link><link href="http://theanalyst.github.com/feeds/rants.atom.xml" rel="self"></link><id>http://theanalyst.github.com</id><updated>2012-06-08T00:00:00+05:30</updated><entry><title>Hello World</title><link href="http://theanalyst.github.com/hello-world.html" rel="alternate"></link><updated>2012-06-08T00:00:00+05:30</updated><author><name>abhishekl</name></author><id>http://theanalyst.github.com/hello-world.html</id><summary type="html">&lt;p&gt;If you're reading this, it means that I have successfully started
-blogging again (&lt;em&gt;yay!&lt;/em&gt;). As the more perceptive of you might have
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Often Bearing Metaphoric Tense</title><link href="0.0.0.0/" rel="alternate"></link><link href="0.0.0.0/feeds/Rants.atom.xml" rel="self"></link><id>0.0.0.0/</id><updated>2012-06-08T00:00:00+05:30</updated><entry><title>Hello World</title><link href="0.0.0.0/hello-world.html" rel="alternate"></link><updated>2012-06-08T00:00:00+05:30</updated><author><name>theanalyst</name></author><id>tag:0.0.0.0,2012-06-08:hello-world.html</id><summary type="html">&lt;p&gt;If you're reading this, it means that I have successfully started
+blogging again. As the more perceptive of you might have
 realized, this blog isn't hosted at &lt;em&gt;blogger&lt;/em&gt; anymore well this new
 avatar is powered by &lt;a href="pelican.notmyidea.org"&gt;pelican&lt;/a&gt;, an awesome
 static blogging engine written in python and served by github pages,
