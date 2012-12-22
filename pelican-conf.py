@@ -23,7 +23,10 @@ PAGE_DIR = ('pages')
 GITHUB_URL = 'http://github.com/theanalyst/'
 DISQUS_SITENAME = "hyperbolicmonologues"
 SOCIAL = (('twitter', 'http://twitter.com/abhishekl'),
-          ('github', 'http://github.com/theanalyst'),)
+          ('github', 'http://github.com/theanalyst'),
+          ('blogger', 'http://theanalystquotes.blogspot.com')
+          )
+EMAIL = 'abhishekl.2006@gmail.com'
 TWITTER_USERNAME = 'abhishekl'
 
 

@@ -1,6 +1,6 @@
 Title: Static site generators & Everything else 
 Date: 2012-12-03 14:23 
-Tags: Tech, Python
+Tags: Tech, Python, Emacs
 Author: theanalyst 
 Category: Tech 
 Summary: This is the details of my blog, which is powered by Github-pages & pelican. In short another guy puts up his blog at gh-pages and blogs about it. It started as a Lorem Ipsum content to fill something to test my Pelican site, and just another rant on static generators in general. Also delivers the same kind of workflow/dotfiles voyeurism that is expected in this kind of a post. A hyperbolic description of the state of static generators follows. You have been warned before clicking the read more button …
@@ -80,7 +80,6 @@ generating a site in pelican is concerned, simple.
 [^lists]: For more info on this read,a [crowdsourced list][15] and a [HN poll][16] for static generators 
 [^tweet]: This [tweet][14], sums up the The Big Bang Theory
 popularity, its precedence in search results…
-
 [^wordplay]: These days, one is [awestruc][8] with the number of
 possibilities out there, generating a static site is as easy as baking
 a [piecrust][11]. You just have to [chisel][6] your heart's content in
