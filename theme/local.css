@@ -84,7 +84,7 @@ h1,h2,h3,h4,h5,h6 { color: #000001; margin-bottom: 0px}
 
 #blog-footer{ display: table; width: 100%}
 
-@media(max-width: 768px){
+@media(max-width: 1200px){
 #socialist { display: table-footer-group;}
 #colophon { display: table-header-group;}
 #sitelinks { display: table-footer-group;}
