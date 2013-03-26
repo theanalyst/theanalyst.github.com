@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-AUTHOR = u'theanalyst'
+AUTHOR = u'Abhishek L'
 SITENAME = u"Often Bearing Metaphoric Tense"
 SITEURL = "0.0.0.0"
 TIMEZONE = "Asia/Kolkata"
-
+DEFAULT_DATE_FORMAT = '%d %b %Y'
 
 
 DISPLAY_PAGES_ON_MENU = True
