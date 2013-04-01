@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Often Bearing Metaphoric Tense</title><link href="0.0.0.0/" rel="alternate"></link><link href="0.0.0.0/feeds/all-en.atom.xml" rel="self"></link><id>0.0.0.0/</id><updated>2012-12-22T00:00:00+05:30</updated><entry><title>The Silent Observer's Metamorphosis</title><link href="0.0.0.0/the-silent-observers-metamorphosis.html" rel="alternate"></link><updated>2012-12-22T00:00:00+05:30</updated><author><name>theanalyst</name></author><id>tag:0.0.0.0,2012-12-22:the-silent-observers-metamorphosis.html</id><summary type="html">&lt;p&gt;My friend, Jinto, wrote a blog-post titled
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Often Bearing Metaphoric Tense</title><link href="0.0.0.0/" rel="alternate"></link><link href="0.0.0.0/feeds/all-en.atom.xml" rel="self"></link><id>0.0.0.0/</id><updated>2013-04-01T00:00:00+05:30</updated><entry><title>I'm Back (the hyperbole version)</title><link href="0.0.0.0/im-back-the-hyperbole-version.html" rel="alternate"></link><updated>2013-04-01T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:0.0.0.0,2013-04-01:im-back-the-hyperbole-version.html</id><summary type="html">&lt;p&gt;This is the quintessential “I'm back” post in blogosphere, which is
+often marked by a blogger coming up with &lt;em&gt;imaginative&lt;/em&gt; reasons
+to explain a questionable absence from the virtual world. 
+Tempting explanations for, not writing for so long, include 
+work pressure, often marked by people blaming work for
+(not) following their interests, a generic term, which, writers &amp;amp; artists
+lovingly call the writer’s block, to describe their shortage of
+creativity. Of course, if you know me, you know the actual reason is
+just a cover up for not mentioning my often recurring theme of
+procrastination. This time though twitcrastination&lt;sup id="fnref:twit"&gt;&lt;a class="footnote-ref" href="#fn:twit" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; is to blame
+for most of it.&lt;/p&gt;
+&lt;p&gt;Of late, I have found a new obsession for (micro) blogging in form of
+twitter, a service, which apparently,&lt;s&gt; lets you post links to
+instagram dinner pics&lt;/s&gt;, helps people to connect to people and
+organisations they care about. However, what happens in reality is
+explained in part by the graph below.(A certain Gauss must be
+twisting &amp;amp; turning in his grave here, for the blatant abuse of normal
+distributions that is about to follow &lt;sup id="fnref:xkcd"&gt;&lt;a class="footnote-ref" href="#fn:xkcd" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;):&lt;/p&gt;
+&lt;p&gt;&lt;img alt="xkcd_productivity" src="images/productivity.png" /&gt; &lt;/p&gt;
+&lt;p&gt;Seeing the world's desire to shorten its verbosity, and the disturbing
+increase in TL;DR statuses, I am thinking of killling my blog to 
+embrace the merry little challenges of microblogging. 
+Why should anything stand the test of time and be etched in stone?
+Its 2013, ephemeral (like twitter statuses) is the way to go for your thoughts and actions&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:twit"&gt;
+&lt;p&gt;Procrastination enabled by use of twitter, a term which the 
+twitterati obsessively uses to explain their apparent lack of productivity&amp;#160;&lt;a class="footnote-backref" href="#fnref:twit" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:xkcd"&gt;
+&lt;p&gt;XKCD plots,  the cornerstone of any descriptive
+stats, XKCDify any matplotlib graph; details &lt;a href="http://jakevdp.github.com/blog/2012/10/07/xkcd-style-plots-in-matplotlib"&gt;here&lt;/a&gt; and source &lt;a href="https://gist.github.com/theanalyst/5284221"&gt;here&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:xkcd" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:blog"&gt;
+&lt;p&gt;line stolen from the title of a friend’s awesome &lt;a href="http://istheurlavailable.wordpress.com"&gt;blog&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:blog" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</summary><category term="Rants"></category><category term="Writing"></category><category term="Twitter"></category></entry><entry><title>The Silent Observer's Metamorphosis</title><link href="0.0.0.0/the-silent-observers-metamorphosis.html" rel="alternate"></link><updated>2012-12-22T00:00:00+05:30</updated><author><name>theanalyst</name></author><id>tag:0.0.0.0,2012-12-22:the-silent-observers-metamorphosis.html</id><summary type="html">&lt;p&gt;My friend, Jinto, wrote a blog-post titled
 &lt;em&gt;&lt;a href="http://untold-opinion.blogspot.in/2012/12/transitioning-from-learners-to-observers.html"&gt;Transitioning from learners to observers&lt;/a&gt;&lt;/em&gt;, which talks about the
 increasing transition from a learner to being a casual observer of
 things in this digital era. The availability of a wide range of tools
@@ -17,12 +56,12 @@ custom template, then it fails miserably. (Also at the time I was in
 college, LyX had no support for extended unicode, using XeTeX and the
 like etc.) So towards the end I had to learn TeX the hard way, when I
 was pressed for time. A recent conversation took place on #emacs in
-irc&lt;sup id="fnref:irc"&gt;&lt;a href="#fn:irc" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;, where someone asked about the right tools for LaTeX, and
+irc&lt;sup id="fnref:irc"&gt;&lt;a class="footnote-ref" href="#fn:irc" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;, where someone asked about the right tools for LaTeX, and
 possibilities of LyX etc., for which a reply came as while there are a
 number of tools which may generate LaTeX files for you without having
 to learn it, errors it generate might set your hair on fire (and this
 mostly by experience, takes place on the previous night of the
-deadline, when you see cryptic latex errors that have no end)&lt;sup id="fnref:emacs"&gt;&lt;a href="#fn:emacs" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+deadline, when you see cryptic latex errors that have no end)&lt;sup id="fnref:emacs"&gt;&lt;a class="footnote-ref" href="#fn:emacs" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;Another thing that is in tandem with the declining reading habit in
 this era is the works of literature being converted to movies. While
 movies of literary works may certainly be the easy way out, it may not
@@ -73,13 +112,13 @@ worth a read.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li id="fn:irc"&gt;
 &lt;p&gt;If you, like me, were wondering about how a TeX conversation
-was taking place in #emacs, well, it all started with TeXmacs&amp;#160;&lt;a href="#fnref:irc" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+was taking place in #emacs, well, it all started with TeXmacs&amp;#160;&lt;a class="footnote-backref" href="#fnref:irc" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn:emacs"&gt;
 &lt;p&gt;Also, the channel being emacs, the advice was to use AucTeX
 + emacs, though ultimately I guess the guy settled with TeXmaker. The
 former has a (dis)advantage of a steeper learning curve (and might be
-an overkill if your only aim is to generate tex files, though proviedes an unobtrusive learning environment nonetheless) &amp;#160;&lt;a href="#fnref:emacs" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+an overkill if your only aim is to generate tex files, though proviedes an unobtrusive learning environment nonetheless) &amp;#160;&lt;a class="footnote-backref" href="#fnref:emacs" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</summary><category term="Tech"></category><category term="Learn"></category><category term="Emacs"></category></entry><entry><title>Static site generators &amp; Everything else</title><link href="0.0.0.0/static-site-generators-everything-else.html" rel="alternate"></link><updated>2012-12-03T14:23:00+05:30</updated><author><name>theanalyst</name></author><id>tag:0.0.0.0,2012-12-03:static-site-generators-everything-else.html</id><summary type="html">&lt;p&gt;This post lists the details of my blog, which is powered by gh-pages
@@ -99,8 +138,8 @@ something a webserver can serve.&lt;/p&gt;
 always get one matching the language of your choice and markup of your
 choice as well. (Psst. if you are interested, I have tried making a
 sentence with a few If you are the type who hates wordplay, skip right
-ahead, there is nothing here… &lt;sup id="fnref:wordplay"&gt;&lt;a href="#fn:wordplay" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;). &lt;/p&gt;
-&lt;p&gt;At the moment Jekyll &lt;em&gt;arguably&lt;/em&gt; leads the pack&lt;sup id="fnref:lists"&gt;&lt;a href="#fn:lists" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;,
+ahead, there is nothing here… &lt;sup id="fnref:wordplay"&gt;&lt;a class="footnote-ref" href="#fn:wordplay" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;). &lt;/p&gt;
+&lt;p&gt;At the moment Jekyll &lt;em&gt;arguably&lt;/em&gt; leads the pack&lt;sup id="fnref:lists"&gt;&lt;a class="footnote-ref" href="#fn:lists" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;,
 with close to ~8.2K watchers in Github, while that metric doesn’t
 actually tell the number of sites actually built using Jekyll. FYI,
 almost any post on jekyll trends in Hacker News, and even the US
@@ -110,7 +149,7 @@ links in the first page go to &lt;em&gt;Jekyll&lt;/em&gt; the static site genera
 rest mostly links to Jekyll the TV show, and none link to &lt;em&gt;Jekyll and
 Hyde&lt;/em&gt;, the novella (condolences to R L Stevenson). This is similar to
 googling “Big Bang Theory”, TV has a higher preference than cosmology,
-of course.&lt;sup id="fnref:tweet"&gt;&lt;a href="#fn:tweet" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt; (Googling “&lt;em&gt;the&lt;/em&gt; Big Bang theory” will have
+of course.&lt;sup id="fnref:tweet"&gt;&lt;a class="footnote-ref" href="#fn:tweet" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt; (Googling “&lt;em&gt;the&lt;/em&gt; Big Bang theory” will have
 actually no first page results on cosmology at all…)&lt;/p&gt;
 &lt;p&gt;Now talking that much on jekyll, this site isn't generated via Jekyll,
 it is generated by Pelican, a static generator written in python. And
@@ -148,11 +187,11 @@ generating a site in pelican is concerned, simple.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
 &lt;li id="fn:lists"&gt;
-&lt;p&gt;For more info on this read,a &lt;a href="https://gist.github.com/4181764" title="Another list, on static site generators"&gt;crowdsourced list&lt;/a&gt; and a &lt;a href="http://news.ycombinator.com/item?id=4857473" title="Poll your preference"&gt;HN poll&lt;/a&gt; for static generators &amp;#160;&lt;a href="#fnref:lists" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For more info on this read,a &lt;a href="https://gist.github.com/4181764" title="Another list, on static site generators"&gt;crowdsourced list&lt;/a&gt; and a &lt;a href="http://news.ycombinator.com/item?id=4857473" title="Poll your preference"&gt;HN poll&lt;/a&gt; for static generators &amp;#160;&lt;a class="footnote-backref" href="#fnref:lists" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn:tweet"&gt;
 &lt;p&gt;This &lt;a href="https://twitter.com/neiltyson/status/245348360259768321" title="Interesting tweet, that sums up TBBT popularity"&gt;tweet&lt;/a&gt;, sums up the The Big Bang Theory
-popularity, its precedence in search results…&amp;#160;&lt;a href="#fnref:tweet" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+popularity, its precedence in search results…&amp;#160;&lt;a class="footnote-backref" href="#fnref:tweet" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn:wordplay"&gt;
 &lt;p&gt;These days, one is &lt;a href="http://awestruct.org" title="Awestruct"&gt;awestruc&lt;/a&gt; with the number of
@@ -164,7 +203,7 @@ with &lt;a href="http://octopress.org" title="Octopress, pressing content for ha
 from the list of possibilities, but it is difficult, though, to make a
 valid English sentence with all the static site generators out
 there. A relatively comprehensive list is at &lt;a href="http://nanoc.stoneship.org" title="nanoc"&gt;nanoc&lt;/a&gt; which, FYI, is
-also another static site generator.  Choose your poison)&amp;#160;&lt;a href="#fnref:wordplay" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+also another static site generator.  Choose your poison)&amp;#160;&lt;a class="footnote-backref" href="#fnref:wordplay" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</summary><category term="Tech"></category><category term="Python"></category><category term="Emacs"></category></entry><entry><title>Hello World</title><link href="0.0.0.0/hello-world.html" rel="alternate"></link><updated>2012-06-08T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:0.0.0.0,2012-06-08:hello-world.html</id><summary type="html">&lt;p&gt;If you're reading this, it means that I have successfully started
