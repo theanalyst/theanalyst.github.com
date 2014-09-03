@@ -40,10 +40,10 @@ STATIC_PATHS = ["pictures", "images"]
 
 COLOPHON = True
 COLOPHON_TITLE = 'Colophon'
-COLOPHON_CONTENT = \
-' Hello there, thanks for the interest to scroll all the way down'\
-' This is a blog for random things that I find' \
-' interesting. There are two broad categories here, possibly non'   \
-' intersecting sections of posts here. Also, Often Bearing Metaphoric' \
-' Tense anagrams to the "Importance of Being Earnest", Algernon is unavailable'\
-' for comment '
+COLOPHON_CONTENT = '''
+ Hello there, thanks for the interest to scroll all the way down
+ This is a blog for random things that I find
+ interesting. There are two broad categories here, possibly non
+ intersecting sections of posts here. Also, Often Bearing Metaphoric
+ Tense anagrams to the "Importance of Being Earnest", Algernon is unavailable
+ for comment '''
