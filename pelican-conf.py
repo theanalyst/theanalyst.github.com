@@ -18,7 +18,7 @@ SUMMARY_MAX_LENGTH = 100
 FEED_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
 PATH = ('posts')
-PAGE_DIR = ('pages')
+PAGE_PATHS = ['pages']
 
 GITHUB_URL = 'http://github.com/theanalyst/'
 DISQUS_SITENAME = "hyperbolicmonologues"
