@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 AUTHOR = u'Abhishek L'
 SITENAME = u"Often Bearing Metaphoric Tense"
-SITEURL = "0.0.0.0"
+SITEURL = "http://theanalyst.github.io"
 TIMEZONE = "Asia/Kolkata"
 DEFAULT_DATE_FORMAT = '%d %b %Y'
 
