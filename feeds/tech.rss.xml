@@ -1,49 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Often Bearing Metaphoric Tense</title><link href="http://theanalyst.github.io/" rel="alternate"></link><link href="http://theanalyst.github.io/feeds/all.atom.xml" rel="self"></link><id>http://theanalyst.github.io/</id><updated>2014-09-08T00:00:00+05:30</updated><entry><title>Pelican updated!</title><link href="http://theanalyst.github.io/pelican-updated.html" rel="alternate"></link><updated>2014-09-08T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:theanalyst.github.io,2014-09-08:pelican-updated.html</id><summary type="html">&lt;p&gt;It has been a significant time between the posts. This time the reason
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Often Bearing Metaphoric Tense</title><link>http://theanalyst.github.io/</link><description></description><atom:link href="http://theanalyst.github.io/feeds/tech.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 08 Sep 2014 00:00:00 +0530</lastBuildDate><item><title>Pelican updated!</title><link>http://theanalyst.github.io/pelican-updated.html</link><description>&lt;p&gt;It has been a significant time between the posts. This time the reason
 moslty being me lazy enough not to fix the blog after a pelican
 update. Surpisingly though there wasn't much of a change required
 other than tweaking a couple of configuration variables &amp;amp; renaming the
 &lt;code&gt;pelicanconf&lt;/code&gt; file. Hope to start blogging again soon. This time for
-real :)&lt;/p&gt;</summary><category term="Blog"></category><category term="Procrastination"></category><category term="Pelican"></category></entry><entry><title>I'm Back (the hyperbole version)</title><link href="http://theanalyst.github.io/im-back-the-hyperbole-version.html" rel="alternate"></link><updated>2013-04-01T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:theanalyst.github.io,2013-04-01:im-back-the-hyperbole-version.html</id><summary type="html">&lt;p&gt;This is the quintessential “I'm back” post in blogosphere, which is
-often marked by a blogger coming up with &lt;em&gt;imaginative&lt;/em&gt; reasons
-to explain a questionable absence from the virtual world. 
-Tempting explanations for, not writing for so long, include 
-work pressure, often marked by people blaming work for
-(not) following their interests, a generic term, which, writers &amp;amp; artists
-lovingly call the writer’s block, to describe their shortage of
-creativity. Of course, if you know me, you know the actual reason is
-just a cover up for not mentioning my often recurring theme of
-procrastination. This time though twitcrastination&lt;sup id="fnref:twit"&gt;&lt;a class="footnote-ref" href="#fn:twit" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; is to blame
-for most of it.&lt;/p&gt;
-&lt;p&gt;Of late, I have found a new obsession for (micro) blogging in form of
-twitter, a service, which apparently,&lt;s&gt; lets you post links to
-instagram dinner pics&lt;/s&gt;, helps people to connect to people and
-organisations they care about. However, what happens in reality is
-explained in part by the graph below.(A certain Gauss must be
-twisting &amp;amp; turning in his grave here, for the blatant abuse of normal
-distributions that is about to follow &lt;sup id="fnref:xkcd"&gt;&lt;a class="footnote-ref" href="#fn:xkcd" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;):&lt;/p&gt;
-&lt;p&gt;&lt;img alt="xkcd_productivity" src="images/productivity.png" /&gt; &lt;/p&gt;
-&lt;p&gt;Seeing the world's desire to shorten its verbosity, and the disturbing
-increase in TL;DR statuses, I am thinking of killling my blog to 
-embrace the merry little challenges of microblogging. 
-Why should anything stand the test of time and be etched in stone?
-Its 2013, ephemeral (like twitter statuses) is the way to go for your thoughts and actions&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:twit"&gt;
-&lt;p&gt;Procrastination enabled by use of twitter, a term which the 
-twitterati obsessively uses to explain their apparent lack of productivity&amp;#160;&lt;a class="footnote-backref" href="#fnref:twit" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:xkcd"&gt;
-&lt;p&gt;XKCD plots,  the cornerstone of any descriptive
-stats, XKCDify any matplotlib graph; details &lt;a href="http://jakevdp.github.com/blog/2012/10/07/xkcd-style-plots-in-matplotlib"&gt;here&lt;/a&gt; and source &lt;a href="https://gist.github.com/theanalyst/5284221"&gt;here&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:xkcd" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:blog"&gt;
-&lt;p&gt;line stolen from the title of a friend’s awesome &lt;a href="http://istheurlavailable.wordpress.com"&gt;blog&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:blog" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</summary><category term="Rants"></category><category term="Writing"></category><category term="Twitter"></category></entry><entry><title>The Silent Observer's Metamorphosis</title><link href="http://theanalyst.github.io/the-silent-observers-metamorphosis.html" rel="alternate"></link><updated>2012-12-22T00:00:00+05:30</updated><author><name>theanalyst</name></author><id>tag:theanalyst.github.io,2012-12-22:the-silent-observers-metamorphosis.html</id><summary type="html">&lt;p&gt;My friend, Jinto, wrote a blog-post titled
+real :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Abhishek L</dc:creator><pubDate>Mon, 08 Sep 2014 00:00:00 +0530</pubDate><guid>tag:theanalyst.github.io,2014-09-08:pelican-updated.html</guid><category>Blog</category><category>Procrastination</category><category>Pelican</category></item><item><title>The Silent Observer's Metamorphosis</title><link>http://theanalyst.github.io/the-silent-observers-metamorphosis.html</link><description>&lt;p&gt;My friend, Jinto, wrote a blog-post titled
 &lt;em&gt;&lt;a href="http://untold-opinion.blogspot.in/2012/12/transitioning-from-learners-to-observers.html"&gt;Transitioning from learners to observers&lt;/a&gt;&lt;/em&gt;, which talks about the
 increasing transition from a learner to being a casual observer of
 things in this digital era. The availability of a wide range of tools
@@ -126,7 +87,7 @@ former has a (dis)advantage of a steeper learning curve (and might be
 an overkill if your only aim is to generate tex files, though proviedes an unobtrusive learning environment nonetheless) &amp;#160;&lt;a class="footnote-backref" href="#fnref:emacs" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="Tech"></category><category term="Learn"></category><category term="Emacs"></category></entry><entry><title>Static site generators &amp; Everything else</title><link href="http://theanalyst.github.io/static-site-generators-everything-else.html" rel="alternate"></link><updated>2012-12-03T14:23:00+05:30</updated><author><name>theanalyst</name></author><id>tag:theanalyst.github.io,2012-12-03:static-site-generators-everything-else.html</id><summary type="html">&lt;p&gt;This post lists the details of my blog, which is powered by gh-pages
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">theanalyst</dc:creator><pubDate>Sat, 22 Dec 2012 00:00:00 +0530</pubDate><guid>tag:theanalyst.github.io,2012-12-22:the-silent-observers-metamorphosis.html</guid><category>Tech</category><category>Learn</category><category>Emacs</category></item><item><title>Static site generators &amp; Everything else</title><link>http://theanalyst.github.io/static-site-generators-everything-else.html</link><description>&lt;p&gt;This post lists the details of my blog, which is powered by gh-pages
 and pelican. In short another guy puts up his blog at GitHub and blogs
 about it. It initially started as a Lorem Ipsum content while I was
 testing out my rough and edgy pelican theme. You have been warned!&lt;/p&gt;
@@ -211,25 +172,4 @@ there. A relatively comprehensive list is at &lt;a href="http://nanoc.stoneship.
 also another static site generator.  Choose your poison)&amp;#160;&lt;a class="footnote-backref" href="#fnref:wordplay" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="Tech"></category><category term="Python"></category><category term="Emacs"></category></entry><entry><title>Hello World</title><link href="http://theanalyst.github.io/hello-world.html" rel="alternate"></link><updated>2012-06-08T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:theanalyst.github.io,2012-06-08:hello-world.html</id><summary type="html">&lt;p&gt;If you're reading this, it means that I have successfully started
-blogging again. As the more perceptive of you might have
-realized, this blog isn't hosted at &lt;em&gt;blogger&lt;/em&gt; anymore well this new
-avatar is powered by &lt;a href="pelican.notmyidea.org"&gt;pelican&lt;/a&gt;, an awesome
-static blogging engine written in python and served by github pages,
-(of course the second part should be intuitionally obvious, given the
-url atm). &lt;/p&gt;
-&lt;p&gt;While the sabbatical from &lt;em&gt;blogosphere&lt;/em&gt; has been long, it was more
-because of lack of anything to post rather than too busy to post
-anything, and now I'm back from a questionably long self-imposed
-exile. And life has been relatively smooth in the interlude,(though my
-last post was from college, which I dearly miss now) and I'm a
-graduand now with a job going along just fine and learning new things
-in the process.&lt;/p&gt;
-&lt;p&gt;While I'm still in the process of importing previous posts and
-comments from blogger (read I am yet to decide whether the pain is
-worth it or not), you should have fun reading the blog with its
-current content which should be narcissistic links to me-pages. You
-should be seeing proper posts being pushed into this url soon.&lt;/p&gt;
-&lt;p&gt;If you have read upto this point, I would urge you to take the leap of
-faith, and follow my alter-egos in the parallel universes of
-&lt;em&gt;twitterati&lt;/em&gt; and &lt;em&gt;blogosphere&lt;/em&gt;. &lt;/p&gt;</summary><category term="Rants"></category></entry></feed>
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">theanalyst</dc:creator><pubDate>Mon, 03 Dec 2012 14:23:00 +0530</pubDate><guid>tag:theanalyst.github.io,2012-12-03:static-site-generators-everything-else.html</guid><category>Tech</category><category>Python</category><category>Emacs</category></item></channel></rss>
