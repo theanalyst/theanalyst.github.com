@@ -9,4 +9,4 @@ moslty being me lazy enough not to fix the blog after a pelican
 update. Surpisingly though there wasn't much of a change required
 other than tweaking a couple of configuration variables & renaming the
 `pelicanconf` file. Hope to start blogging again soon. This time for
-real :)
+real and hopefully more tech posts. C ya :)
