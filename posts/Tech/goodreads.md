@@ -45,7 +45,7 @@ a date range from the beginning of the year to the next year.
 
 Since it would be interesting to see the count of books as well as the
 pages on a monthly basis, we should filter the data on a monthly
-basis. Pandas offers a [`groupby`][3] & `aggregate much similiar to
+basis. Pandas offers a [`groupby`][3] & `aggregate` much similiar to
 SQL like queries. So all we have to do is to group pages by month
 here.
 
@@ -85,4 +85,4 @@ some stats for the year.
 
 [1]: http://pandas.pydata.org
 [2]: http://hylang.org
-[3]:
+[3]: http://pandas.pydata.org/pandas-docs/stable/groupby.html
