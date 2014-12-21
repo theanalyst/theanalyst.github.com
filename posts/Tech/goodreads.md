@@ -75,7 +75,7 @@ some stats for the year.
                    (books-in-year 2014))]
             [pages-per-month (-> (. books-in-2014 [["Number of Pages"]])
                              (aggregate-by-month ["sum" "count" np.mean]))]]
-      (print "Pages read in 2014 " 
+      (print "Pages read in 2014 "
              ((. books-in-2014 ["Number of Pages"] sum)))
       (print "Pages read in kindle"
              ((. books-in-2014 [(= books-in-2014.Bookshelves "kindle")]
