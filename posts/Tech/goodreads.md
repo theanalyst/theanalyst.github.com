@@ -1,4 +1,4 @@
-Title: 2014 Year in Books, using Goodreads, pandas & Hy
+Title: 2014: the year in books, using Goodreads, pandas & Hy
 Date: 2014-12-21
 Tags: Hy, Goodreads, Pandas, Kindle
 Author: Abhishek L
@@ -83,6 +83,44 @@ some stats for the year.
       (print "Monthly Stats")
       (print pages-per-month)
 
+
+First, the `parse-csv` function is given only the interesting columns,
+also indexing is done via date read, we get `pages-per-month` via the
+aggregate & groupby function shown earlier. Counting the pages read in
+Kindle was done by summing columns containing the Book shelves
+(alternatively if you had marked the editions correctly another field
+suggest the Kindle edition..).
+
+    :::txt
+	Pages read in 2014  6659.0
+	Pages read in kindle 4489.0
+	Monthly Stats
+    Number of Pages
+                sum  count        mean
+     1              1061      3  353.666667
+     2               136      2   68.000000
+     6               373      1  373.000000
+     8               484      2  242.000000
+     9              1445      8  180.625000
+     10             2126     17  125.058824
+     11              262      1  262.000000
+     12              772      6  128.666667
+
+
+Finally this is the plot of pages
+
+![pages_per_month](images/pages-per-month.png)
+
+Overall 2014 was a good year as far as reading was concerned, read a
+lot of classics which had been on my backlog for quite sometime. Also
+read *The Guide*, which was pending for quite some time. Next year I
+should follow a more consistent schedule :), there were months with no
+reading at all and a few with too much (the peak in october was
+probably due to the combined holidays here, at that time) The raw data
+and output (as well as the program) are available in my [github][4]
+repo.
+
 [1]: http://pandas.pydata.org
 [2]: http://hylang.org
 [3]: http://pandas.pydata.org/pandas-docs/stable/groupby.html
+[4]: http://github.com/theanalyst/cuddlebear
