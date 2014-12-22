@@ -1,5 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Often Bearing Metaphoric Tense</title><link>http://theanalyst.github.io/</link><description></description><atom:link href="http://theanalyst.github.io/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 08 Sep 2014 00:00:00 +0530</lastBuildDate><item><title>Pelican updated!</title><link>http://theanalyst.github.io/pelican-updated.html</link><description>&lt;p&gt;It has been a significant time between the posts. This time the reason
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Often Bearing Metaphoric Tense</title><link>http://theanalyst.github.io/</link><description></description><atom:link href="http://theanalyst.github.io/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 21 Dec 2014 00:00:00 +0530</lastBuildDate><item><title>2014: the year in books, using Goodreads, pandas &amp; Hy</title><link>http://theanalyst.github.io/2014-the-year-in-books-using-goodreads-pandas-hy.html</link><description>&lt;p&gt;As 2014 is coming to a close, I thought it would be a nice time to
+review the year as far as reading was concerned. Since I track the
+books I read using Goodreads, I felt it would be an interesting
+experiment to see some numbers from Goodreads. Though Goodreads
+provides an api, it doesn't seem to be directly useful to get some
+numbers from a user account (I could be wrong here). Fortunately, an
+export to csv option is provieded in the account which helps in our
+favor.&lt;/p&gt;
+&lt;p&gt;For any kind of data analysis in python, &lt;a href="http://pandas.pydata.org"&gt;pandas&lt;/a&gt; is a brilliant
+library. Also it does most of the heavy lifting as far as processing
+csv files are concerned. Since &lt;a href="http://hylang.org"&gt;Hy&lt;/a&gt; works wherever python works, I
+thought it would be an interesting experiment to use Hy to parse the
+data.&lt;/p&gt;
+&lt;p&gt;To start with reading csv is a simple call to pandas' &lt;code&gt;read_csv&lt;/code&gt;
+function.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;import &lt;/span&gt;&lt;span class="nv"&gt;pandas&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;numpy&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;np&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;plt&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;seaborn&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;sns&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;parse-csv&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;filepath&lt;/span&gt; &lt;span class="nv"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;apply&lt;/span&gt; &lt;span class="nv"&gt;pandas.read_csv&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now taking out only the column's we're interested in &amp;amp; filtering out
+the data from only a particular year can be done by&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;books-in-year&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;dataframe&lt;/span&gt; &lt;span class="nv"&gt;year&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="nv"&gt;day1&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;fn &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;y&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt; &lt;span class="nv"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-01-01&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))]]&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;slice&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;dataframe&lt;/span&gt; &lt;span class="nv"&gt;ix&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;day1&lt;/span&gt; &lt;span class="nv"&gt;year&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;day1&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;inc &lt;/span&gt;&lt;span class="nv"&gt;year&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;ix&lt;/code&gt; returns the index of dataframe, since we'll be indexing by date
+read, this allows us to select the required range, by simply selecting
+a date range from the beginning of the year to the next year.&lt;/p&gt;
+&lt;p&gt;Since it would be interesting to see the count of books as well as the
+pages on a monthly basis, we should filter the data on a monthly
+basis. Pandas offers a &lt;a href="http://pandas.pydata.org/pandas-docs/stable/groupby.html"&gt;&lt;code&gt;groupby&lt;/code&gt;&lt;/a&gt; &amp;amp; &lt;code&gt;aggregate&lt;/code&gt; much similiar to
+SQL like queries. So all we have to do is to group pages by month
+here.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;aggregate-by-month&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;dataframe&lt;/span&gt; &lt;span class="nv"&gt;params&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;quot;Group a particular key by month&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;-&amp;gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.groupby&lt;/span&gt; &lt;span class="nv"&gt;dataframe&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;dataframe&lt;/span&gt; &lt;span class="nv"&gt;index&lt;/span&gt; &lt;span class="nv"&gt;month&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.aggregate&lt;/span&gt; &lt;span class="nv"&gt;params&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The above function assumes that the dataframe object is already
+indexed by a timeframe data, (Date Read in our case), then a simple
+groupby month is performed and supplied to &lt;code&gt;aggregate&lt;/code&gt; which does a
+cumulative operation on the grouped data according the supplied
+functions. The threading operator &lt;code&gt;-&amp;gt;&lt;/code&gt; makes the result of the first
+call as the first argument of the function. Now we have enough to get
+some stats for the year.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;process&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="nv"&gt;required-fields&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Title&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Bookshelves&amp;quot;&lt;/span&gt;
+              &lt;span class="s"&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Original Publication Year&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;books-in-2014&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;-&amp;gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;parse-csv&lt;/span&gt; &lt;span class="nv"&gt;filepath&lt;/span&gt;
+                         &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;usecols&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;required-fields&lt;/span&gt;
+                          &lt;span class="s"&gt;&amp;quot;parse_dates&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+                           &lt;span class="s"&gt;&amp;quot;index_col&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+               &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;books-in-year&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="p"&gt;))]&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;pages-per-month&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;-&amp;gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;books-in-2014&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt;
+                         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;aggregate-by-month&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sum&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;count&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;np.mean&lt;/span&gt;&lt;span class="p"&gt;]))]]&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Pages read in 2014 &amp;quot;&lt;/span&gt;
+         &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;books-in-2014&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Pages read in kindle&amp;quot;&lt;/span&gt;
+         &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;books-in-2014&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="nf"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;books-in-2014.Bookshelves&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;kindle&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+             &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Monthly Stats&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="nv"&gt;pages-per-month&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;First, the &lt;code&gt;parse-csv&lt;/code&gt; function is given only the interesting columns,
+also indexing is done via date read, we get &lt;code&gt;pages-per-month&lt;/code&gt; via the
+aggregate &amp;amp; groupby function shown earlier. Counting the pages read in
+Kindle was done by summing columns containing the Book shelves
+(alternatively if you had marked the editions correctly another field
+suggest the Kindle edition..).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Pages read in 2014  6659.0
+Pages read in kindle 4489.0
+Monthly Stats
+Number of Pages                   
+            sum  count        mean
+ 1              1061      3  353.666667
+ 2               136      2   68.000000
+ 6               373      1  373.000000
+ 8               484      2  242.000000
+ 9              1445      8  180.625000
+ 10             2126     17  125.058824
+ 11              262      1  262.000000
+ 12              772      6  128.666667
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally this is the plot of pages&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pages_per_month" src="images/pages-per-month.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Overall 2014 was a good year as far as reading was concerned, read a
+lot of classics which had been on my backlog for quite sometime. Also
+read &lt;em&gt;The Guide&lt;/em&gt;, which was pending for quite some time. Next year I
+should follow a more consistent schedule :), there were months with no
+reading at all and a few with too much (the peak in october was
+probably due to the combined holidays here, at that time) The raw data
+and output (as well as the program) are available in my &lt;a href="http://github.com/theanalyst/cuddlebear"&gt;github&lt;/a&gt;
+repo.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Abhishek L</dc:creator><pubDate>Sun, 21 Dec 2014 00:00:00 +0530</pubDate><guid>tag:theanalyst.github.io,2014-12-21:2014-the-year-in-books-using-goodreads-pandas-hy.html</guid><category>Hy</category><category>Goodreads</category><category>Pandas</category><category>Kindle</category></item><item><title>Pelican updated!</title><link>http://theanalyst.github.io/pelican-updated.html</link><description>&lt;p&gt;It has been a significant time between the posts. This time the reason
 moslty being me lazy enough not to fix the blog after a pelican
 update. Surpisingly though there wasn't much of a change required
 other than tweaking a couple of configuration variables &amp;amp; renaming the
