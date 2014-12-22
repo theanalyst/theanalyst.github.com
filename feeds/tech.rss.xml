@@ -84,7 +84,7 @@ suggest the Kindle edition..).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;Pages read in 2014  6659.0
 Pages read in kindle 4489.0
 Monthly Stats
-Number of Pages                   
+Number of Pages
             sum  count        mean
  1              1061      3  353.666667
  2               136      2   68.000000
@@ -106,7 +106,10 @@ should follow a more consistent schedule :), there were months with no
 reading at all and a few with too much (the peak in october was
 probably due to the combined holidays here, at that time) The raw data
 and output (as well as the program) are available in my &lt;a href="http://github.com/theanalyst/cuddlebear"&gt;github&lt;/a&gt;
-repo.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Abhishek L</dc:creator><pubDate>Sun, 21 Dec 2014 00:00:00 +0530</pubDate><guid>tag:theanalyst.github.io,2014-12-21:2014-the-year-in-books-using-goodreads-pandas-hy.html</guid><category>Hy</category><category>Goodreads</category><category>Pandas</category><category>Kindle</category></item><item><title>Pelican updated!</title><link>http://theanalyst.github.io/pelican-updated.html</link><description>&lt;p&gt;It has been a significant time between the posts. This time the reason
+repo.&lt;/p&gt;
+&lt;p&gt;PS For those of you interested in knowing what I've been reading
+checkout &lt;a href="https://www.goodreads.com/review/list/14029645-abhishek?read_at=2014&amp;amp;view=covers"&gt;my goodreads 2014 list&lt;/a&gt;. Do suggest anything worth
+reading in the comments. Cya!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Abhishek L</dc:creator><pubDate>Sun, 21 Dec 2014 00:00:00 +0530</pubDate><guid>tag:theanalyst.github.io,2014-12-21:2014-the-year-in-books-using-goodreads-pandas-hy.html</guid><category>Hy</category><category>Goodreads</category><category>Pandas</category><category>Kindle</category></item><item><title>Pelican updated!</title><link>http://theanalyst.github.io/pelican-updated.html</link><description>&lt;p&gt;It has been a significant time between the posts. This time the reason
 moslty being me lazy enough not to fix the blog after a pelican
 update. Surpisingly though there wasn't much of a change required
 other than tweaking a couple of configuration variables &amp;amp; renaming the

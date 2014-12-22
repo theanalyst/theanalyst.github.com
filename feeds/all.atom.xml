@@ -84,7 +84,7 @@ suggest the Kindle edition..).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;Pages read in 2014  6659.0
 Pages read in kindle 4489.0
 Monthly Stats
-Number of Pages                   
+Number of Pages
             sum  count        mean
  1              1061      3  353.666667
  2               136      2   68.000000
@@ -106,7 +106,10 @@ should follow a more consistent schedule :), there were months with no
 reading at all and a few with too much (the peak in october was
 probably due to the combined holidays here, at that time) The raw data
 and output (as well as the program) are available in my &lt;a href="http://github.com/theanalyst/cuddlebear"&gt;github&lt;/a&gt;
-repo.&lt;/p&gt;</summary><category term="Hy"></category><category term="Goodreads"></category><category term="Pandas"></category><category term="Kindle"></category></entry><entry><title>Pelican updated!</title><link href="http://theanalyst.github.io/pelican-updated.html" rel="alternate"></link><updated>2014-09-08T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:theanalyst.github.io,2014-09-08:pelican-updated.html</id><summary type="html">&lt;p&gt;It has been a significant time between the posts. This time the reason
+repo.&lt;/p&gt;
+&lt;p&gt;PS For those of you interested in knowing what I've been reading
+checkout &lt;a href="https://www.goodreads.com/review/list/14029645-abhishek?read_at=2014&amp;amp;view=covers"&gt;my goodreads 2014 list&lt;/a&gt;. Do suggest anything worth
+reading in the comments. Cya!&lt;/p&gt;</summary><category term="Hy"></category><category term="Goodreads"></category><category term="Pandas"></category><category term="Kindle"></category></entry><entry><title>Pelican updated!</title><link href="http://theanalyst.github.io/pelican-updated.html" rel="alternate"></link><updated>2014-09-08T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:theanalyst.github.io,2014-09-08:pelican-updated.html</id><summary type="html">&lt;p&gt;It has been a significant time between the posts. This time the reason
 moslty being me lazy enough not to fix the blog after a pelican
 update. Surpisingly though there wasn't much of a change required
 other than tweaking a couple of configuration variables &amp;amp; renaming the

@@ -120,7 +120,12 @@ probably due to the combined holidays here, at that time) The raw data
 and output (as well as the program) are available in my [github][4]
 repo.
 
+PS For those of you interested in knowing what I've been reading
+checkout [my goodreads 2014 list][5]. Do suggest anything worth
+reading in the comments. Cya!
+
 [1]: http://pandas.pydata.org
 [2]: http://hylang.org
 [3]: http://pandas.pydata.org/pandas-docs/stable/groupby.html
 [4]: http://github.com/theanalyst/cuddlebear
+[5]: https://www.goodreads.com/review/list/14029645-abhishek?read_at=2014&view=covers
