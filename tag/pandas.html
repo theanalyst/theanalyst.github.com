@@ -93,7 +93,7 @@ function. This can be done with only the interesting fields. </p>
 
 <span class="p">(</span><span class="kd">defn </span><span class="nv">parse-goodreads-csv</span> <span class="p">[</span><span class="nv">filepath</span><span class="p">]</span>
   <span class="p">(</span><span class="k">let </span><span class="p">[[</span><span class="nv">required-fields</span> <span class="p">[</span><span class="s">&quot;Title&quot;</span> <span class="s">&quot;Date Read&quot;</span> <span class="s">&quot;Bookshelves&quot;</span>
-                          <span class="s">&quot;Number of Pages&quot;</span> <span class="s">&quot;Original Publication Year&quot;</span><span class="p">]]]</span>
+                          <span class="s">&quot;Number of Pages&quot;</span> <span class="s">&quot;Original Publication Year&quot;</span><span class="p">]]</span>
     <span class="p">(</span><span class="nf">pandas.read_csv</span> <span class="nv">filepath</span> <span class="ss">:usecols</span> <span class="nv">required-fields</span>
                      <span class="ss">:index-col</span> <span class="s">&quot;Date Read&quot;</span> <span class="ss">:parse-dates</span> <span class="nv">true</span><span class="p">)))</span>
 </pre></div>
@@ -131,7 +131,7 @@ call as the first argument of the function. Now we have enough to get
 some stats for the year.</p>
 <div class="highlight"><pre><span class="p">(</span><span class="kd">defn </span><span class="nv">process</span> <span class="p">[</span><span class="nv">filepath</span><span class="p">]</span>
   <span class="p">(</span><span class="k">let </span><span class="p">[[</span><span class="nv">books-in-2014</span>
-          <span class="p">(</span><span class="k">-&gt; </span><span class="p">(</span><span class="nf">parse-csv</span> <span class="nv">filepath</span><span class="p">)</span>
+          <span class="p">(</span><span class="k">-&gt; </span><span class="p">(</span><span class="nf">parse-goodreads-csv</span> <span class="nv">filepath</span><span class="p">)</span>
               <span class="p">(</span><span class="nf">books-in-year</span> <span class="mi">2014</span><span class="p">))]</span>
         <span class="p">[</span><span class="nv">pages-per-month</span> <span class="p">(</span><span class="k">-&gt; </span><span class="p">(</span><span class="nf">.</span> <span class="nv">books-in-2014</span> <span class="p">[[</span><span class="s">&quot;Number of Pages&quot;</span><span class="p">]])</span>
                          <span class="p">(</span><span class="nf">aggregate-by-month</span> <span class="p">[</span><span class="s">&quot;sum&quot;</span> <span class="s">&quot;count&quot;</span> <span class="nv">np.mean</span><span class="p">]))]]</span>

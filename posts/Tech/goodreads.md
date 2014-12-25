@@ -33,7 +33,7 @@ function. This can be done with only the interesting fields.
 
     (defn parse-goodreads-csv [filepath]
 	  (let [[required-fields ["Title" "Date Read" "Bookshelves"
-                              "Number of Pages" "Original Publication Year"]]]
+                              "Number of Pages" "Original Publication Year"]]
         (pandas.read_csv filepath :usecols required-fields
 			             :index-col "Date Read" :parse-dates true)))
 
@@ -73,7 +73,7 @@ some stats for the year.
     :::hylang
 	(defn process [filepath]
 	  (let [[books-in-2014
-              (-> (parse-csv filepath)
+              (-> (parse-goodreads-csv filepath)
                   (books-in-year 2014))]
             [pages-per-month (-> (. books-in-2014 [["Number of Pages"]])
                              (aggregate-by-month ["sum" "count" np.mean]))]]
