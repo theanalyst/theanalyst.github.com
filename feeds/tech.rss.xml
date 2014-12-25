@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Often Bearing Metaphoric Tense</title><link>http://theanalyst.github.io/</link><description></description><atom:link href="http://theanalyst.github.io/feeds/tech.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 21 Dec 2014 00:00:00 +0530</lastBuildDate><item><title>2014: the year in books, using Goodreads, pandas &amp; Hy</title><link>http://theanalyst.github.io/2014-the-year-in-books-using-goodreads-pandas-hy.html</link><description>&lt;p&gt;As 2014 is coming to a close, I thought it would be a nice time to
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Often Bearing Metaphoric Tense</title><link>http://theanalyst.github.io/</link><description></description><atom:link href="http://theanalyst.github.io/feeds/tech.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 21 Dec 2014 00:00:00 +0530</lastBuildDate><item><title>2014: the year in books, using Goodreads, pandas &amp; Hy</title><link>http://theanalyst.github.io/2014-the-year-in-books-using-goodreads-pandas-hy.html</link><description>&lt;p&gt;&lt;code&gt;Note: The content has been updated to reflect the new kwargs style
+in Hy, as such the snippets only work with the current Hy master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;As 2014 is coming to a close, I thought it would be a nice time to
 review the year as far as reading was concerned. Since I track the
 books I read using Goodreads, I felt it would be an interesting
 experiment to see some numbers from Goodreads. Though Goodreads
@@ -13,14 +15,17 @@ csv files are concerned. Since &lt;a href="http://hylang.org"&gt;Hy&lt;/a&gt; wo
 thought it would be an interesting experiment to use Hy to parse the
 data.&lt;/p&gt;
 &lt;p&gt;To start with reading csv is a simple call to pandas' &lt;code&gt;read_csv&lt;/code&gt;
-function.&lt;/p&gt;
+function. This can be done with only the interesting fields. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;import &lt;/span&gt;&lt;span class="nv"&gt;pandas&lt;/span&gt;
     &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;numpy&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;np&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
     &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;plt&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
     &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;seaborn&lt;/span&gt; &lt;span class="ss"&gt;:as&lt;/span&gt; &lt;span class="nv"&gt;sns&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;parse-csv&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;filepath&lt;/span&gt; &lt;span class="nv"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;apply&lt;/span&gt; &lt;span class="nv"&gt;pandas.read_csv&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;parse-goodreads-csv&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="nv"&gt;required-fields&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Title&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Bookshelves&amp;quot;&lt;/span&gt;
+                          &lt;span class="s"&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Original Publication Year&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]]]&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;pandas.read_csv&lt;/span&gt; &lt;span class="nv"&gt;filepath&lt;/span&gt; &lt;span class="ss"&gt;:usecols&lt;/span&gt; &lt;span class="nv"&gt;required-fields&lt;/span&gt;
+                     &lt;span class="ss"&gt;:index-col&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;:parse-dates&lt;/span&gt; &lt;span class="nv"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -55,14 +60,9 @@ functions. The threading operator &lt;code&gt;-&amp;gt;&lt;/code&gt; makes the r
 call as the first argument of the function. Now we have enough to get
 some stats for the year.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;defn &lt;/span&gt;&lt;span class="nv"&gt;process&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="nv"&gt;required-fields&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Title&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Bookshelves&amp;quot;&lt;/span&gt;
-              &lt;span class="s"&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Original Publication Year&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
-        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;books-in-2014&lt;/span&gt;
-          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;-&amp;gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;parse-csv&lt;/span&gt; &lt;span class="nv"&gt;filepath&lt;/span&gt;
-                         &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;usecols&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;required-fields&lt;/span&gt;
-                          &lt;span class="s"&gt;&amp;quot;parse_dates&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-                           &lt;span class="s"&gt;&amp;quot;index_col&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
-               &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;books-in-year&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="p"&gt;))]&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let &lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="nv"&gt;books-in-2014&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;-&amp;gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;parse-csv&lt;/span&gt; &lt;span class="nv"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+              &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;books-in-year&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="p"&gt;))]&lt;/span&gt;
         &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;pages-per-month&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;-&amp;gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;books-in-2014&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt;
                          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;aggregate-by-month&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sum&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;count&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;np.mean&lt;/span&gt;&lt;span class="p"&gt;]))]]&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Pages read in 2014 &amp;quot;&lt;/span&gt;

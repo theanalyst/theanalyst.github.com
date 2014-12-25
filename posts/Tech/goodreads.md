@@ -4,6 +4,9 @@ Tags: Hy, Goodreads, Pandas, Kindle
 Author: Abhishek L
 Category: Tech
 
+``` Note: The content has been updated to reflect the new kwargs style
+in Hy, as such the snippets only work with the current Hy master ```
+
 As 2014 is coming to a close, I thought it would be a nice time to
 review the year as far as reading was concerned. Since I track the
 books I read using Goodreads, I felt it would be an interesting
@@ -20,7 +23,7 @@ thought it would be an interesting experiment to use Hy to parse the
 data.
 
 To start with reading csv is a simple call to pandas' `read_csv`
-function.
+function. This can be done with only the interesting fields. 
 
     :::hylang
 	(import pandas
@@ -28,8 +31,12 @@ function.
         [matplotlib.pyplot :as plt]
         [seaborn :as sns])
 
-    (defn parse-csv [filepath kwargs]
-	  (apply pandas.read_csv [filepath] kwargs))
+    (defn parse-goodreads-csv [filepath]
+	  (let [[required-fields ["Title" "Date Read" "Bookshelves"
+                              "Number of Pages" "Original Publication Year"]]]
+        (pandas.read_csv filepath :usecols required-fields
+			             :index-col "Date Read" :parse-dates true)))
+
 
 Now taking out only the column's we're interested in & filtering out
 the data from only a particular year can be done by
@@ -65,14 +72,9 @@ some stats for the year.
 
     :::hylang
 	(defn process [filepath]
-	  (let [[required-fields ["Title" "Date Read" "Bookshelves"
-                  "Number of Pages" "Original Publication Year"]]
-            [books-in-2014
-              (-> (parse-csv filepath
-                             {"usecols" required-fields
-                              "parse_dates" ["Date Read"]
-                               "index_col" "Date Read"})
-                   (books-in-year 2014))]
+	  (let [[books-in-2014
+              (-> (parse-csv filepath)
+                  (books-in-year 2014))]
             [pages-per-month (-> (. books-in-2014 [["Number of Pages"]])
                              (aggregate-by-month ["sum" "count" np.mean]))]]
       (print "Pages read in 2014 "

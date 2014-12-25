@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>  2014: The Year In Books, Using Goodreads, Pandas & Hy - Often Bearing Metaphoric Tense
 </title>
-    <meta name="description" content="  As 2014 is coming to a close, I thought it would be a nice time to review the year as far as reading was concerned. Since I track the books I read using Goodreads, I felt it would be an interesting experiment to see some numbers from Goodreads. Though Goodreads provides an api, it doesn't seem to be directly useful to get some numbers from a user account (I could be wrong here). Fortunately, an export to csv option is provieded in the account which helps in our favor. For any kind of data analysis in python, pandas is ...
+    <meta name="description" content="  Note: The content has been updated to reflect the new kwargs style in Hy, as such the snippets only work with the current Hy master As 2014 is coming to a close, I thought it would be a nice time to review the year as far as reading was concerned. Since I track the books I read using Goodreads, I felt it would be an interesting experiment to see some numbers from Goodreads. Though Goodreads provides an api, it doesn't seem to be directly useful to get some numbers from a user account (I could be wrong here). Fortunately ...
 ">
     <meta name="author" content="Abhishek L">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,7 +69,9 @@ Filed under <a href="http://theanalyst.github.io/category/tech.html">Tech</a>
       </div>
       
       <div class="span8">
-	<p>As 2014 is coming to a close, I thought it would be a nice time to
+	<p><code>Note: The content has been updated to reflect the new kwargs style
+in Hy, as such the snippets only work with the current Hy master</code></p>
+<p>As 2014 is coming to a close, I thought it would be a nice time to
 review the year as far as reading was concerned. Since I track the
 books I read using Goodreads, I felt it would be an interesting
 experiment to see some numbers from Goodreads. Though Goodreads
@@ -83,14 +85,17 @@ csv files are concerned. Since <a href="http://hylang.org">Hy</a> works wherever
 thought it would be an interesting experiment to use Hy to parse the
 data.</p>
 <p>To start with reading csv is a simple call to pandas' <code>read_csv</code>
-function.</p>
+function. This can be done with only the interesting fields. </p>
 <div class="highlight"><pre><span class="p">(</span><span class="k">import </span><span class="nv">pandas</span>
     <span class="p">[</span><span class="nv">numpy</span> <span class="ss">:as</span> <span class="nv">np</span><span class="p">]</span>
     <span class="p">[</span><span class="nv">matplotlib.pyplot</span> <span class="ss">:as</span> <span class="nv">plt</span><span class="p">]</span>
     <span class="p">[</span><span class="nv">seaborn</span> <span class="ss">:as</span> <span class="nv">sns</span><span class="p">])</span>
 
-<span class="p">(</span><span class="kd">defn </span><span class="nv">parse-csv</span> <span class="p">[</span><span class="nv">filepath</span> <span class="nv">kwargs</span><span class="p">]</span>
-  <span class="p">(</span><span class="nb">apply</span> <span class="nv">pandas.read_csv</span> <span class="p">[</span><span class="nv">filepath</span><span class="p">]</span> <span class="nv">kwargs</span><span class="p">))</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">parse-goodreads-csv</span> <span class="p">[</span><span class="nv">filepath</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">let </span><span class="p">[[</span><span class="nv">required-fields</span> <span class="p">[</span><span class="s">&quot;Title&quot;</span> <span class="s">&quot;Date Read&quot;</span> <span class="s">&quot;Bookshelves&quot;</span>
+                          <span class="s">&quot;Number of Pages&quot;</span> <span class="s">&quot;Original Publication Year&quot;</span><span class="p">]]]</span>
+    <span class="p">(</span><span class="nf">pandas.read_csv</span> <span class="nv">filepath</span> <span class="ss">:usecols</span> <span class="nv">required-fields</span>
+                     <span class="ss">:index-col</span> <span class="s">&quot;Date Read&quot;</span> <span class="ss">:parse-dates</span> <span class="nv">true</span><span class="p">)))</span>
 </pre></div>
 
 
@@ -125,14 +130,9 @@ functions. The threading operator <code>-&gt;</code> makes the result of the fir
 call as the first argument of the function. Now we have enough to get
 some stats for the year.</p>
 <div class="highlight"><pre><span class="p">(</span><span class="kd">defn </span><span class="nv">process</span> <span class="p">[</span><span class="nv">filepath</span><span class="p">]</span>
-  <span class="p">(</span><span class="k">let </span><span class="p">[[</span><span class="nv">required-fields</span> <span class="p">[</span><span class="s">&quot;Title&quot;</span> <span class="s">&quot;Date Read&quot;</span> <span class="s">&quot;Bookshelves&quot;</span>
-              <span class="s">&quot;Number of Pages&quot;</span> <span class="s">&quot;Original Publication Year&quot;</span><span class="p">]]</span>
-        <span class="p">[</span><span class="nv">books-in-2014</span>
-          <span class="p">(</span><span class="k">-&gt; </span><span class="p">(</span><span class="nf">parse-csv</span> <span class="nv">filepath</span>
-                         <span class="p">{</span><span class="s">&quot;usecols&quot;</span> <span class="nv">required-fields</span>
-                          <span class="s">&quot;parse_dates&quot;</span> <span class="p">[</span><span class="s">&quot;Date Read&quot;</span><span class="p">]</span>
-                           <span class="s">&quot;index_col&quot;</span> <span class="s">&quot;Date Read&quot;</span><span class="p">})</span>
-               <span class="p">(</span><span class="nf">books-in-year</span> <span class="mi">2014</span><span class="p">))]</span>
+  <span class="p">(</span><span class="k">let </span><span class="p">[[</span><span class="nv">books-in-2014</span>
+          <span class="p">(</span><span class="k">-&gt; </span><span class="p">(</span><span class="nf">parse-csv</span> <span class="nv">filepath</span><span class="p">)</span>
+              <span class="p">(</span><span class="nf">books-in-year</span> <span class="mi">2014</span><span class="p">))]</span>
         <span class="p">[</span><span class="nv">pages-per-month</span> <span class="p">(</span><span class="k">-&gt; </span><span class="p">(</span><span class="nf">.</span> <span class="nv">books-in-2014</span> <span class="p">[[</span><span class="s">&quot;Number of Pages&quot;</span><span class="p">]])</span>
                          <span class="p">(</span><span class="nf">aggregate-by-month</span> <span class="p">[</span><span class="s">&quot;sum&quot;</span> <span class="s">&quot;count&quot;</span> <span class="nv">np.mean</span><span class="p">]))]]</span>
   <span class="p">(</span><span class="k">print</span> <span class="s">&quot;Pages read in 2014 &quot;</span>
