@@ -1,5 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Often Bearing Metaphoric Tense</title><link href="http://theanalyst.github.io/" rel="alternate"></link><link href="http://theanalyst.github.io/feeds/all.atom.xml" rel="self"></link><id>http://theanalyst.github.io/</id><updated>2014-12-21T00:00:00+05:30</updated><entry><title>2014: the year in books, using Goodreads, pandas &amp; Hy</title><link href="http://theanalyst.github.io/2014-the-year-in-books-using-goodreads-pandas-hy.html" rel="alternate"></link><updated>2014-12-21T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:theanalyst.github.io,2014-12-21:2014-the-year-in-books-using-goodreads-pandas-hy.html</id><summary type="html">&lt;p&gt;&lt;code&gt;Note: The content has been updated to reflect the new kwargs style
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Often Bearing Metaphoric Tense</title><link href="http://theanalyst.github.io/" rel="alternate"></link><link href="http://theanalyst.github.io/feeds/all.atom.xml" rel="self"></link><id>http://theanalyst.github.io/</id><updated>2015-02-01T00:00:00+05:30</updated><entry><title>Faster python builds in Travis with container based infra</title><link href="http://theanalyst.github.io/faster-python-builds-in-travis-with-container-based-infra.html" rel="alternate"></link><updated>2015-02-01T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:theanalyst.github.io,2015-02-01:faster-python-builds-in-travis-with-container-based-infra.html</id><summary type="html">&lt;p&gt;Lately, travis CI has started supporting builds using &lt;a href="http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/"&gt;container&lt;/a&gt;
+based infrastructure which run much faster due to more available
+resources and good use of caching. This is currently possible only for
+projects that don't use &lt;code&gt;sudo&lt;/code&gt; atm . For more details read &lt;a href="http://docs.travis-ci.com/user/workers/container-based-infrastructure/"&gt;this&lt;/a&gt;
+post. Of late, I have been submitting Pull Requests to various
+projects to use this feature wherever possible. This post is primarily
+oriented towards Python projects.&lt;/p&gt;
+&lt;p&gt;For many python projects, a significant amount of time is spent in
+installing &amp;amp; building the dependencies. So caching these should save
+you a good amount of time. Pip downloads can be cached specifying a
+cache directory, which will avoid hitting the pypi mirror for every
+line in your requirements.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;sudo&lt;/span&gt; &lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;cache&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;directories&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; 
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;$HOME/.pip-cache&lt;/span&gt;
+&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;script&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pip install -r requirements.txt --download-cache $HOME/.pip-cache&lt;/span&gt; 
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;make travis&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The above lines will make sure that for subsequent runs pip packages
+from the cache are used. However the packages will still need to be be
+built, which means if you're using packages using C (lxml for eg), a
+lot of time will be still spent for building the package itself. One
+way of working around this would be the use of Python Wheels and
+caching them as this avoids the need for subsequent builds. We could
+download the wheels to a specified directory and cache that, so that
+we can cut down on the build time.  So we would have something like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;sudo&lt;/span&gt; &lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;cache&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;directories&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; 
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;$PWD/wheelhouse&lt;/span&gt;
+&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;script&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pip wheel -r requirements.txt&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pip install -r requirements.txt&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;make travis&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And voila! We have faster travis builds.&lt;/p&gt;
+&lt;p&gt;PS If you have better ways to speedup, I'll be happy to hear, please
+let me know in comments or hit me up on twitter.&lt;/p&gt;</summary><category term="Python"></category><category term="Travis"></category></entry><entry><title>2014: the year in books, using Goodreads, pandas &amp; Hy</title><link href="http://theanalyst.github.io/2014-the-year-in-books-using-goodreads-pandas-hy.html" rel="alternate"></link><updated>2014-12-21T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:theanalyst.github.io,2014-12-21:2014-the-year-in-books-using-goodreads-pandas-hy.html</id><summary type="html">&lt;p&gt;&lt;code&gt;Note: The content has been updated to reflect the new kwargs style
 in Hy, as such the snippets only work with the current Hy master&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;As 2014 is coming to a close, I thought it would be a nice time to
 review the year as far as reading was concerned. Since I track the
