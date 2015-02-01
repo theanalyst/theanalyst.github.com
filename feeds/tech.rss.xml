@@ -12,13 +12,13 @@ you a good amount of time. Pip downloads can be cached specifying a
 cache directory, which will avoid hitting the pypi mirror for every
 line in your requirements. The below examples assume that your testing
 script is something like &lt;code&gt;make travis&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;sudo&lt;/span&gt; &lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
-&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;cache&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
-    &lt;span class="l-Scalar-Plain"&gt;directories&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;sudo&lt;/span&gt; &lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;cache&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;directories&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; 
     &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;$HOME/.pip-cache&lt;/span&gt;
-&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;script&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
-    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pip install -r requirements.txt --download-cache $HOME/.pip-cache&lt;/span&gt; 
-    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;make travis&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;script&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pip install -r requirements.txt --download-cache $HOME/.pip-cache&lt;/span&gt;   
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;make travis&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -30,14 +30,14 @@ way of working around this would be the use of Python Wheels and
 caching them as this avoids the need for subsequent builds. We could
 download the wheels to a specified directory and cache that, so that
 we can cut down on the build time.  So we would have something like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;sudo&lt;/span&gt; &lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
-&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;cache&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
-    &lt;span class="l-Scalar-Plain"&gt;directories&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;sudo&lt;/span&gt; &lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;cache&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;directories&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; 
     &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;$PWD/wheelhouse&lt;/span&gt;
-&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;script&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
-    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pip wheel -r requirements.txt&lt;/span&gt;
-    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pip install -r requirements.txt&lt;/span&gt;
-    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;make travis&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;script&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pip wheel -r requirements.txt&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pip install -r requirements.txt&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;make travis&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

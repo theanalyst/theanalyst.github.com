@@ -82,13 +82,13 @@ you a good amount of time. Pip downloads can be cached specifying a
 cache directory, which will avoid hitting the pypi mirror for every
 line in your requirements. The below examples assume that your testing
 script is something like <code>make travis</code></p>
-<div class="highlight"><pre><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">sudo</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cache</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">directories</span><span class="p-Indicator">:</span> 
+<div class="highlight"><pre><span class="l-Scalar-Plain">sudo</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+<span class="l-Scalar-Plain">cache</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">directories</span><span class="p-Indicator">:</span> 
     <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$HOME/.pip-cache</span>
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">pip install -r requirements.txt --download-cache $HOME/.pip-cache</span> 
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">make travis</span>
+<span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">pip install -r requirements.txt --download-cache $HOME/.pip-cache</span>   
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">make travis</span>
 </pre></div>
 
 
@@ -100,14 +100,14 @@ way of working around this would be the use of Python Wheels and
 caching them as this avoids the need for subsequent builds. We could
 download the wheels to a specified directory and cache that, so that
 we can cut down on the build time.  So we would have something like:</p>
-<div class="highlight"><pre><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">sudo</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cache</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">directories</span><span class="p-Indicator">:</span> 
+<div class="highlight"><pre><span class="l-Scalar-Plain">sudo</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+<span class="l-Scalar-Plain">cache</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">directories</span><span class="p-Indicator">:</span> 
     <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$PWD/wheelhouse</span>
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">pip wheel -r requirements.txt</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">pip install -r requirements.txt</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">make travis</span>
+<span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">pip wheel -r requirements.txt</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">pip install -r requirements.txt</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">make travis</span>
 </pre></div>
 
 

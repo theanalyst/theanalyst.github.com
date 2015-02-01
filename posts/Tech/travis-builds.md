@@ -20,13 +20,13 @@ line in your requirements. The below examples assume that your testing
 script is something like `make travis`
 
     :::yaml
-	- sudo : false
-	- cache:
-        directories: 
+	sudo : false
+	cache:
+	  directories: 
         - $HOME/.pip-cache
-	- script:
-	    - pip install -r requirements.txt --download-cache $HOME/.pip-cache	
-		- make travis
+	script:
+	  - pip install -r requirements.txt --download-cache $HOME/.pip-cache	
+	  - make travis
 
 
 The above lines will make sure that for subsequent runs pip packages
@@ -39,14 +39,15 @@ download the wheels to a specified directory and cache that, so that
 we can cut down on the build time.  So we would have something like:
 
     :::yaml
-    - sudo : false
-	- cache:
-        directories: 
+	sudo : false
+	cache:
+	  directories: 
         - $PWD/wheelhouse
-	- script:
-		- pip wheel -r requirements.txt
-	    - pip install -r requirements.txt
-		- make travis
+	script:
+	  - pip wheel -r requirements.txt
+	  - pip install -r requirements.txt
+	  - make travis
+
 
 And voila! We have faster travis builds.
 

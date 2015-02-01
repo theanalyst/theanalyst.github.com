@@ -1,0 +1,8 @@
+sudo : false
+cache:
+  directories: 
+    - $PWD/wheelhouse
+script:
+  - pip wheel -r requirements.txt
+  - pip install -r requirements.txt
+  - make travis
