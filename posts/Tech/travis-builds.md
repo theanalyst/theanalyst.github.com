@@ -50,7 +50,8 @@ we can cut down on the build time.  So we would have something like:
 And voila! We have faster travis builds.
 
 PS If you have better ways to speedup, I'll be happy to hear, please
-let me know in comments or hit me up on twitter.
+let me know in comments or hit me up on [twitter][3].
 
 [1]: http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
 [2]: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
+[3]: https://twitter.com/abhishekl
