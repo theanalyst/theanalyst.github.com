@@ -16,7 +16,8 @@ For many python projects, a significant amount of time is spent in
 installing & building the dependencies. So caching these should save
 you a good amount of time. Pip downloads can be cached specifying a
 cache directory, which will avoid hitting the pypi mirror for every
-line in your requirements.
+line in your requirements. The below examples assume that your testing
+script is something like `make travis`
 
     :::yaml
 	- sudo : false

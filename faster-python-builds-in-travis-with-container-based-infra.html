@@ -80,7 +80,8 @@ oriented towards Python projects.</p>
 installing &amp; building the dependencies. So caching these should save
 you a good amount of time. Pip downloads can be cached specifying a
 cache directory, which will avoid hitting the pypi mirror for every
-line in your requirements.</p>
+line in your requirements. The below examples assume that your testing
+script is something like <code>make travis</code></p>
 <div class="highlight"><pre><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">sudo</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
 <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cache</span><span class="p-Indicator">:</span>
     <span class="l-Scalar-Plain">directories</span><span class="p-Indicator">:</span> 
@@ -112,7 +113,7 @@ we can cut down on the build time.  So we would have something like:</p>
 
 <p>And voila! We have faster travis builds.</p>
 <p>PS If you have better ways to speedup, I'll be happy to hear, please
-let me know in comments or hit me up on twitter.</p>
+let me know in comments or hit me up on <a href="https://twitter.com/abhishekl">twitter</a>.</p>
 	<hr />
       </div>
     </div>

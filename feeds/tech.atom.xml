@@ -10,7 +10,8 @@ oriented towards Python projects.&lt;/p&gt;
 installing &amp;amp; building the dependencies. So caching these should save
 you a good amount of time. Pip downloads can be cached specifying a
 cache directory, which will avoid hitting the pypi mirror for every
-line in your requirements.&lt;/p&gt;
+line in your requirements. The below examples assume that your testing
+script is something like &lt;code&gt;make travis&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;sudo&lt;/span&gt; &lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
 &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;cache&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;directories&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; 
@@ -42,7 +43,7 @@ we can cut down on the build time.  So we would have something like:&lt;/p&gt;
 
 &lt;p&gt;And voila! We have faster travis builds.&lt;/p&gt;
 &lt;p&gt;PS If you have better ways to speedup, I'll be happy to hear, please
-let me know in comments or hit me up on twitter.&lt;/p&gt;</summary><category term="Python"></category><category term="Travis"></category></entry><entry><title>2014: the year in books, using Goodreads, pandas &amp; Hy</title><link href="http://theanalyst.github.io/2014-the-year-in-books-using-goodreads-pandas-hy.html" rel="alternate"></link><updated>2014-12-21T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:theanalyst.github.io,2014-12-21:2014-the-year-in-books-using-goodreads-pandas-hy.html</id><summary type="html">&lt;p&gt;&lt;code&gt;Note: The content has been updated to reflect the new kwargs style
+let me know in comments or hit me up on &lt;a href="https://twitter.com/abhishekl"&gt;twitter&lt;/a&gt;.&lt;/p&gt;</summary><category term="Python"></category><category term="Travis"></category></entry><entry><title>2014: the year in books, using Goodreads, pandas &amp; Hy</title><link href="http://theanalyst.github.io/2014-the-year-in-books-using-goodreads-pandas-hy.html" rel="alternate"></link><updated>2014-12-21T00:00:00+05:30</updated><author><name>Abhishek L</name></author><id>tag:theanalyst.github.io,2014-12-21:2014-the-year-in-books-using-goodreads-pandas-hy.html</id><summary type="html">&lt;p&gt;&lt;code&gt;Note: The content has been updated to reflect the new kwargs style
 in Hy, as such the snippets only work with the current Hy master&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;As 2014 is coming to a close, I thought it would be a nice time to
 review the year as far as reading was concerned. Since I track the
