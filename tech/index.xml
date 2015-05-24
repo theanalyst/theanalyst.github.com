@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Teches on Often Bearing Metaphoric Tense</title>
-    <link>http://theanalyst.github.io/tech/</link>
+    <link>http://abhishekl.in/tech/</link>
     <description>Recent content in Teches on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Sat, 14 Feb 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://theanalyst.github.io/tech/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://abhishekl.in/tech/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Consul: Getting started with service discovery</title>
-      <link>http://theanalyst.github.io/Tech/consul-1/</link>
+      <link>http://abhishekl.in/Tech/consul-1/</link>
       <pubDate>Sat, 14 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://theanalyst.github.io/Tech/consul-1/</guid>
+      <guid>http://abhishekl.in/Tech/consul-1/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://consul.io&#34;&gt;Consul&lt;/a&gt; is a great tool for service discovery. It is distributed
 and highly available (CA if you&amp;rsquo;re into the CAP sort of thing). It
 provides a DNS interface and a highly available Key Value store. This
@@ -27,10 +27,10 @@ out for a test drive.&lt;/p&gt;
     
     <item>
       <title>Faster python builds in Travis with container based infra</title>
-      <link>http://theanalyst.github.io/Tech/travis-builds/</link>
+      <link>http://abhishekl.in/Tech/travis-builds/</link>
       <pubDate>Sun, 01 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://theanalyst.github.io/Tech/travis-builds/</guid>
+      <guid>http://abhishekl.in/Tech/travis-builds/</guid>
       <description>&lt;p&gt;Lately, travis CI has started supporting builds using &lt;a href=&#34;http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/&#34;&gt;container&lt;/a&gt;
 based infrastructure which run much faster due to more available
 resources and good use of caching. This is currently possible only for
@@ -85,10 +85,10 @@ let me know in comments or hit me up on &lt;a href=&#34;https://twitter.com/abhi
     
     <item>
       <title>2014: the year in books, using Goodreads, pandas &amp; Hy</title>
-      <link>http://theanalyst.github.io/Tech/goodreads/</link>
+      <link>http://abhishekl.in/Tech/goodreads/</link>
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://theanalyst.github.io/Tech/goodreads/</guid>
+      <guid>http://abhishekl.in/Tech/goodreads/</guid>
       <description>&lt;p&gt;&lt;code&gt;Note: The content has been updated to reflect the new kwargs style
 in Hy, as such the snippets only work with the current Hy master&lt;/code&gt;&lt;/p&gt;
 
@@ -198,7 +198,7 @@ Number of Pages
 
 &lt;p&gt;Finally this is the plot of pages&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://theanalyst.github.io/images/pages-per-month.png&#34; alt=&#34;pages_per_month&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://abhishekl.in/images/pages-per-month.png&#34; alt=&#34;pages_per_month&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Overall 2014 was a good year as far as reading was concerned, read a
@@ -218,10 +218,10 @@ reading in the comments. Cya!&lt;/p&gt;
     
     <item>
       <title>The Silent Observer&#39;s Metamorphosis</title>
-      <link>http://theanalyst.github.io/Tech/learn/</link>
+      <link>http://abhishekl.in/Tech/learn/</link>
       <pubDate>Sat, 22 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://theanalyst.github.io/Tech/learn/</guid>
+      <guid>http://abhishekl.in/Tech/learn/</guid>
       <description>
 
 &lt;p&gt;My friend, Jinto, wrote a blog-post titled
@@ -322,10 +322,10 @@ an overkill if your only aim is to generate tex files, though proviedes an unobt
     
     <item>
       <title>Static site generators &amp; Everything else</title>
-      <link>http://theanalyst.github.io/Tech/myblog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>http://abhishekl.in/Tech/myblog/</link>
+      <pubDate>Mon, 03 Dec 2012 14:23:00 +0000</pubDate>
       
-      <guid>http://theanalyst.github.io/Tech/myblog/</guid>
+      <guid>http://abhishekl.in/Tech/myblog/</guid>
       <description>
 
 &lt;p&gt;This post lists the details of my blog, which is powered by gh-pages

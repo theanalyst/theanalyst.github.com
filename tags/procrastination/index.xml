@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Procrastination on Often Bearing Metaphoric Tense</title>
-    <link>http://theanalyst.github.io/tags/procrastination/</link>
+    <link>http://abhishekl.in/tags/procrastination/</link>
     <description>Recent content in Procrastination on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Mon, 08 Sep 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://theanalyst.github.io/tags/procrastination/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://abhishekl.in/tags/procrastination/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Pelican updated!</title>
-      <link>http://theanalyst.github.io/Rants/pelican/</link>
+      <link>http://abhishekl.in/Rants/pelican/</link>
       <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://theanalyst.github.io/Rants/pelican/</guid>
+      <guid>http://abhishekl.in/Rants/pelican/</guid>
       <description>&lt;p&gt;It has been a significant time between the posts. This time the reason
 moslty being me lazy enough not to fix the blog after a pelican
 update. Surpisingly though there wasn&amp;rsquo;t much of a change required

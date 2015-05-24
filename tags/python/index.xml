@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Often Bearing Metaphoric Tense</title>
-    <link>http://theanalyst.github.io/tags/python/</link>
+    <link>http://abhishekl.in/tags/python/</link>
     <description>Recent content in Python on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Sun, 01 Feb 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://theanalyst.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://abhishekl.in/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Faster python builds in Travis with container based infra</title>
-      <link>http://theanalyst.github.io/Tech/travis-builds/</link>
+      <link>http://abhishekl.in/Tech/travis-builds/</link>
       <pubDate>Sun, 01 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://theanalyst.github.io/Tech/travis-builds/</guid>
+      <guid>http://abhishekl.in/Tech/travis-builds/</guid>
       <description>&lt;p&gt;Lately, travis CI has started supporting builds using &lt;a href=&#34;http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/&#34;&gt;container&lt;/a&gt;
 based infrastructure which run much faster due to more available
 resources and good use of caching. This is currently possible only for
@@ -70,10 +70,10 @@ let me know in comments or hit me up on &lt;a href=&#34;https://twitter.com/abhi
     
     <item>
       <title>Static site generators &amp; Everything else</title>
-      <link>http://theanalyst.github.io/Tech/myblog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>http://abhishekl.in/Tech/myblog/</link>
+      <pubDate>Mon, 03 Dec 2012 14:23:00 +0000</pubDate>
       
-      <guid>http://theanalyst.github.io/Tech/myblog/</guid>
+      <guid>http://abhishekl.in/Tech/myblog/</guid>
       <description>
 
 &lt;p&gt;This post lists the details of my blog, which is powered by gh-pages
