@@ -95,27 +95,27 @@ data.&lt;/p&gt;
 &lt;p&gt;To start with reading csv is a simple call to pandas&amp;rsquo; &lt;code&gt;read_csv&lt;/code&gt;
 function. This can be done with only the interesting fields.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;:::hylang
-(import pandas
-    [numpy :as np]
-    [matplotlib.pyplot :as plt]
-    [seaborn :as sns])
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;pandas&lt;/span&gt;
+        [&lt;span style=&#34;color: #B8860B&#34;&gt;numpy&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;:as&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;np&lt;/span&gt;]
+        [&lt;span style=&#34;color: #B8860B&#34;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;:as&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;plt&lt;/span&gt;]
+        [&lt;span style=&#34;color: #B8860B&#34;&gt;seaborn&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;:as&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;sns&lt;/span&gt;])
 
-(defn parse-goodreads-csv [filepath]
-  (let [[required-fields [&amp;quot;Title&amp;quot; &amp;quot;Date Read&amp;quot; &amp;quot;Bookshelves&amp;quot;
-                          &amp;quot;Number of Pages&amp;quot; &amp;quot;Original Publication Year&amp;quot;]]
-    (pandas.read_csv filepath :usecols required-fields
-                     :index-col &amp;quot;Date Read&amp;quot; :parse-dates true)))
-&lt;/code&gt;&lt;/pre&gt;
+(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;parse-goodreads-csv&lt;/span&gt; [&lt;span style=&#34;color: #B8860B&#34;&gt;filepath&lt;/span&gt;]
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;let &lt;/span&gt;[[&lt;span style=&#34;color: #B8860B&#34;&gt;required-fields&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Title&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Bookshelves&amp;quot;&lt;/span&gt;
+                          &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Original Publication Year&amp;quot;&lt;/span&gt;]]
+        (&lt;span style=&#34;color: #00A000&#34;&gt;pandas.read_csv&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;filepath&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;:usecols&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;required-fields&lt;/span&gt;
+			             &lt;span style=&#34;color: #B8860B&#34;&gt;:index-col&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;:parse-dates&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;true&lt;/span&gt;)))
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Now taking out only the column&amp;rsquo;s we&amp;rsquo;re interested in &amp;amp; filtering out
 the data from only a particular year can be done by&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;:::hylang
-(defn books-in-year [dataframe year]
-  (let [[day1 (fn [y] (+ (str y) &amp;quot;-01-01&amp;quot;))]]
-    (slice (. dataframe ix) (day1 year) (day1 (inc year)))))
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;books-in-year&lt;/span&gt; [&lt;span style=&#34;color: #B8860B&#34;&gt;dataframe&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;year&lt;/span&gt;]
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;let &lt;/span&gt;[[&lt;span style=&#34;color: #B8860B&#34;&gt;day1&lt;/span&gt; (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fn &lt;/span&gt;[&lt;span style=&#34;color: #B8860B&#34;&gt;y&lt;/span&gt;] (&lt;span style=&#34;color: #00A000&#34;&gt;+&lt;/span&gt; (&lt;span style=&#34;color: #AA22FF&#34;&gt;str&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;y&lt;/span&gt;) &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;-01-01&amp;quot;&lt;/span&gt;))]]
+    (&lt;span style=&#34;color: #AA22FF&#34;&gt;slice&lt;/span&gt; (&lt;span style=&#34;color: #00A000&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;dataframe&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;ix&lt;/span&gt;) (&lt;span style=&#34;color: #00A000&#34;&gt;day1&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;year&lt;/span&gt;) (&lt;span style=&#34;color: #00A000&#34;&gt;day1&lt;/span&gt; (&lt;span style=&#34;color: #AA22FF&#34;&gt;inc &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;year&lt;/span&gt;)))))
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;ix&lt;/code&gt; returns the index of dataframe, since we&amp;rsquo;ll be indexing by date
 read, this allows us to select the required range, by simply selecting
@@ -127,12 +127,12 @@ basis. Pandas offers a &lt;a href=&#34;http://pandas.pydata.org/pandas-docs/stab
 SQL like queries. So all we have to do is to group pages by month
 here.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;:::hylang
-(defn aggregate-by-month [dataframe params]
-  &amp;quot;Group a particular key by month&amp;quot;
-  (-&amp;gt; (.groupby dataframe (. dataframe index month))
-      (.aggregate params)))
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;aggregate-by-month&lt;/span&gt; [&lt;span style=&#34;color: #B8860B&#34;&gt;dataframe&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;params&lt;/span&gt;]
+  &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Group a particular key by month&amp;quot;&lt;/span&gt;
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;-&amp;gt; &lt;/span&gt;(&lt;span style=&#34;color: #00A000&#34;&gt;.groupby&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;dataframe&lt;/span&gt; (&lt;span style=&#34;color: #00A000&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;dataframe&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;index&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;month&lt;/span&gt;))
+      (&lt;span style=&#34;color: #00A000&#34;&gt;.aggregate&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;params&lt;/span&gt;)))
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
 
 &lt;p&gt;The above function assumes that the dataframe object is already
 indexed by a timeframe data, (Date Read in our case), then a simple
@@ -142,21 +142,21 @@ functions. The threading operator &lt;code&gt;-&amp;gt;&lt;/code&gt; makes the r
 call as the first argument of the function. Now we have enough to get
 some stats for the year.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;:::hylang
-(defn process [filepath]
-  (let [[books-in-2014
-          (-&amp;gt; (parse-goodreads-csv filepath)
-              (books-in-year 2014))]
-        [pages-per-month (-&amp;gt; (. books-in-2014 [[&amp;quot;Number of Pages&amp;quot;]])
-                         (aggregate-by-month [&amp;quot;sum&amp;quot; &amp;quot;count&amp;quot; np.mean]))]]
-  (print &amp;quot;Pages read in 2014 &amp;quot;
-         ((. books-in-2014 [&amp;quot;Number of Pages&amp;quot;] sum)))
-  (print &amp;quot;Pages read in kindle&amp;quot;
-         ((. books-in-2014 [(= books-in-2014.Bookshelves &amp;quot;kindle&amp;quot;)]
-             [&amp;quot;Number of Pages&amp;quot;] sum)))
-  (print &amp;quot;Monthly Stats&amp;quot;)
-  (print pages-per-month)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;process&lt;/span&gt; [&lt;span style=&#34;color: #B8860B&#34;&gt;filepath&lt;/span&gt;]
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;let &lt;/span&gt;[[&lt;span style=&#34;color: #B8860B&#34;&gt;books-in-2014&lt;/span&gt;
+          (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;-&amp;gt; &lt;/span&gt;(&lt;span style=&#34;color: #00A000&#34;&gt;parse-goodreads-csv&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;filepath&lt;/span&gt;)
+              (&lt;span style=&#34;color: #00A000&#34;&gt;books-in-year&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;2014&lt;/span&gt;))]
+        [&lt;span style=&#34;color: #B8860B&#34;&gt;pages-per-month&lt;/span&gt; (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;-&amp;gt; &lt;/span&gt;(&lt;span style=&#34;color: #00A000&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;books-in-2014&lt;/span&gt; [[&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt;]])
+                         (&lt;span style=&#34;color: #00A000&#34;&gt;aggregate-by-month&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;sum&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;count&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;np.mean&lt;/span&gt;]))]]
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Pages read in 2014 &amp;quot;&lt;/span&gt;
+         ((&lt;span style=&#34;color: #00A000&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;books-in-2014&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt;] &lt;span style=&#34;color: #AA22FF&#34;&gt;sum&lt;/span&gt;)))
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Pages read in kindle&amp;quot;&lt;/span&gt;
+         ((&lt;span style=&#34;color: #00A000&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;books-in-2014&lt;/span&gt; [(&lt;span style=&#34;color: #00A000&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;books-in-2014.Bookshelves&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;kindle&amp;quot;&lt;/span&gt;)]
+             [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt;] &lt;span style=&#34;color: #AA22FF&#34;&gt;sum&lt;/span&gt;)))
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Monthly Stats&amp;quot;&lt;/span&gt;)
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;pages-per-month&lt;/span&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
 
 &lt;p&gt;First, the &lt;code&gt;parse-csv&lt;/code&gt; function is given only the interesting columns,
 also indexing is done via date read, we get &lt;code&gt;pages-per-month&lt;/code&gt; via the
@@ -165,8 +165,7 @@ Kindle was done by summing columns containing the Book shelves
 (alternatively if you had marked the editions correctly another field
 suggest the Kindle edition..).&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;:::txt
-Pages read in 2014  6659.0
+&lt;pre&gt;&lt;code&gt;Pages read in 2014  6659.0
 Pages read in kindle 4489.0
 Monthly Stats
 Number of Pages
