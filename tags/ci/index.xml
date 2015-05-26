@@ -7,8 +7,89 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved 2012-15</copyright>
-    <lastBuildDate>Sun, 01 Feb 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2015 23:45:44 +0530</lastBuildDate>
     <atom:link href="http://abhishekl.in/tags/ci/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Running Go ci tests in a docker</title>
+      <link>http://abhishekl.in/Tech/go-docker-ci/</link>
+      <pubDate>Mon, 25 May 2015 23:45:44 +0530</pubDate>
+      
+      <guid>http://abhishekl.in/Tech/go-docker-ci/</guid>
+      <description>
+
+&lt;p&gt;I&amp;rsquo;ve been toying around with the idea of using containers for running
+ci tests, primarily to have a quicker feedback loop; instead of setups
+that involve VMs etc. They are ideal for getting an environment up and
+running quickly and cheap to throw away too.&lt;/p&gt;
+
+&lt;p&gt;A project which I&amp;rsquo;m spending some time lately &lt;a href=&#34;https://github.com/noahdesu/go-ceph&#34;&gt;go-ceph&lt;/a&gt;, which were
+Go bindings for ceph/rados, kind of ideally fit the bill for using
+this, since testing this project locally, usually needed something
+like a VM running a ceph cluster, or a locally running ceph. Though
+both of the above aren&amp;rsquo;t that hard, and there are projects around
+which kind of ease the process (Vagrant ceph for eg.), it still
+requires a somewhat longer setup time if you&amp;rsquo;re looking for a bringup
+teardown sort of environment. Writing dockerfiles &amp;amp; scripts for this
+helped me appreciate the &lt;a href=&#34;https://docs.docker.com/articles/dockerfile_best-practices/&#34;&gt;best practices for writing dockerfiles&lt;/a&gt; a
+bit better.&lt;/p&gt;
+
+&lt;h3 id=&#34;workflow:9cc033340eac88e10eb3b113afa78c78&#34;&gt;Workflow&lt;/h3&gt;
+
+&lt;p&gt;Ideally the workflow expected would be that you would have
+a docker container with the necessary setup &amp;amp; dependencies already
+installed, and the docker container could ultimately be run with
+something as simple as a &lt;code&gt;go test&lt;/code&gt; to test the latest code. Also since
+building a docker container for every run may not be what want; the
+idea would be to volume mount the current code tree as a volume, so
+that a simple docker run would do the job of a ci tester/builder etc
+(something like a local travis)&lt;/p&gt;
+
+&lt;h3 id=&#34;dockerfiles-entrypoint-hack:9cc033340eac88e10eb3b113afa78c78&#34;&gt;Dockerfiles &amp;amp; ENTRYPOINT hack&lt;/h3&gt;
+
+&lt;p&gt;Docker containers are well suited for single processes, which can be
+set as default by the &lt;code&gt;CMD&lt;/code&gt; or the &lt;code&gt;ENTRYPOINT&lt;/code&gt; directives. (There are
+differences between the two, which I&amp;rsquo;ll not be getting into for
+now). However this presented a problem since even the most basic ceph cluster required atleast 4 daemon processes to be run. Ways of solving this include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Creating multiple docker containers for each process and linking them
+Cleanest method. This is what &lt;a href=&#34;https://github.com/ceph/ceph-docker&#34;&gt;ceph-docker&lt;/a&gt; actually uses and the recommended way if you want to run a ceph cluster in containers.&lt;/li&gt;
+&lt;li&gt;Manage multiple processes in a docker using a process manager such as &lt;a href=&#34;http://supervisord.org/&#34;&gt;supervisor&lt;/a&gt;, &lt;a href=&#34;https://docs.docker.com/articles/using_supervisord/&#34;&gt;official docker docs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A third alternative is to run a shell script as the entrypoint; finishing off the script with an &lt;code&gt;exec&lt;/code&gt;, note that this method will fail when the entrypoint is overridden. However since all I wanted was a minimally working ceph cluster; this hack was used to run a shell script that basically started all the necessary processes and finished off with an &lt;code&gt;exec&lt;/code&gt; call running &lt;code&gt;go test -v&lt;/code&gt; for the package. This is how the dockerfile looked ultimately&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; golang:1.3-wheezy&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;MAINTAINER&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; Abhishek Lekshmanan &amp;quot;abhishek.lekshmanan@gmail.com&amp;quot;&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;ENV&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; CEPH_VERSION giant&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;RUN&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;echo &lt;/span&gt;deb http://ceph.com/debian-&lt;span style=&#34;color: #B8860B&#34;&gt;$CEPH_VERSION&lt;/span&gt;/ wheezy main | tee /etc/apt/sources.list.d/ceph-&lt;span style=&#34;color: #B8860B&#34;&gt;$CEPH_VERSION&lt;/span&gt;.list
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Running wget with no certificate checks, alternatively ssl-cert package should be installed&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;RUN&lt;/span&gt; wget --no-check-certificate -q -O- &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc&amp;#39;&lt;/span&gt; | apt-key add - &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&lt;/span&gt;
+    apt-get update &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&lt;/span&gt;
+    apt-get install -y ceph &lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&lt;/span&gt;
+    librados-dev librbd-dev libcephfs-dev
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;VOLUME&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; /go/src/github.com/noahdesu/go-ceph&lt;/span&gt;
+
+COPY ./ci/entrypoint.sh /tmp/entrypoint.sh
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;ENTRYPOINT&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; [&amp;quot;/tmp/entrypoint.sh&amp;quot;, &amp;quot;/tmp/micro-ceph&amp;quot;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;For those interested in ceph, the entrypoint script was a modification
+of &lt;a href=&#34;http://dachary.org/?p=2374&#34;&gt;Loic&amp;rsquo;s micro-osd script&lt;/a&gt;, with the only addition being getting the go dependencies and finishing of with an &lt;code&gt;exec&lt;/code&gt; call of &lt;code&gt;go test&lt;/code&gt;. For the gory details refer to the actuall &lt;a href=&#34;https://github.com/noahdesu/go-ceph/pull/21&#34;&gt;pull request&lt;/a&gt; submitted to the upstream project.&lt;/p&gt;
+
+&lt;p&gt;Though this particular case needed a little bit of a tweak to run
+tests in containers, in a general case it is far easier to run local
+ci like tests even covering multiple Go versions with other
+dependencies etc easily in a docker.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Faster python builds in Travis with container based infra</title>

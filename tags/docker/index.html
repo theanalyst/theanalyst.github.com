@@ -26,7 +26,7 @@
 	  <link rel="apple-touch-icon" href="http://abhishekl.in/images/apple-touch-icon.png" />
     
     <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
 
 
     
@@ -37,7 +37,7 @@
         <link href="http://abhishekl.in/tags/docker/index.xml" rel="alternate" type="application/rss+xml" title="Docker &middot; Often Bearing Metaphoric Tense" />
       
     
-    <meta name="generator" content="Hugo 0.13" />
+    <meta name="generator" content="Hugo 0.14" />
 
     <link rel="canonical" href="http://abhishekl.in/tags/docker/" />
 
@@ -53,7 +53,11 @@
     <ul>
         
             <li class="nav-opened " role="presentation">
-            	<a href="http://theanalyst.github.io/">Blog</a>
+            	<a href="http://abhishekl.in">Blog</a>
+            </li>
+        
+            <li class="nav-opened " role="presentation">
+            	<a href="https://github.com/theanalyst">Git</a>
             </li>
         
     </ul>
@@ -66,6 +70,7 @@
 
 
  <div class="site-wrapper">
+
 
 
 
@@ -103,25 +108,27 @@
 	   
 <article class="post Tech">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://abhishekl.in/Tech/consul-1">Consul: Getting started with service discovery</a></h2>
+        <h2 class="post-title"><a href="http://abhishekl.in/Tech/go-docker-ci">Running Go ci tests in a docker</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>Consul is a great tool for service discovery. It is distributed and highly available (CA if you&rsquo;re into the CAP sort of thing). It provides a DNS interface and a highly available Key Value store. This post is very much an introductory level post, baby steps for service discovery using consul. We will be using docker to quickly take consul out for a test drive. <a class="read-more" href="http://abhishekl.in/Tech/consul-1">&raquo;</a></p>
+        <p>I&rsquo;ve been toying around with the idea of using containers for running ci tests, primarily to have a quicker feedback loop; instead of setups that involve VMs etc. They are ideal for getting an environment up and running quickly and cheap to throw away too. A project which I&rsquo;m spending some time lately go-ceph, which were Go bindings for ceph/rados, kind of ideally fit the bill for using this, since testing this project locally, usually needed something like a VM running a ceph cluster, or a locally running ceph. <a class="read-more" href="http://abhishekl.in/Tech/go-docker-ci">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
         
         on 
             
-                <a href="http://abhishekl.in/tags/consul/">#consul</a>,
-            
                 <a href="http://abhishekl.in/tags/docker/">#docker</a>,
             
-                <a href="http://abhishekl.in/tags/registrator/">#registrator</a>,
+                <a href="http://abhishekl.in/tags/go/">#Go</a>,
+            
+                <a href="http://abhishekl.in/tags/ci/">#ci</a>,
+            
+                <a href="http://abhishekl.in/tags/ceph/">#ceph</a>,
             
         
-        <time class="post-date" datetime="2015-02-14T00:00:00Z">
-            14 Feb 2015
+        <time class="post-date" datetime="2015-05-25T23:45:44&#43;05:30">
+            25 May 2015
         </time>
     </footer>
 </article>
