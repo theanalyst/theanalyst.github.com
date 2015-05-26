@@ -23,7 +23,7 @@ ci tests, primarily to have a quicker feedback loop; instead of setups
 that involve VMs etc. They are ideal for getting an environment up and
 running quickly and cheap to throw away too.&lt;/p&gt;
 
-&lt;p&gt;A project which I&amp;rsquo;m spending some time lately &lt;a href=&#34;https://github.com/noahdesu/go-ceph&#34;&gt;go-ceph&lt;/a&gt;, which were
+&lt;p&gt;A project which I&amp;rsquo;m spending some time lately &lt;a href=&#34;https://github.com/noahdesu/go-ceph&#34;&gt;go-ceph&lt;/a&gt;, which provides
 Go bindings for ceph/rados, kind of ideally fit the bill for using
 this, since testing this project locally, usually needed something
 like a VM running a ceph cluster, or a locally running ceph. Though
