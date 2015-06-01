@@ -7,8 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved 2012-15</copyright>
-    <lastBuildDate>Mon, 25 May 2015 23:45:44 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2015 23:57:05 +0530</lastBuildDate>
     <atom:link href="http://abhishekl.in/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HuGo!</title>
+      <link>http://abhishekl.in/Tech/hugo/</link>
+      <pubDate>Mon, 01 Jun 2015 23:57:05 +0530</pubDate>
+      
+      <guid>http://abhishekl.in/Tech/hugo/</guid>
+      <description>&lt;p&gt;Moved my blog from pelican to &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;. Though there was nothing
+wrong with pelican as such, mostly I found a problem with my
+blog/theme not as update with pelican upstream. Hugo is a static site
+generator written by Steve Francia (&lt;a href=&#34;https://github.com/spf13&#34;&gt;@spf13&lt;/a&gt;). It is written in Go
+&amp;amp; amazingly fast to generate a site. Developing sites with hugo
+is kind of fun; running hugo in watch mode, you get to see the site as
+you write. Also hugo has a nice set of themes and rather simplistic
+approach to organizing content. Hopefully the new avatar of the blog
+should keep me interested in blogging for a while!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Running Go ci tests in a docker</title>
