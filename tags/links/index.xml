@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Links on Often Bearing Metaphoric Tense</title>
+    <link>http://abhishekl.in/tags/links/</link>
+    <description>Recent content in Links on Often Bearing Metaphoric Tense</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved 2012-15</copyright>
+    <lastBuildDate>Fri, 17 Jul 2015 23:10:55 +0530</lastBuildDate>
+    <atom:link href="http://abhishekl.in/tags/links/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Collecting distributed system links</title>
+      <link>http://abhishekl.in/Tech/distributed-system-links/</link>
+      <pubDate>Fri, 17 Jul 2015 23:10:55 +0530</pubDate>
+      
+      <guid>http://abhishekl.in/Tech/distributed-system-links/</guid>
+      <description>&lt;p&gt;Of late I&amp;rsquo;ve been trying to learn a lot about distributed systems. Also started a github project &lt;a href=&#34;https://github.com/theanalyst/awesome-distributed-systems&#34;&gt;awesome distributed systems&lt;/a&gt;, which hopefully will grow over time to collect links for readings in this domain. If you know of any links please consider adding to the project.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
