@@ -21,7 +21,7 @@ drastically speed up the time to setup your environment, (which mostly
 involves download of pip packages, which tend to be network intensive
 &amp;amp; time consuming) by caching pip packages. Similar to other caching
 proxies like apt, python has its own caching proxy in the form of
-&lt;a href=&#34;http://doc.devpi.net/latest/&#34;&gt;devpi&lt;/a&gt;[^1], which allows you to run a
+&lt;a href=&#34;http://doc.devpi.net/latest/&#34;&gt;devpi&lt;/a&gt;, which allows you to run a
 pypi mirror in your laptop. (devpi is much more than just a pip
 mirror, for more on its capabilities read the link)&lt;/p&gt;
 
