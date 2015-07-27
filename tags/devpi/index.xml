@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devpi on Often Bearing Metaphoric Tense</title>
+    <link>http://abhishekl.in/tags/devpi/</link>
+    <description>Recent content in Devpi on Often Bearing Metaphoric Tense</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved 2012-15</copyright>
+    <lastBuildDate>Tue, 28 Jul 2015 00:03:28 +0530</lastBuildDate>
+    <atom:link href="http://abhishekl.in/tags/devpi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Caching pip packages using devpi &amp; docker</title>
+      <link>http://abhishekl.in/Tech/devpi-docker/</link>
+      <pubDate>Tue, 28 Jul 2015 00:03:28 +0530</pubDate>
+      
+      <guid>http://abhishekl.in/Tech/devpi-docker/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;re using python packages &amp;amp; virtualenvs a lot, you can
+drastically speed up the time to setup your environment, (which mostly
+involves download of pip packages, which tend to be network intensive
+&amp;amp; time consuming) by caching pip packages. Similar to other caching
+proxies like apt, python has its own caching proxy in the form of
+&lt;a href=&#34;http://doc.devpi.net/latest/&#34;&gt;devpi&lt;/a&gt;[^1], which allows you to run a
+pypi mirror in your laptop. (devpi is much more than just a pip
+mirror, for more on its capabilities read the link)&lt;/p&gt;
+
+&lt;p&gt;Though running devpi by downloading the pip package is
+&lt;a href=&#34;http://doc.devpi.net/latest/quickstart-pypimirror.html&#34;&gt;easy enough&lt;/a&gt;,
+running it permanently requires steps like configuring nginx etc. If
+you&amp;rsquo;re lazy, it is simple enough, to run it as a docker container, and
+configure your init system to start the container on system startup.
+Scrapinghub&amp;rsquo;s
+&lt;a href=&#34;https://github.com/scrapinghub/docker-devpi&#34;&gt;docker-devpi&lt;/a&gt; image
+makes it easy enough to get started. Running a devpi server is as
+simple as:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;docker pull scrapinghub/devpi
+ &lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;docker run -d --name devpi -p 3141:3141 scrapinghub/devpi
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Next configure your pip to pull from here. This is as simple as
+sticking the following line into your pip.conf (which should reside in
+~/.pip/pip.conf, if there is no file, create it)&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;[global]&lt;/span&gt;
+&lt;span style=&#34;color: #BB4444&#34;&gt;index-url&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;http://localhost:3141/root/pypi/+simple/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Next downloading a pip package will be mirrored, trying to install it
+again (even in other virtualenvs) should be almost instantaneous.&lt;/p&gt;
+
+&lt;p&gt;Since the docker container was already started with a name parameter,
+this container can be restarted next time simply by doing a &lt;code&gt;docker
+start devpi&lt;/code&gt;. Of course this can be easily handed off to your init
+system. If you&amp;rsquo;re using Ubuntu &amp;lt;= 14.04, the relevant upstart script
+would be something like &lt;code&gt;/etc/init/devpi-docker.conf&lt;/code&gt; with contents
+similiar to below. After adding the script, you would have to do an
+&lt;code&gt;initctl reload-configuration&lt;/code&gt; for upstart to see the script.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;description &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Devpi Docker&amp;quot;&lt;/span&gt;
+author &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;You&amp;quot;&lt;/span&gt;
+start on filesystem and started docker
+stop on runlevel &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;!2345&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+respawn
+script
+  /usr/bin/docker start devpi
+end script
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;After this doing a &lt;code&gt;sudo start devpi-docker&lt;/code&gt; would start the devpi
+docker container. Also this should be picked up by default when your
+system starts.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
