@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Caching pip packages using devpi &amp; docker &middot;  Often Bearing Metaphoric Tense" />
+  	<meta property="og:site_name" content="Often Bearing Metaphoric Tense" />
+  	<meta property="og:url" content="http://abhishekl.in/post/Tech/devpi-docker/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2015-07-28T00:03:28&#43;05:30" />
+
+    
+    <meta property="og:article:tag" content="python" />
+    
+    <meta property="og:article:tag" content="docker" />
+    
+    <meta property="og:article:tag" content="pip" />
+    
+    <meta property="og:article:tag" content="devpi" />
+    
+    
+
+  <title>
+     Caching pip packages using devpi &amp; docker &middot;  Often Bearing Metaphoric Tense
+  </title>
+
+    <meta name="description" content="code,coffee &amp; stuff" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://abhishekl.in/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://abhishekl.in/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="http://abhishekl.in/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://abhishekl.in/post/Tech/devpi-docker/" />
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="http://abhishekl.in">Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/theanalyst">Github</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://abhishekl.in/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Caching pip packages using devpi &amp; docker</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2015-07-28T00:03:28&#43;05:30">
+            Jul 28, 2015
+          </time>
+        
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/python/">#python</a></span>
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/docker/">#docker</a></span>
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/pip/">#pip</a></span>
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/devpi/">#devpi</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>If you&rsquo;re using python packages &amp; virtualenvs a lot, you can
+drastically speed up the time to setup your environment, (which mostly
+involves download of pip packages, which tend to be network intensive
+&amp; time consuming) by caching pip packages. Similar to other caching
+proxies like apt, python has its own caching proxy in the form of
+<a href="http://doc.devpi.net/latest/">devpi</a>, which allows you to run a
+pypi mirror in your laptop. (devpi is much more than just a pip
+mirror, for more on its capabilities read the link)</p>
+
+<p>Though running devpi by downloading the pip package is
+<a href="http://doc.devpi.net/latest/quickstart-pypimirror.html">easy enough</a>,
+running it permanently requires steps like configuring nginx etc. If
+you&rsquo;re lazy, it is simple enough, to run it as a docker container, and
+configure your init system to start the container on system startup.
+Scrapinghub&rsquo;s
+<a href="https://github.com/scrapinghub/docker-devpi">docker-devpi</a> image
+makes it easy enough to get started. Running a devpi server is as
+simple as:</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> <span style="color: #B8860B">$ </span>docker pull scrapinghub/devpi
+ <span style="color: #B8860B">$ </span>docker run -d --name devpi -p 3141:3141 scrapinghub/devpi
+</pre></div>
+</p>
+
+<p>Next configure your pip to pull from here. This is as simple as
+sticking the following line into your pip.conf (which should reside in
+~/.pip/pip.conf, if there is no file, create it)</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">[global]</span>
+<span style="color: #BB4444">index-url</span> <span style="color: #666666">=</span> <span style="color: #BB4444">http://localhost:3141/root/pypi/+simple/</span>
+</pre></div>
+</p>
+
+<p>Next downloading a pip package will be mirrored, trying to install it
+again (even in other virtualenvs) should be almost instantaneous.</p>
+
+<p>Since the docker container was already started with a name parameter,
+this container can be restarted next time simply by doing a <code>docker
+start devpi</code>. Of course this can be easily handed off to your init
+system. If you&rsquo;re using Ubuntu &lt;= 14.04, the relevant upstart script
+would be something like <code>/etc/init/devpi-docker.conf</code> with contents
+similiar to below. After adding the script, you would have to do an
+<code>initctl reload-configuration</code> for upstart to see the script.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">description <span style="color: #BB4444">&quot;Devpi Docker&quot;</span>
+author <span style="color: #BB4444">&quot;You&quot;</span>
+start on filesystem and started docker
+stop on runlevel <span style="color: #666666">[</span>!2345<span style="color: #666666">]</span>
+respawn
+script
+  /usr/bin/docker start devpi
+end script
+</pre></div>
+</p>
+
+<p>After this doing a <code>sudo start devpi-docker</code> would start the devpi
+docker container. Also this should be picked up by default when your
+system starts.</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://abhishekl.in/"></a></h4>
+  
+  <p>Read <a href="http://abhishekl.in/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    
+    
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Caching%20pip%20packages%20using%20devpi%20%26%20docker&amp;url=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fdevpi-docker%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fdevpi-docker%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fdevpi-docker%2f&amp;description=Caching%20pip%20packages%20using%20devpi%20%26%20docker"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fdevpi-docker%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'hyperbolicmonologues';
+  var disqus_url = 'http:\/\/abhishekl.in\/post\/Tech\/devpi-docker\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Often Bearing Metaphoric Tense</a> All rights reserved 2012-15</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://abhishekl.in/js/jquery.js"></script>
+    <script type="text/javascript" src="http://abhishekl.in/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://abhishekl.in/js/index.js"></script>
+    
+</body>
+</html>
+

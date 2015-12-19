@@ -12,10 +12,10 @@
     
     <item>
       <title>The Silent Observer&#39;s Metamorphosis</title>
-      <link>http://abhishekl.in/Tech/learn/</link>
+      <link>http://abhishekl.in/post/Tech/learn/</link>
       <pubDate>Sat, 22 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://abhishekl.in/Tech/learn/</guid>
+      <guid>http://abhishekl.in/post/Tech/learn/</guid>
       <description>
 
 &lt;p&gt;My friend, Jinto, wrote a blog-post titled
@@ -116,10 +116,10 @@ an overkill if your only aim is to generate tex files, though proviedes an unobt
     
     <item>
       <title>Static site generators &amp; Everything else</title>
-      <link>http://abhishekl.in/Tech/myblog/</link>
+      <link>http://abhishekl.in/post/Tech/myblog/</link>
       <pubDate>Mon, 03 Dec 2012 14:23:00 +0000</pubDate>
       
-      <guid>http://abhishekl.in/Tech/myblog/</guid>
+      <guid>http://abhishekl.in/post/Tech/myblog/</guid>
       <description>
 
 &lt;p&gt;This post lists the details of my blog, which is powered by gh-pages

@@ -12,10 +12,10 @@
     
     <item>
       <title>Running Go ci tests in a docker</title>
-      <link>http://abhishekl.in/Tech/go-docker-ci/</link>
+      <link>http://abhishekl.in/post/Tech/go-docker-ci/</link>
       <pubDate>Mon, 25 May 2015 23:45:44 +0530</pubDate>
       
-      <guid>http://abhishekl.in/Tech/go-docker-ci/</guid>
+      <guid>http://abhishekl.in/post/Tech/go-docker-ci/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;ve been toying around with the idea of using containers for running

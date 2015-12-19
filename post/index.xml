@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Often Bearing Metaphoric Tense</title>
+    <link>http://abhishekl.in/post/</link>
+    <description>Recent content in Posts on Often Bearing Metaphoric Tense</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved 2012-15</copyright>
+    <lastBuildDate>Wed, 16 Dec 2015 23:27:08 +0530</lastBuildDate>
+    <atom:link href="http://abhishekl.in/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Copy Paste in URxvt Clipboard!</title>
+      <link>http://abhishekl.in/post/Tech/xsel/</link>
+      <pubDate>Wed, 16 Dec 2015 23:27:08 +0530</pubDate>
+      
+      <guid>http://abhishekl.in/post/Tech/xsel/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;re using Rxvt Unicode as a terminal emulator, chances are while doing
+copy paste with &lt;code&gt;Ctrl+Shift+C&lt;/code&gt; or &lt;code&gt;Ctrl+Shift+V&lt;/code&gt;, you need to use the &lt;a href=&#34;https://github.com/muennich/urxvt-perls/blob/master/clipboard&#34;&gt;perl
+clipboard module&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you put the module in the right path &lt;code&gt;/usr/lib&amp;lt;arch&amp;gt;/urxvt/perl/&lt;/code&gt; or the user
+director and still couldn&amp;rsquo;t the get the clipboard functioning properly, then
+make sure that &lt;code&gt;xsel&lt;/code&gt; package is installed in your system. It isn&amp;rsquo;t default in
+most systems (tested on Ubuntu, Debian &amp;amp; OpenSUSE so far) and will save you from
+pulling some hair&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Caching pip packages using devpi &amp; docker</title>
+      <link>http://abhishekl.in/post/Tech/devpi-docker/</link>
+      <pubDate>Tue, 28 Jul 2015 00:03:28 +0530</pubDate>
+      
+      <guid>http://abhishekl.in/post/Tech/devpi-docker/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;re using python packages &amp;amp; virtualenvs a lot, you can
+drastically speed up the time to setup your environment, (which mostly
+involves download of pip packages, which tend to be network intensive
+&amp;amp; time consuming) by caching pip packages. Similar to other caching
+proxies like apt, python has its own caching proxy in the form of
+&lt;a href=&#34;http://doc.devpi.net/latest/&#34;&gt;devpi&lt;/a&gt;, which allows you to run a
+pypi mirror in your laptop. (devpi is much more than just a pip
+mirror, for more on its capabilities read the link)&lt;/p&gt;
+
+&lt;p&gt;Though running devpi by downloading the pip package is
+&lt;a href=&#34;http://doc.devpi.net/latest/quickstart-pypimirror.html&#34;&gt;easy enough&lt;/a&gt;,
+running it permanently requires steps like configuring nginx etc. If
+you&amp;rsquo;re lazy, it is simple enough, to run it as a docker container, and
+configure your init system to start the container on system startup.
+Scrapinghub&amp;rsquo;s
+&lt;a href=&#34;https://github.com/scrapinghub/docker-devpi&#34;&gt;docker-devpi&lt;/a&gt; image
+makes it easy enough to get started. Running a devpi server is as
+simple as:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;docker pull scrapinghub/devpi
+ &lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;docker run -d --name devpi -p 3141:3141 scrapinghub/devpi
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Next configure your pip to pull from here. This is as simple as
+sticking the following line into your pip.conf (which should reside in
+~/.pip/pip.conf, if there is no file, create it)&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;[global]&lt;/span&gt;
+&lt;span style=&#34;color: #BB4444&#34;&gt;index-url&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;http://localhost:3141/root/pypi/+simple/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Next downloading a pip package will be mirrored, trying to install it
+again (even in other virtualenvs) should be almost instantaneous.&lt;/p&gt;
+
+&lt;p&gt;Since the docker container was already started with a name parameter,
+this container can be restarted next time simply by doing a &lt;code&gt;docker
+start devpi&lt;/code&gt;. Of course this can be easily handed off to your init
+system. If you&amp;rsquo;re using Ubuntu &amp;lt;= 14.04, the relevant upstart script
+would be something like &lt;code&gt;/etc/init/devpi-docker.conf&lt;/code&gt; with contents
+similiar to below. After adding the script, you would have to do an
+&lt;code&gt;initctl reload-configuration&lt;/code&gt; for upstart to see the script.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;description &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Devpi Docker&amp;quot;&lt;/span&gt;
+author &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;You&amp;quot;&lt;/span&gt;
+start on filesystem and started docker
+stop on runlevel &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;!2345&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+respawn
+script
+  /usr/bin/docker start devpi
+end script
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;After this doing a &lt;code&gt;sudo start devpi-docker&lt;/code&gt; would start the devpi
+docker container. Also this should be picked up by default when your
+system starts.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Collecting distributed system links</title>
+      <link>http://abhishekl.in/post/Tech/distributed-system-links/</link>
+      <pubDate>Fri, 17 Jul 2015 23:10:55 +0530</pubDate>
+      
+      <guid>http://abhishekl.in/post/Tech/distributed-system-links/</guid>
+      <description>&lt;p&gt;Of late I&amp;rsquo;ve been trying to learn a lot about distributed systems. Also started a github project &lt;a href=&#34;https://github.com/theanalyst/awesome-distributed-systems&#34;&gt;awesome distributed systems&lt;/a&gt;, which hopefully will grow over time to collect links for readings in this domain. If you know of any links please consider adding to the project.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The very basics of service discovery</title>
+      <link>http://abhishekl.in/post/Tech/service-discovery/</link>
+      <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://abhishekl.in/post/Tech/service-discovery/</guid>
+      <description>
+
+&lt;p&gt;This is meant to be an introductory post to a series of posts about
+Service Discovery and Distributed Consensus. Hopefully this will be
+series of posts on more aspects of service discovery &amp;amp; &lt;a href=&#34;https://consul.io&#34;&gt;Consul&lt;/a&gt; etc.&lt;/p&gt;
+
+&lt;h3 id=&#34;service-discovery:dca48032d3580a06a140039e549b7e48&#34;&gt;Service Discovery&lt;/h3&gt;
+
+&lt;p&gt;We begin with the simple problem of identifying which host/port
+services are running. For eg. in a small webapp, a simple static conf
+file could point to the DB node. As functionality grows you would have
+various (preferably stateless) services talking on different ports
+(and even different servers). Continuing with a static configuration
+will mean that every time a new service is introduced, a lot of
+configuration change is expected. Also typically nodes go down, will
+reappear with a new address etc. new services will appear
+etc. Basically it is a problem of every service being in agreement on
+the environment which it is in.&lt;/p&gt;
+
+&lt;p&gt;One way of solving this problem includes having a sort of service
+registry, which could be something like a simple key value store where
+all services can query &amp;amp; use for coordination. Since this store will
+be the basis of other distributed systems, it will need to be
+consistent in face of network partitions etc., thus typically
+requiring a quorum of writes for commiting a value in the registry,
+typically using something like Paxos at its core. If that sounded
+greek to you, let us assume that you host something that is just a
+simple key/value store service. Since you can&amp;rsquo;t trust hosting this
+service on a single node, as it may go down, become unreachable
+etc. you need to host it in multiple nodes, say 3. Now writing a key
+in this store has to be consistent across all the 3 nodes, or else bad
+things may happen as the client will try to read value and start
+making decisions based on that. So every write to the store sort of
+goes to one of the nodes, which will be designated as the leader
+&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:dca48032d3580a06a140039e549b7e48:paxos&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:dca48032d3580a06a140039e549b7e48:paxos&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, and the leader ensures that every entry is passed on to its
+follower nodes. Any query reaching any of the other two nodes will be
+forwarded to the leader. The leader has the responsibility of ensuring
+that all entries are atleast written by a majority of nodes so that if
+something bad happens, a network partition for example, writes cannot
+be made until there is a majority &amp;amp; once the partition heals there can
+only be one view of the world. (Also the emphasis on odd number of
+nodes for quorum as the system can take the loss of n-&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt; nodes)&lt;/p&gt;
+
+&lt;p&gt;Currently the tools for doing this kind of service discovery &amp;amp;
+coordination include Apache Zookeeper, CoreOS&amp;rsquo; etcd, and now
+Consul. Here I&amp;rsquo;ll try to explore a little bit into the paper that
+started it all, Google&amp;rsquo;s Chubby paper.&lt;/p&gt;
+
+&lt;h3 id=&#34;chubby:dca48032d3580a06a140039e549b7e48&#34;&gt;Chubby&lt;/h3&gt;
+
+&lt;p&gt;Google&amp;rsquo;s &lt;a href=&#34;http://research.google.com/archive/chubby.html&#34;&gt;Chubby&lt;/a&gt;, is described as a coarse grained &lt;em&gt;Lock Service&lt;/em&gt;
+&amp;amp; a low volume datastore for aiding loosely coupled distributed
+systems. It was sort of like a Paxos as a Service for other systems to
+coordinate and reach a consenus about its environment &amp;amp; in electing
+leaders among a set of similar nodes etc.  Chubby also provided a
+filesystem like interface, which applications could use to share
+details about its configuration etc. Chubby was deployed in sets of
+Chubby Cells, which contained a set of 5 nodes with a master and 4
+replica nodes.&lt;/p&gt;
+
+&lt;h4 id=&#34;locks:dca48032d3580a06a140039e549b7e48&#34;&gt;Locks&lt;/h4&gt;
+
+&lt;p&gt;Chubby provided advisory locks, ie. locks only conflict with others
+trying to acquire the same lock. The locks could be used as a leader
+election primitive, for eg. by giving leadership to the lock
+holder.(Consul&amp;rsquo;s &lt;a href=&#34;http://www.consul.io/docs/internals/sessions.html&#34;&gt;session&lt;/a&gt; &amp;amp; leader election primitives are
+heavily based on this)&lt;/p&gt;
+
+&lt;h4 id=&#34;sessions-keepalives:dca48032d3580a06a140039e549b7e48&#34;&gt;Sessions &amp;amp; Keepalives&lt;/h4&gt;
+
+&lt;p&gt;In order to check for membership of clients, (so as to know what
+services are up, nodes are up etc.) each client maintained a sesion
+with a Chubby Cell, with periodic handshakes called KeepAlives. As a
+sessions lease expires the client is expected to respond, lest its
+locks, cached data etc. could be invalidated.&lt;/p&gt;
+
+&lt;h3 id=&#34;uses:dca48032d3580a06a140039e549b7e48&#34;&gt;Uses&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Allowed services to use distributed consensus primitives (like
+Paxos) without redesigning the application for it&lt;/li&gt;
+&lt;li&gt;FileSystem interface was used for managing configuration files,
+metadata etc. by services&lt;/li&gt;
+&lt;li&gt;Used as a nameserver to discover other services etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In further posts I&amp;rsquo;ll try to cover how tools like consul implement
+many of these features and how they can aid service discovery &amp;amp;
+coordination.&lt;/p&gt;
+
+&lt;h3 id=&#34;other-links-to-read:dca48032d3580a06a140039e549b7e48&#34;&gt;Other links to read&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://jasonwilder.com/blog/2014/02/04/service-discovery-in-the-cloud/&#34;&gt;Open Source Service Discovery&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://research.google.com/archive/chubby.html&#34;&gt;Consul Service Discovery with Docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/papers-we-love/papers-we-love/issues/169&#34;&gt;Camille Fournier&amp;rsquo;s Chubby Presentation @ Papers we Love&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:dca48032d3580a06a140039e549b7e48:paxos&#34;&gt;Paxos doesn&amp;rsquo;t technically require a leader for commits, but explaining things is kind of more easier with a leader.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:dca48032d3580a06a140039e549b7e48:paxos&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HuGo!</title>
+      <link>http://abhishekl.in/post/Tech/hugo/</link>
+      <pubDate>Mon, 01 Jun 2015 23:57:05 +0530</pubDate>
+      
+      <guid>http://abhishekl.in/post/Tech/hugo/</guid>
+      <description>&lt;p&gt;Moved my blog from pelican to &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;. Though there was nothing
+wrong with pelican as such, mostly I found a problem with my
+blog/theme not as update with pelican upstream. Hugo is a static site
+generator written by Steve Francia (&lt;a href=&#34;https://github.com/spf13&#34;&gt;@spf13&lt;/a&gt;). It is written in Go
+&amp;amp; amazingly fast to generate a site. Developing sites with hugo
+is kind of fun; running hugo in watch mode, you get to see the site as
+you write. Also hugo has a nice set of themes and rather simplistic
+approach to organizing content. Hopefully the new avatar of the blog
+should keep me interested in blogging for a while!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Running Go ci tests in a docker</title>
+      <link>http://abhishekl.in/post/Tech/go-docker-ci/</link>
+      <pubDate>Mon, 25 May 2015 23:45:44 +0530</pubDate>
+      
+      <guid>http://abhishekl.in/post/Tech/go-docker-ci/</guid>
+      <description>
+
+&lt;p&gt;I&amp;rsquo;ve been toying around with the idea of using containers for running
+ci tests, primarily to have a quicker feedback loop; instead of setups
+that involve VMs etc. They are ideal for getting an environment up and
+running quickly and cheap to throw away too.&lt;/p&gt;
+
+&lt;p&gt;A project which I&amp;rsquo;m spending some time lately &lt;a href=&#34;https://github.com/noahdesu/go-ceph&#34;&gt;go-ceph&lt;/a&gt;, which provides
+Go bindings for ceph/rados, kind of ideally fit the bill for using
+this, since testing this project locally, usually needed something
+like a VM running a ceph cluster, or a locally running ceph. Though
+both of the above aren&amp;rsquo;t that hard, and there are projects around
+which kind of ease the process (Vagrant ceph for eg.), it still
+requires a somewhat longer setup time if you&amp;rsquo;re looking for a bringup
+teardown sort of environment. Writing dockerfiles &amp;amp; scripts for this
+helped me appreciate the &lt;a href=&#34;https://docs.docker.com/articles/dockerfile_best-practices/&#34;&gt;best practices for writing dockerfiles&lt;/a&gt; a
+bit better.&lt;/p&gt;
+
+&lt;h3 id=&#34;workflow:9cc033340eac88e10eb3b113afa78c78&#34;&gt;Workflow&lt;/h3&gt;
+
+&lt;p&gt;Ideally the workflow expected would be that you would have
+a docker container with the necessary setup &amp;amp; dependencies already
+installed, and the docker container could ultimately be run with
+something as simple as a &lt;code&gt;go test&lt;/code&gt; to test the latest code. Also since
+building a docker container for every run may not be what want; the
+idea would be to volume mount the current code tree as a volume, so
+that a simple docker run would do the job of a ci tester/builder etc
+(something like a local travis)&lt;/p&gt;
+
+&lt;h3 id=&#34;dockerfiles-entrypoint-hack:9cc033340eac88e10eb3b113afa78c78&#34;&gt;Dockerfiles &amp;amp; ENTRYPOINT hack&lt;/h3&gt;
+
+&lt;p&gt;Docker containers are well suited for single processes, which can be
+set as default by the &lt;code&gt;CMD&lt;/code&gt; or the &lt;code&gt;ENTRYPOINT&lt;/code&gt; directives. (There are
+differences between the two, which I&amp;rsquo;ll not be getting into for
+now). However this presented a problem since even the most basic ceph cluster required atleast 4 daemon processes to be run. Ways of solving this include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Creating multiple docker containers for each process and linking them
+Cleanest method. This is what &lt;a href=&#34;https://github.com/ceph/ceph-docker&#34;&gt;ceph-docker&lt;/a&gt; actually uses and the recommended way if you want to run a ceph cluster in containers.&lt;/li&gt;
+&lt;li&gt;Manage multiple processes in a docker using a process manager such as &lt;a href=&#34;http://supervisord.org/&#34;&gt;supervisor&lt;/a&gt;, &lt;a href=&#34;https://docs.docker.com/articles/using_supervisord/&#34;&gt;official docker docs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A third alternative is to run a shell script as the entrypoint; finishing off the script with an &lt;code&gt;exec&lt;/code&gt;, note that this method will fail when the entrypoint is overridden. However since all I wanted was a minimally working ceph cluster; this hack was used to run a shell script that basically started all the necessary processes and finished off with an &lt;code&gt;exec&lt;/code&gt; call running &lt;code&gt;go test -v&lt;/code&gt; for the package. This is how the dockerfile looked ultimately&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; golang:1.3-wheezy&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;MAINTAINER&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; Abhishek Lekshmanan &amp;quot;abhishek.lekshmanan@gmail.com&amp;quot;&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;ENV&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; CEPH_VERSION giant&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;RUN&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;echo &lt;/span&gt;deb http://ceph.com/debian-&lt;span style=&#34;color: #B8860B&#34;&gt;$CEPH_VERSION&lt;/span&gt;/ wheezy main | tee /etc/apt/sources.list.d/ceph-&lt;span style=&#34;color: #B8860B&#34;&gt;$CEPH_VERSION&lt;/span&gt;.list
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Running wget with no certificate checks, alternatively ssl-cert package should be installed&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;RUN&lt;/span&gt; wget --no-check-certificate -q -O- &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc&amp;#39;&lt;/span&gt; | apt-key add - &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&lt;/span&gt;
+    apt-get update &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&lt;/span&gt;
+    apt-get install -y ceph &lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&lt;/span&gt;
+    librados-dev librbd-dev libcephfs-dev
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;VOLUME&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; /go/src/github.com/noahdesu/go-ceph&lt;/span&gt;
+
+COPY ./ci/entrypoint.sh /tmp/entrypoint.sh
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;ENTRYPOINT&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; [&amp;quot;/tmp/entrypoint.sh&amp;quot;, &amp;quot;/tmp/micro-ceph&amp;quot;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;For those interested in ceph, the entrypoint script was a modification
+of &lt;a href=&#34;http://dachary.org/?p=2374&#34;&gt;Loic&amp;rsquo;s micro-osd script&lt;/a&gt;, with the only addition being getting the go dependencies and finishing of with an &lt;code&gt;exec&lt;/code&gt; call of &lt;code&gt;go test&lt;/code&gt;. For the gory details refer to the actuall &lt;a href=&#34;https://github.com/noahdesu/go-ceph/pull/21&#34;&gt;pull request&lt;/a&gt; submitted to the upstream project.&lt;/p&gt;
+
+&lt;p&gt;Though this particular case needed a little bit of a tweak to run
+tests in containers, in a general case it is far easier to run local
+ci like tests even covering multiple Go versions with other
+dependencies etc easily in a docker.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Faster python builds in Travis with container based infra</title>
+      <link>http://abhishekl.in/post/Tech/travis-builds/</link>
+      <pubDate>Sun, 01 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://abhishekl.in/post/Tech/travis-builds/</guid>
+      <description>&lt;p&gt;Lately, travis CI has started supporting builds using &lt;a href=&#34;http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/&#34;&gt;container&lt;/a&gt;
+based infrastructure which run much faster due to more available
+resources and good use of caching. This is currently possible only for
+projects that don&amp;rsquo;t use &lt;code&gt;sudo&lt;/code&gt; atm . For more details read &lt;a href=&#34;http://docs.travis-ci.com/user/workers/container-based-infrastructure/&#34;&gt;this&lt;/a&gt;
+post. Of late, I have been submitting Pull Requests to various
+projects to use this feature wherever possible. This post is primarily
+oriented towards Python projects.&lt;/p&gt;
+
+&lt;p&gt;For many python projects, a significant amount of time is spent in
+installing &amp;amp; building the dependencies. So caching these should save
+you a good amount of time. Pip downloads can be cached specifying a
+cache directory, which will avoid hitting the pypi mirror for every
+line in your requirements. The below examples assume that your testing
+script is something like &lt;code&gt;make travis&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::yaml
+sudo : false
+cache:
+  directories: 
+    - $HOME/.pip-cache
+script:
+  - pip install -r requirements.txt --download-cache $HOME/.pip-cache   
+  - make travis
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above lines will make sure that for subsequent runs pip packages
+from the cache are used. However the packages will still need to be be
+built, which means if you&amp;rsquo;re using packages using C (lxml for eg), a
+lot of time will be still spent for building the package itself. One
+way of working around this would be the use of Python Wheels and
+caching them as this avoids the need for subsequent builds. We could
+download the wheels to a specified directory and cache that, so that
+we can cut down on the build time.  So we would have something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:::yaml
+sudo : false
+cache:
+  directories: 
+    - $PWD/wheelhouse
+script:
+  - pip wheel -r requirements.txt
+  - pip install -r requirements.txt
+  - make travis
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And voila! We have faster travis builds.&lt;/p&gt;
+
+&lt;p&gt;PS If you have better ways to speedup, I&amp;rsquo;ll be happy to hear, please
+let me know in comments or hit me up on &lt;a href=&#34;https://twitter.com/abhishekl&#34;&gt;twitter&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2014: the year in books, using Goodreads, pandas &amp; Hy</title>
+      <link>http://abhishekl.in/post/Tech/goodreads/</link>
+      <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://abhishekl.in/post/Tech/goodreads/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Note: The content has been updated to reflect the new kwargs style
+in Hy, as such the snippets only work with the current Hy master&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;As 2014 is coming to a close, I thought it would be a nice time to
+review the year as far as reading was concerned. Since I track the
+books I read using Goodreads, I felt it would be an interesting
+experiment to see some numbers from Goodreads. Though Goodreads
+provides an api, it doesn&amp;rsquo;t seem to be directly useful to get some
+numbers from a user account (I could be wrong here). Fortunately, an
+export to csv option is provieded in the account which helps in our
+favor.&lt;/p&gt;
+
+&lt;p&gt;For any kind of data analysis in python, &lt;a href=&#34;http://pandas.pydata.org&#34;&gt;pandas&lt;/a&gt; is a brilliant
+library. Also it does most of the heavy lifting as far as processing
+csv files are concerned. Since &lt;a href=&#34;http://hylang.org&#34;&gt;Hy&lt;/a&gt; works wherever python works, I
+thought it would be an interesting experiment to use Hy to parse the
+data.&lt;/p&gt;
+
+&lt;p&gt;To start with reading csv is a simple call to pandas&amp;rsquo; &lt;code&gt;read_csv&lt;/code&gt;
+function. This can be done with only the interesting fields.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;import &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;pandas&lt;/span&gt;
+        [&lt;span style=&#34;color: #B8860B&#34;&gt;numpy&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;:as&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;np&lt;/span&gt;]
+        [&lt;span style=&#34;color: #B8860B&#34;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;:as&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;plt&lt;/span&gt;]
+        [&lt;span style=&#34;color: #B8860B&#34;&gt;seaborn&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;:as&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;sns&lt;/span&gt;])
+
+(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;parse-goodreads-csv&lt;/span&gt; [&lt;span style=&#34;color: #B8860B&#34;&gt;filepath&lt;/span&gt;]
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;let &lt;/span&gt;[[&lt;span style=&#34;color: #B8860B&#34;&gt;required-fields&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Title&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Bookshelves&amp;quot;&lt;/span&gt;
+                          &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Original Publication Year&amp;quot;&lt;/span&gt;]]
+        (&lt;span style=&#34;color: #00A000&#34;&gt;pandas.read_csv&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;filepath&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;:usecols&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;required-fields&lt;/span&gt;
+			             &lt;span style=&#34;color: #B8860B&#34;&gt;:index-col&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Date Read&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;:parse-dates&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;true&lt;/span&gt;)))
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Now taking out only the column&amp;rsquo;s we&amp;rsquo;re interested in &amp;amp; filtering out
+the data from only a particular year can be done by&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;books-in-year&lt;/span&gt; [&lt;span style=&#34;color: #B8860B&#34;&gt;dataframe&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;year&lt;/span&gt;]
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;let &lt;/span&gt;[[&lt;span style=&#34;color: #B8860B&#34;&gt;day1&lt;/span&gt; (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fn &lt;/span&gt;[&lt;span style=&#34;color: #B8860B&#34;&gt;y&lt;/span&gt;] (&lt;span style=&#34;color: #00A000&#34;&gt;+&lt;/span&gt; (&lt;span style=&#34;color: #AA22FF&#34;&gt;str&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;y&lt;/span&gt;) &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;-01-01&amp;quot;&lt;/span&gt;))]]
+    (&lt;span style=&#34;color: #AA22FF&#34;&gt;slice&lt;/span&gt; (&lt;span style=&#34;color: #00A000&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;dataframe&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;ix&lt;/span&gt;) (&lt;span style=&#34;color: #00A000&#34;&gt;day1&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;year&lt;/span&gt;) (&lt;span style=&#34;color: #00A000&#34;&gt;day1&lt;/span&gt; (&lt;span style=&#34;color: #AA22FF&#34;&gt;inc &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;year&lt;/span&gt;)))))
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ix&lt;/code&gt; returns the index of dataframe, since we&amp;rsquo;ll be indexing by date
+read, this allows us to select the required range, by simply selecting
+a date range from the beginning of the year to the next year.&lt;/p&gt;
+
+&lt;p&gt;Since it would be interesting to see the count of books as well as the
+pages on a monthly basis, we should filter the data on a monthly
+basis. Pandas offers a &lt;a href=&#34;http://pandas.pydata.org/pandas-docs/stable/groupby.html&#34;&gt;&lt;code&gt;groupby&lt;/code&gt;&lt;/a&gt; &amp;amp; &lt;code&gt;aggregate&lt;/code&gt; much similiar to
+SQL like queries. So all we have to do is to group pages by month
+here.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;aggregate-by-month&lt;/span&gt; [&lt;span style=&#34;color: #B8860B&#34;&gt;dataframe&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;params&lt;/span&gt;]
+  &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Group a particular key by month&amp;quot;&lt;/span&gt;
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;-&amp;gt; &lt;/span&gt;(&lt;span style=&#34;color: #00A000&#34;&gt;.groupby&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;dataframe&lt;/span&gt; (&lt;span style=&#34;color: #00A000&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;dataframe&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;index&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;month&lt;/span&gt;))
+      (&lt;span style=&#34;color: #00A000&#34;&gt;.aggregate&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;params&lt;/span&gt;)))
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The above function assumes that the dataframe object is already
+indexed by a timeframe data, (Date Read in our case), then a simple
+groupby month is performed and supplied to &lt;code&gt;aggregate&lt;/code&gt; which does a
+cumulative operation on the grouped data according the supplied
+functions. The threading operator &lt;code&gt;-&amp;gt;&lt;/code&gt; makes the result of the first
+call as the first argument of the function. Now we have enough to get
+some stats for the year.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;(&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;defn &lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;process&lt;/span&gt; [&lt;span style=&#34;color: #B8860B&#34;&gt;filepath&lt;/span&gt;]
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;let &lt;/span&gt;[[&lt;span style=&#34;color: #B8860B&#34;&gt;books-in-2014&lt;/span&gt;
+          (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;-&amp;gt; &lt;/span&gt;(&lt;span style=&#34;color: #00A000&#34;&gt;parse-goodreads-csv&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;filepath&lt;/span&gt;)
+              (&lt;span style=&#34;color: #00A000&#34;&gt;books-in-year&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;2014&lt;/span&gt;))]
+        [&lt;span style=&#34;color: #B8860B&#34;&gt;pages-per-month&lt;/span&gt; (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;-&amp;gt; &lt;/span&gt;(&lt;span style=&#34;color: #00A000&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;books-in-2014&lt;/span&gt; [[&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt;]])
+                         (&lt;span style=&#34;color: #00A000&#34;&gt;aggregate-by-month&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;sum&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;count&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;np.mean&lt;/span&gt;]))]]
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Pages read in 2014 &amp;quot;&lt;/span&gt;
+         ((&lt;span style=&#34;color: #00A000&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;books-in-2014&lt;/span&gt; [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt;] &lt;span style=&#34;color: #AA22FF&#34;&gt;sum&lt;/span&gt;)))
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Pages read in kindle&amp;quot;&lt;/span&gt;
+         ((&lt;span style=&#34;color: #00A000&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;books-in-2014&lt;/span&gt; [(&lt;span style=&#34;color: #00A000&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;books-in-2014.Bookshelves&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;kindle&amp;quot;&lt;/span&gt;)]
+             [&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Number of Pages&amp;quot;&lt;/span&gt;] &lt;span style=&#34;color: #AA22FF&#34;&gt;sum&lt;/span&gt;)))
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Monthly Stats&amp;quot;&lt;/span&gt;)
+  (&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;pages-per-month&lt;/span&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;First, the &lt;code&gt;parse-csv&lt;/code&gt; function is given only the interesting columns,
+also indexing is done via date read, we get &lt;code&gt;pages-per-month&lt;/code&gt; via the
+aggregate &amp;amp; groupby function shown earlier. Counting the pages read in
+Kindle was done by summing columns containing the Book shelves
+(alternatively if you had marked the editions correctly another field
+suggest the Kindle edition..).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Pages read in 2014  6659.0
+Pages read in kindle 4489.0
+Monthly Stats
+Number of Pages
+            sum  count        mean
+ 1              1061      3  353.666667
+ 2               136      2   68.000000
+ 6               373      1  373.000000
+ 8               484      2  242.000000
+ 9              1445      8  180.625000
+ 10             2126     17  125.058824
+ 11              262      1  262.000000
+ 12              772      6  128.666667
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally this is the plot of pages&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://abhishekl.in/images/pages-per-month.png&#34; alt=&#34;pages_per_month&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Overall 2014 was a good year as far as reading was concerned, read a
+lot of classics which had been on my backlog for quite sometime. Also
+read &lt;em&gt;The Guide&lt;/em&gt;, which was pending for quite some time. Next year I
+should follow a more consistent schedule :), there were months with no
+reading at all and a few with too much (the peak in october was
+probably due to the combined holidays here, at that time) The raw data
+and output (as well as the program) are available in my &lt;a href=&#34;http://github.com/theanalyst/cuddlebear&#34;&gt;github&lt;/a&gt;
+repo.&lt;/p&gt;
+
+&lt;p&gt;PS For those of you interested in knowing what I&amp;rsquo;ve been reading
+checkout &lt;a href=&#34;https://www.goodreads.com/review/list/14029645-abhishek?read_at=2014&amp;amp;view=covers&#34;&gt;my goodreads 2014 list&lt;/a&gt;. Do suggest anything worth
+reading in the comments. Cya!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pelican updated!</title>
+      <link>http://abhishekl.in/post/Rants/pelican/</link>
+      <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://abhishekl.in/post/Rants/pelican/</guid>
+      <description>&lt;p&gt;It has been a significant time between the posts. This time the reason
+moslty being me lazy enough not to fix the blog after a pelican
+update. Surpisingly though there wasn&amp;rsquo;t much of a change required
+other than tweaking a couple of configuration variables &amp;amp; renaming the
+&lt;code&gt;pelicanconf&lt;/code&gt; file. Hope to start blogging again soon. This time for
+real and hopefully more tech posts. C ya :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>I&#39;m Back (the hyperbole version)</title>
+      <link>http://abhishekl.in/post/Rants/onwriting/</link>
+      <pubDate>Mon, 01 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://abhishekl.in/post/Rants/onwriting/</guid>
+      <description>&lt;p&gt;This is the quintessential “I&amp;rsquo;m back” post in blogosphere, which is
+often marked by a blogger coming up with &lt;em&gt;imaginative&lt;/em&gt; reasons
+to explain a questionable absence from the virtual world.
+Tempting explanations for, not writing for so long, include
+work pressure, often marked by people blaming work for
+(not) following their interests, a generic term, which, writers &amp;amp; artists
+lovingly call the writer’s block, to describe their shortage of
+creativity. Of course, if you know me, you know the actual reason is
+just a cover up for not mentioning my often recurring theme of
+procrastination. This time though twitcrastination&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:af53238752c4d287802873f392bbd7d4:twit&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:af53238752c4d287802873f392bbd7d4:twit&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; is to blame
+for most of it.&lt;/p&gt;
+
+&lt;p&gt;Of late, I have found a new obsession for (micro) blogging in form of
+twitter, a service, which apparently,&lt;s&gt; lets you post links to
+instagram dinner pics&lt;/s&gt;, helps people to connect to people and
+organisations they care about. However, what happens in reality is
+explained in part by the graph below.(A certain Gauss must be
+twisting &amp;amp; turning in his grave here, for the blatant abuse of normal
+distributions that is about to follow &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:af53238752c4d287802873f392bbd7d4:xkcd&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:af53238752c4d287802873f392bbd7d4:xkcd&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://abhishekl.in/images/productivity.png&#34; alt=&#34;xkcd_productivity&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Seeing the world&amp;rsquo;s desire to shorten its verbosity, and the disturbing
+increase in TL;DR statuses, I am thinking of killling my blog to
+embrace the merry little challenges of microblogging.
+Why should anything stand the test of time and be etched in stone?
+Its 2013, ephemeral (like twitter statuses) is the way to go for your thoughts and actions&lt;/p&gt;
+
+&lt;p&gt;twitterati obsessively uses to explain their apparent lack of productivity
+stats, XKCDify any matplotlib graph; details &lt;a href=&#34;http://jakevdp.github.com/blog/2012/10/07/xkcd-style-plots-in-matplotlib&#34;&gt;here&lt;/a&gt; and source &lt;a href=&#34;https://gist.github.com/theanalyst/5284221&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:af53238752c4d287802873f392bbd7d4:twit&#34;&gt;Procrastination enabled by use of twitter, a term which the
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:af53238752c4d287802873f392bbd7d4:twit&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:af53238752c4d287802873f392bbd7d4:xkcd&#34;&gt;XKCD plots,  the cornerstone of any descriptive
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:af53238752c4d287802873f392bbd7d4:xkcd&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Silent Observer&#39;s Metamorphosis</title>
+      <link>http://abhishekl.in/post/Tech/learn/</link>
+      <pubDate>Sat, 22 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://abhishekl.in/post/Tech/learn/</guid>
+      <description>
+
+&lt;p&gt;My friend, Jinto, wrote a blog-post titled
+&lt;em&gt;&lt;a href=&#34;http://untold-opinion.blogspot.in/2012/12/transitioning-from-learners-to-observers.html&#34;&gt;Transitioning from learners to observers&lt;/a&gt;&lt;/em&gt;, which talks about the
+increasing transition from a learner to being a casual observer of
+things in this digital era. The availability of a wide range of tools
+these days to do &lt;em&gt;almost anything&lt;/em&gt;, has slowly reduced the need to
+learn, a very valid observation.&lt;/p&gt;
+
+&lt;p&gt;While the usefulness of tools is great, it might fail miserably when
+you want things certain way, and the tool may not be designed for
+that. A real life example would be this: in college, ever since the
+second year, I was using a software called, LyX for creating
+reports. LyX allows you to create LaTeX documents without the need to
+actually know TeX, so I never felt the necessity to learn LaTeX, for
+real. While LyX is a great tool for creating documents, if an error
+crept in documents somehow, or if you want to create a report with a
+custom template, then it fails miserably. (Also at the time I was in
+college, LyX had no support for extended unicode, using XeTeX and the
+like etc.) So towards the end I had to learn TeX the hard way, when I
+was pressed for time. A recent conversation took place on #emacs in
+irc&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:f6ecf5148c4e37e58f4f14fcdc127e45:irc&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:f6ecf5148c4e37e58f4f14fcdc127e45:irc&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, where someone asked about the right tools for LaTeX, and
+possibilities of LyX etc., for which a reply came as while there are a
+number of tools which may generate LaTeX files for you without having
+to learn it, errors it generate might set your hair on fire (and this
+mostly by experience, takes place on the previous night of the
+deadline, when you see cryptic latex errors that have no end)&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:f6ecf5148c4e37e58f4f14fcdc127e45:emacs&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:f6ecf5148c4e37e58f4f14fcdc127e45:emacs&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Another thing that is in tandem with the declining reading habit in
+this era is the works of literature being converted to movies. While
+movies of literary works may certainly be the easy way out, it may not
+always do justice to the author’s creative genius in every case. (Of
+the top 20 IMDB movies, 11 are based on literary works) Reading the 7
+Harry Potter books will help in realising why a muggle like
+J.K.Rowling is a billionaire. While movies tell a great story, the
+reading experience is unparalleled.&lt;/p&gt;
+
+&lt;p&gt;Moving on, one of the reasons for the metamorphosis of a learner to
+being a silent observer, is the fact that, you&amp;rsquo;re in a comfort zone
+when there is a lazy tool to do things for you, and hence there is no
+real need to try to do things differently. And mostly the learning
+process gets initiated only when you &lt;em&gt;want&lt;/em&gt; things to work in a
+certain way. For me, this blog was an experiment to learn a &lt;em&gt;little&lt;/em&gt;
+webdesign, while I was comfortable with blogger all along, the fact
+is, you can blog a lifetime in blogger and still need not know what
+HTML or css looks like. My requirement was to make a decent site that
+looks ok in mobile as well (a responsive web design experiment, as
+some would call it), while the output may not be what you can compare
+with a web developer&amp;rsquo;s design, at least I learnt the process of
+writing a half decent responsive media queries in css. There may be
+many talented people who can generate a better looking website in less
+than a tenth of the time I used to create mine, but that certainly
+doesn&amp;rsquo;t take away the knowledge aquired in trying to do it, and I
+believe that is important.  As said in article at
+&lt;a href=&#34;http://simpleprogrammer.com/2012/09/23/learning-to-learn/&#34;&gt;Simple Programmer&lt;/a&gt;, the true goal of &lt;em&gt;learning&lt;/em&gt;, which is the
+ability to put knowledge into action. An english philospher’s famous
+words were this:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“The great aim of education is not knowledge but action”
+&lt;small&gt;Herbert Spencer&lt;/small&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ultimately it is picking up something you end up loving and learning
+about it. Trying to do things in a different way can definitely open
+new channels.  To conclude, I will quote something from
+&lt;a href=&#34;http://en.wikipedia.org/wiki/Tom_Peters&#34;&gt;Tom Peters&lt;/a&gt;, a quote often misattributed to Leanardo Da Vinci, on innovation and success:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“Life is pretty simple: You do some stuff. Most fails. Some works. You
+do more of what works. If it works big, others quickly copy it. Then
+you do something else. The trick is the doing something else.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;P.S if you haven’t clicked the link to the article
+&lt;a href=&#34;http://simpleprogrammer.com/2012/09/23/learning-to-learn/&#34;&gt;Learning to learn&lt;/a&gt; at Simple Programmer, do it now, certainly
+worth a read.&lt;/p&gt;
+
+&lt;h3 id=&#34;foot-notes:f6ecf5148c4e37e58f4f14fcdc127e45&#34;&gt;Foot Notes&lt;/h3&gt;
+
+&lt;p&gt;was taking place in #emacs, well, it all started with TeXmacs
++ emacs, though ultimately I guess the guy settled with TeXmaker. The
+former has a (dis)advantage of a steeper learning curve (and might be
+an overkill if your only aim is to generate tex files, though proviedes an unobtrusive learning environment nonetheless)&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:f6ecf5148c4e37e58f4f14fcdc127e45:irc&#34;&gt;If you, like me, were wondering about how a TeX conversation
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:f6ecf5148c4e37e58f4f14fcdc127e45:irc&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:f6ecf5148c4e37e58f4f14fcdc127e45:emacs&#34;&gt;Also, the channel being emacs, the advice was to use AucTeX
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:f6ecf5148c4e37e58f4f14fcdc127e45:emacs&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Static site generators &amp; Everything else</title>
+      <link>http://abhishekl.in/post/Tech/myblog/</link>
+      <pubDate>Mon, 03 Dec 2012 14:23:00 +0000</pubDate>
+      
+      <guid>http://abhishekl.in/post/Tech/myblog/</guid>
+      <description>
+
+&lt;p&gt;This post lists the details of my blog, which is powered by gh-pages
+and pelican. In short another guy puts up his blog at GitHub and blogs
+about it. It initially started as a Lorem Ipsum content while I was
+testing out my rough and edgy pelican theme. You have been warned!&lt;/p&gt;
+
+&lt;p&gt;Welcome to the new avatar of my blog which is powered by &lt;a href=&#34;http://docs.getpelican.com/en/3.0/&#34; title=&#34;pelican&#34;&gt;pelican&lt;/a&gt;,
+just another static site generator. For the uninitiated, static sites
+are just a bunch of html pages, reminiscent of those old times where
+people used some ftp program to put some html pages in some server
+space. Remember the saying, “the more things change, the more they
+remain the same.” It is a full circle from plain html -&amp;gt; dynamic
+content based websites -&amp;gt; Back to plain html again. Well static site
+generators do just that, convert your favorite markup format into
+something a webserver can serve.&lt;/p&gt;
+
+&lt;p&gt;Also static site generators are dime a dozen, these days, you will
+always get one matching the language of your choice and markup of your
+choice as well. (Psst. if you are interested, I have tried making a
+sentence with a few If you are the type who hates wordplay, skip right
+ahead, there is nothing here… &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:0577056210bedfefeae748c0d5cac415:wordplay&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:0577056210bedfefeae748c0d5cac415:wordplay&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;).&lt;/p&gt;
+
+&lt;p&gt;At the moment Jekyll &lt;em&gt;arguably&lt;/em&gt; leads the pack&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:0577056210bedfefeae748c0d5cac415:lists&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:0577056210bedfefeae748c0d5cac415:lists&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;,
+with close to ~8.2K watchers in Github, while that metric doesn’t
+actually tell the number of sites actually built using Jekyll. FYI,
+almost any post on jekyll trends in Hacker News, and even the US
+election campaign has used Jekyll for blogging. A more
+interesting information would be just googling Jekyll, about &lt;sup&gt;4&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;
+links in the first page go to &lt;em&gt;Jekyll&lt;/em&gt; the static site generator, the
+rest mostly links to Jekyll the TV show, and none link to &lt;em&gt;Jekyll and
+Hyde&lt;/em&gt;, the novella (condolences to R L Stevenson). This is similar to
+googling “Big Bang Theory”, TV has a higher preference than cosmology,
+of course.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:0577056210bedfefeae748c0d5cac415:Googling-the-Big-Bang-theory-will-have-actually-no-first-page-results-on-cosmology-at-all&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:0577056210bedfefeae748c0d5cac415:Googling-the-Big-Bang-theory-will-have-actually-no-first-page-results-on-cosmology-at-all&#34;&gt;0&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Now talking that much on jekyll, this site isn&amp;rsquo;t generated via Jekyll,
+it is generated by Pelican, a static generator written in python. And
+this was the primary reason, just that in case things need to work in
+a certain way, it could be done without setting my hair on fire.
+Though knowledge of python isn&amp;rsquo;t an absolute necessity if your
+intention is just to create a site in pelican, but recommended. Like
+other well known static site generators, pelican also features these
+(last point is a bit debatable):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Good Documentation&lt;/li&gt;
+&lt;li&gt;Easy templating system&lt;/li&gt;
+&lt;li&gt;Good community support&lt;/li&gt;
+&lt;li&gt;Written in python&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Posts are written in markdown, in emacs. A simple git repository with
+post commit hooks that runs pelican on each commit, does the trick of
+generating the html pages. The config file is a simple python file
+which takes care of all the site related details, links etc.&lt;/p&gt;
+
+&lt;p&gt;Pelican comes with a default set of themes, and a few others available
+at the &lt;a href=&#34;https://github.com/getpelican/pelican-themes&#34;&gt;pelican-themes&lt;/a&gt; repo, which can help in setting up a blog
+running without much hassle. Building a theme is also pretty easy, and
+it uses Jinja templating in the backend, this blog look right now is a
+customised theme built upon the existing tuxlite-tbs theme, I will
+write on that another time. (This post is already long enough as it
+is)&lt;/p&gt;
+
+&lt;p&gt;For the typographically conscious, there is support from the excellent
+emacs &lt;a href=&#34;https://github.com/jorgenschaefer/typoel&#34; title=&#34;Typographical Punctuation marks&#34;&gt;typo&lt;/a&gt; mode which takes care of your punctuation marks, if
+you are the type who cares about the &lt;a href=&#34;http://www.smashingmagazine.com/2011/08/15/mind-your-en-and-em-dashes-typographic-etiquette/&#34; title=&#34;Mind your em and en dashes&#34;&gt;em &amp;amp; en–dashes&lt;/a&gt;. (Yes, we
+have a mode for everything… including a &lt;a href=&#34;http://en.wikipedia.org/wiki/ELIZA&#34; title=&#34;Eliza, the quintessential psychotherapist&#34;&gt;psychotherapist&lt;/a&gt;, who can
+kill time, if not depression) That is pretty much it, as far as
+generating a site in pelican is concerned, simple.&lt;/p&gt;
+
+&lt;h3 id=&#34;foot-notes:0577056210bedfefeae748c0d5cac415&#34;&gt;Foot Notes&lt;/h3&gt;
+
+&lt;p&gt;popularity, its precedence in search results…
+possibilities out there, generating a static site is as easy as baking
+a &lt;a href=&#34;https://bolt80.com/piecrust&#34; title=&#34;PieCrust&#34;&gt;piecrust&lt;/a&gt;. You just have to &lt;a href=&#34;https://github.com/schrockwell/chisel&#34; title=&#34;Chisel&#34;&gt;chisel&lt;/a&gt; your heart&amp;rsquo;s content in
+the markup format of your choice and hire a &lt;a href=&#34;http://middlemanapp.com&#34; title=&#34;Middle Man&#34;&gt;middleman&lt;/a&gt; to solve
+the strange case of Dr.&lt;a href=&#34;http://jekyllrb.com&#34; title=&#34;jekyll&#34;&gt;Jekyll&lt;/a&gt; and Mr.&lt;a href=&#34;http://ringce.com/hyde&#34; title=&#34;hyde, Jekyll’s evil alter-ego in python &#34;&gt;Hyde&lt;/a&gt;, whose obsession
+with &lt;a href=&#34;http://octopress.org&#34; title=&#34;Octopress, pressing content for hackers&#34;&gt;Octopress&lt;/a&gt;, is &lt;a href=&#34;https://github.com/blahed/frank&#34; title=&#34;Frank&#34;&gt;frank&lt;/a&gt;ly &lt;a href=&#34;https://github.com/caolan/petrify&#34; title=&#34;Petrify&#34;&gt;petrify&lt;/a&gt;ing. (This is far
+from the list of possibilities, but it is difficult, though, to make a
+valid English sentence with all the static site generators out
+there. A relatively comprehensive list is at &lt;a href=&#34;http://nanoc.stoneship.org&#34; title=&#34;nanoc&#34;&gt;nanoc&lt;/a&gt; which, FYI, is
+also another static site generator.  Choose your poison)&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:0577056210bedfefeae748c0d5cac415:wordplay&#34;&gt;These days, one is &lt;a href=&#34;http://awestruct.org&#34; title=&#34;Awestruct&#34;&gt;awestruc&lt;/a&gt; with the number of
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:0577056210bedfefeae748c0d5cac415:wordplay&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:0577056210bedfefeae748c0d5cac415:lists&#34;&gt;For more info on this read,a &lt;a href=&#34;https://gist.github.com/4181764&#34; title=&#34;Another list, on static site generators&#34;&gt;crowdsourced list&lt;/a&gt; and a &lt;a href=&#34;http://news.ycombinator.com/item?id=4857473&#34; title=&#34;Poll your preference&#34;&gt;HN poll&lt;/a&gt; for static generators
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:0577056210bedfefeae748c0d5cac415:lists&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>http://abhishekl.in/post/Rants/HelloWorld/</link>
+      <pubDate>Fri, 08 Jun 2012 18:30:21 +0530</pubDate>
+      
+      <guid>http://abhishekl.in/post/Rants/HelloWorld/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;re reading this, it means that I have successfully started
+blogging again. As the more perceptive of you might have
+realized, this blog isn&amp;rsquo;t hosted at &lt;em&gt;blogger&lt;/em&gt; anymore well this new
+avatar is powered by &lt;a href=&#34;pelican.notmyidea.org&#34;&gt;pelican&lt;/a&gt;, an awesome
+static blogging engine written in python and served by github pages,
+(of course the second part should be intuitionally obvious, given the
+url atm).&lt;/p&gt;
+
+&lt;p&gt;While the sabbatical from &lt;em&gt;blogosphere&lt;/em&gt; has been long, it was more
+because of lack of anything to post rather than too busy to post
+anything, and now I&amp;rsquo;m back from a questionably long self-imposed
+exile. And life has been relatively smooth in the interlude,(though my
+last post was from college, which I dearly miss now) and I&amp;rsquo;m a
+graduand now with a job going along just fine and learning new things
+in the process.&lt;/p&gt;
+
+&lt;p&gt;While I&amp;rsquo;m still in the process of importing previous posts and
+comments from blogger (read I am yet to decide whether the pain is
+worth it or not), you should have fun reading the blog with its
+current content which should be narcissistic links to me-pages. You
+should be seeing proper posts being pushed into this url soon.&lt;/p&gt;
+
+&lt;p&gt;If you have read upto this point, I would urge you to take the leap of
+faith, and follow my alter-egos in the parallel universes of
+&lt;em&gt;twitterati&lt;/em&gt; and &lt;em&gt;blogosphere&lt;/em&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -12,20 +12,20 @@
     
     <item>
       <title>Collecting distributed system links</title>
-      <link>http://abhishekl.in/Tech/distributed-system-links/</link>
+      <link>http://abhishekl.in/post/Tech/distributed-system-links/</link>
       <pubDate>Fri, 17 Jul 2015 23:10:55 +0530</pubDate>
       
-      <guid>http://abhishekl.in/Tech/distributed-system-links/</guid>
+      <guid>http://abhishekl.in/post/Tech/distributed-system-links/</guid>
       <description>&lt;p&gt;Of late I&amp;rsquo;ve been trying to learn a lot about distributed systems. Also started a github project &lt;a href=&#34;https://github.com/theanalyst/awesome-distributed-systems&#34;&gt;awesome distributed systems&lt;/a&gt;, which hopefully will grow over time to collect links for readings in this domain. If you know of any links please consider adding to the project.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>The very basics of service discovery</title>
-      <link>http://abhishekl.in/Tech/service-discovery/</link>
+      <link>http://abhishekl.in/post/Tech/service-discovery/</link>
       <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://abhishekl.in/Tech/service-discovery/</guid>
+      <guid>http://abhishekl.in/post/Tech/service-discovery/</guid>
       <description>
 
 &lt;p&gt;This is meant to be an introductory post to a series of posts about

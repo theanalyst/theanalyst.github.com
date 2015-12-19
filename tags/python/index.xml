@@ -12,10 +12,10 @@
     
     <item>
       <title>Caching pip packages using devpi &amp; docker</title>
-      <link>http://abhishekl.in/Tech/devpi-docker/</link>
+      <link>http://abhishekl.in/post/Tech/devpi-docker/</link>
       <pubDate>Tue, 28 Jul 2015 00:03:28 +0530</pubDate>
       
-      <guid>http://abhishekl.in/Tech/devpi-docker/</guid>
+      <guid>http://abhishekl.in/post/Tech/devpi-docker/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;re using python packages &amp;amp; virtualenvs a lot, you can
 drastically speed up the time to setup your environment, (which mostly
 involves download of pip packages, which tend to be network intensive
@@ -79,10 +79,10 @@ system starts.&lt;/p&gt;
     
     <item>
       <title>Faster python builds in Travis with container based infra</title>
-      <link>http://abhishekl.in/Tech/travis-builds/</link>
+      <link>http://abhishekl.in/post/Tech/travis-builds/</link>
       <pubDate>Sun, 01 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://abhishekl.in/Tech/travis-builds/</guid>
+      <guid>http://abhishekl.in/post/Tech/travis-builds/</guid>
       <description>&lt;p&gt;Lately, travis CI has started supporting builds using &lt;a href=&#34;http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/&#34;&gt;container&lt;/a&gt;
 based infrastructure which run much faster due to more available
 resources and good use of caching. This is currently possible only for
@@ -137,10 +137,10 @@ let me know in comments or hit me up on &lt;a href=&#34;https://twitter.com/abhi
     
     <item>
       <title>Static site generators &amp; Everything else</title>
-      <link>http://abhishekl.in/Tech/myblog/</link>
+      <link>http://abhishekl.in/post/Tech/myblog/</link>
       <pubDate>Mon, 03 Dec 2012 14:23:00 +0000</pubDate>
       
-      <guid>http://abhishekl.in/Tech/myblog/</guid>
+      <guid>http://abhishekl.in/post/Tech/myblog/</guid>
       <description>
 
 &lt;p&gt;This post lists the details of my blog, which is powered by gh-pages

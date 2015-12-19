@@ -12,10 +12,10 @@
     
     <item>
       <title>Caching pip packages using devpi &amp; docker</title>
-      <link>http://abhishekl.in/Tech/devpi-docker/</link>
+      <link>http://abhishekl.in/post/Tech/devpi-docker/</link>
       <pubDate>Tue, 28 Jul 2015 00:03:28 +0530</pubDate>
       
-      <guid>http://abhishekl.in/Tech/devpi-docker/</guid>
+      <guid>http://abhishekl.in/post/Tech/devpi-docker/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;re using python packages &amp;amp; virtualenvs a lot, you can
 drastically speed up the time to setup your environment, (which mostly
 involves download of pip packages, which tend to be network intensive

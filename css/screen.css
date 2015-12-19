@@ -153,6 +153,12 @@ table { border-collapse: collapse; border-spacing: 0; }
 .icon-facebook:before {
     content: "\f203";
 }
+.icon-instagram:before {
+    content: "\f215";
+}
+.icon-pinterest:before {
+    content: "\f210";
+}
 .icon-arrow-left:before {
     content: "\f431";
 }
@@ -548,6 +554,10 @@ body.nav-opened .nav-cover {
                         opacity 0.3s ease 0.7s;
             transition: transform 0.5s ease,
                         opacity 0.3s ease 0.7s;
+font-family: "Open Sans","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+font-weight: 700;
+font-size: 11px;
+color: #909090;
 }
 
 body.nav-closed .nav {
@@ -1153,7 +1163,7 @@ body:not(.post-template) .post-title {
     position: absolute;
     top: 6rem;
     right: 0;
-    width: 140px;
+    width: 180px;
 }
 
 .post-footer .share a {

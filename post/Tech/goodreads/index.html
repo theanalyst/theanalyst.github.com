@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" 2014: the year in books, using Goodreads, pandas &amp; Hy &middot;  Often Bearing Metaphoric Tense" />
+  	<meta property="og:site_name" content="Often Bearing Metaphoric Tense" />
+  	<meta property="og:url" content="http://abhishekl.in/post/Tech/goodreads/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2014-12-21T00:00:00Z" />
+
+    
+    <meta property="og:article:tag" content="Hy" />
+    
+    <meta property="og:article:tag" content="Goodreads" />
+    
+    <meta property="og:article:tag" content="Pandas" />
+    
+    <meta property="og:article:tag" content="Kindle" />
+    
+    
+
+  <title>
+     2014: the year in books, using Goodreads, pandas &amp; Hy &middot;  Often Bearing Metaphoric Tense
+  </title>
+
+    <meta name="description" content="code,coffee &amp; stuff" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://abhishekl.in/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://abhishekl.in/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="http://abhishekl.in/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://abhishekl.in/post/Tech/goodreads/" />
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="http://abhishekl.in">Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/theanalyst">Github</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://abhishekl.in/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head" style="background-image: url(http://abhishekl.in/images/kindle.jpg)">
+  <nav class="main-nav overlay clearfix">
+
+
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">2014: the year in books, using Goodreads, pandas &amp; Hy</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2014-12-21T00:00:00Z">
+            Dec 21, 2014
+          </time>
+        
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/hy/">#Hy</a></span>
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/goodreads/">#Goodreads</a></span>
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/pandas/">#Pandas</a></span>
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/kindle/">#Kindle</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p><code>Note: The content has been updated to reflect the new kwargs style
+in Hy, as such the snippets only work with the current Hy master</code></p>
+
+<p>As 2014 is coming to a close, I thought it would be a nice time to
+review the year as far as reading was concerned. Since I track the
+books I read using Goodreads, I felt it would be an interesting
+experiment to see some numbers from Goodreads. Though Goodreads
+provides an api, it doesn&rsquo;t seem to be directly useful to get some
+numbers from a user account (I could be wrong here). Fortunately, an
+export to csv option is provieded in the account which helps in our
+favor.</p>
+
+<p>For any kind of data analysis in python, <a href="http://pandas.pydata.org">pandas</a> is a brilliant
+library. Also it does most of the heavy lifting as far as processing
+csv files are concerned. Since <a href="http://hylang.org">Hy</a> works wherever python works, I
+thought it would be an interesting experiment to use Hy to parse the
+data.</p>
+
+<p>To start with reading csv is a simple call to pandas&rsquo; <code>read_csv</code>
+function. This can be done with only the interesting fields.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">(<span style="color: #AA22FF; font-weight: bold">import </span><span style="color: #B8860B">pandas</span>
+        [<span style="color: #B8860B">numpy</span> <span style="color: #B8860B">:as</span> <span style="color: #B8860B">np</span>]
+        [<span style="color: #B8860B">matplotlib.pyplot</span> <span style="color: #B8860B">:as</span> <span style="color: #B8860B">plt</span>]
+        [<span style="color: #B8860B">seaborn</span> <span style="color: #B8860B">:as</span> <span style="color: #B8860B">sns</span>])
+
+(<span style="color: #AA22FF; font-weight: bold">defn </span><span style="color: #B8860B">parse-goodreads-csv</span> [<span style="color: #B8860B">filepath</span>]
+  (<span style="color: #AA22FF; font-weight: bold">let </span>[[<span style="color: #B8860B">required-fields</span> [<span style="color: #BB4444">&quot;Title&quot;</span> <span style="color: #BB4444">&quot;Date Read&quot;</span> <span style="color: #BB4444">&quot;Bookshelves&quot;</span>
+                          <span style="color: #BB4444">&quot;Number of Pages&quot;</span> <span style="color: #BB4444">&quot;Original Publication Year&quot;</span>]]
+        (<span style="color: #00A000">pandas.read_csv</span> <span style="color: #B8860B">filepath</span> <span style="color: #B8860B">:usecols</span> <span style="color: #B8860B">required-fields</span>
+			             <span style="color: #B8860B">:index-col</span> <span style="color: #BB4444">&quot;Date Read&quot;</span> <span style="color: #B8860B">:parse-dates</span> <span style="color: #B8860B">true</span>)))
+</pre></div>
+</p>
+
+<p>Now taking out only the column&rsquo;s we&rsquo;re interested in &amp; filtering out
+the data from only a particular year can be done by</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">(<span style="color: #AA22FF; font-weight: bold">defn </span><span style="color: #B8860B">books-in-year</span> [<span style="color: #B8860B">dataframe</span> <span style="color: #B8860B">year</span>]
+  (<span style="color: #AA22FF; font-weight: bold">let </span>[[<span style="color: #B8860B">day1</span> (<span style="color: #AA22FF; font-weight: bold">fn </span>[<span style="color: #B8860B">y</span>] (<span style="color: #00A000">+</span> (<span style="color: #AA22FF">str</span> <span style="color: #B8860B">y</span>) <span style="color: #BB4444">&quot;-01-01&quot;</span>))]]
+    (<span style="color: #AA22FF">slice</span> (<span style="color: #00A000">.</span> <span style="color: #B8860B">dataframe</span> <span style="color: #B8860B">ix</span>) (<span style="color: #00A000">day1</span> <span style="color: #B8860B">year</span>) (<span style="color: #00A000">day1</span> (<span style="color: #AA22FF">inc </span><span style="color: #B8860B">year</span>)))))
+</pre></div>
+</p>
+
+<p><code>ix</code> returns the index of dataframe, since we&rsquo;ll be indexing by date
+read, this allows us to select the required range, by simply selecting
+a date range from the beginning of the year to the next year.</p>
+
+<p>Since it would be interesting to see the count of books as well as the
+pages on a monthly basis, we should filter the data on a monthly
+basis. Pandas offers a <a href="http://pandas.pydata.org/pandas-docs/stable/groupby.html"><code>groupby</code></a> &amp; <code>aggregate</code> much similiar to
+SQL like queries. So all we have to do is to group pages by month
+here.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">(<span style="color: #AA22FF; font-weight: bold">defn </span><span style="color: #B8860B">aggregate-by-month</span> [<span style="color: #B8860B">dataframe</span> <span style="color: #B8860B">params</span>]
+  <span style="color: #BB4444">&quot;Group a particular key by month&quot;</span>
+  (<span style="color: #AA22FF; font-weight: bold">-&gt; </span>(<span style="color: #00A000">.groupby</span> <span style="color: #B8860B">dataframe</span> (<span style="color: #00A000">.</span> <span style="color: #B8860B">dataframe</span> <span style="color: #B8860B">index</span> <span style="color: #B8860B">month</span>))
+      (<span style="color: #00A000">.aggregate</span> <span style="color: #B8860B">params</span>)))
+</pre></div>
+</p>
+
+<p>The above function assumes that the dataframe object is already
+indexed by a timeframe data, (Date Read in our case), then a simple
+groupby month is performed and supplied to <code>aggregate</code> which does a
+cumulative operation on the grouped data according the supplied
+functions. The threading operator <code>-&gt;</code> makes the result of the first
+call as the first argument of the function. Now we have enough to get
+some stats for the year.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">(<span style="color: #AA22FF; font-weight: bold">defn </span><span style="color: #B8860B">process</span> [<span style="color: #B8860B">filepath</span>]
+  (<span style="color: #AA22FF; font-weight: bold">let </span>[[<span style="color: #B8860B">books-in-2014</span>
+          (<span style="color: #AA22FF; font-weight: bold">-&gt; </span>(<span style="color: #00A000">parse-goodreads-csv</span> <span style="color: #B8860B">filepath</span>)
+              (<span style="color: #00A000">books-in-year</span> <span style="color: #666666">2014</span>))]
+        [<span style="color: #B8860B">pages-per-month</span> (<span style="color: #AA22FF; font-weight: bold">-&gt; </span>(<span style="color: #00A000">.</span> <span style="color: #B8860B">books-in-2014</span> [[<span style="color: #BB4444">&quot;Number of Pages&quot;</span>]])
+                         (<span style="color: #00A000">aggregate-by-month</span> [<span style="color: #BB4444">&quot;sum&quot;</span> <span style="color: #BB4444">&quot;count&quot;</span> <span style="color: #B8860B">np.mean</span>]))]]
+  (<span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&quot;Pages read in 2014 &quot;</span>
+         ((<span style="color: #00A000">.</span> <span style="color: #B8860B">books-in-2014</span> [<span style="color: #BB4444">&quot;Number of Pages&quot;</span>] <span style="color: #AA22FF">sum</span>)))
+  (<span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&quot;Pages read in kindle&quot;</span>
+         ((<span style="color: #00A000">.</span> <span style="color: #B8860B">books-in-2014</span> [(<span style="color: #00A000">=</span> <span style="color: #B8860B">books-in-2014.Bookshelves</span> <span style="color: #BB4444">&quot;kindle&quot;</span>)]
+             [<span style="color: #BB4444">&quot;Number of Pages&quot;</span>] <span style="color: #AA22FF">sum</span>)))
+  (<span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&quot;Monthly Stats&quot;</span>)
+  (<span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #B8860B">pages-per-month</span>)
+</pre></div>
+</p>
+
+<p>First, the <code>parse-csv</code> function is given only the interesting columns,
+also indexing is done via date read, we get <code>pages-per-month</code> via the
+aggregate &amp; groupby function shown earlier. Counting the pages read in
+Kindle was done by summing columns containing the Book shelves
+(alternatively if you had marked the editions correctly another field
+suggest the Kindle edition..).</p>
+
+<pre><code>Pages read in 2014  6659.0
+Pages read in kindle 4489.0
+Monthly Stats
+Number of Pages
+            sum  count        mean
+ 1              1061      3  353.666667
+ 2               136      2   68.000000
+ 6               373      1  373.000000
+ 8               484      2  242.000000
+ 9              1445      8  180.625000
+ 10             2126     17  125.058824
+ 11              262      1  262.000000
+ 12              772      6  128.666667
+</code></pre>
+
+<p>Finally this is the plot of pages</p>
+
+<p><img src="http://abhishekl.in/images/pages-per-month.png" alt="pages_per_month" />
+</p>
+
+<p>Overall 2014 was a good year as far as reading was concerned, read a
+lot of classics which had been on my backlog for quite sometime. Also
+read <em>The Guide</em>, which was pending for quite some time. Next year I
+should follow a more consistent schedule :), there were months with no
+reading at all and a few with too much (the peak in october was
+probably due to the combined holidays here, at that time) The raw data
+and output (as well as the program) are available in my <a href="http://github.com/theanalyst/cuddlebear">github</a>
+repo.</p>
+
+<p>PS For those of you interested in knowing what I&rsquo;ve been reading
+checkout <a href="https://www.goodreads.com/review/list/14029645-abhishek?read_at=2014&amp;view=covers">my goodreads 2014 list</a>. Do suggest anything worth
+reading in the comments. Cya!</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://abhishekl.in/"></a></h4>
+  
+  <p>Read <a href="http://abhishekl.in/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    
+    
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=2014%3a%20the%20year%20in%20books%2c%20using%20Goodreads%2c%20pandas%20%26%20Hy&amp;url=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fgoodreads%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fgoodreads%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fgoodreads%2f&amp;description=2014%3a%20the%20year%20in%20books%2c%20using%20Goodreads%2c%20pandas%20%26%20Hy"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fgoodreads%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'hyperbolicmonologues';
+  var disqus_url = 'http:\/\/abhishekl.in\/post\/Tech\/goodreads\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Often Bearing Metaphoric Tense</a> All rights reserved 2012-15</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://abhishekl.in/js/jquery.js"></script>
+    <script type="text/javascript" src="http://abhishekl.in/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://abhishekl.in/js/index.js"></script>
+    
+</body>
+</html>
+

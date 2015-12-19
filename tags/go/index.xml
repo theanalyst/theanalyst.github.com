@@ -12,10 +12,10 @@
     
     <item>
       <title>HuGo!</title>
-      <link>http://abhishekl.in/Tech/hugo/</link>
+      <link>http://abhishekl.in/post/Tech/hugo/</link>
       <pubDate>Mon, 01 Jun 2015 23:57:05 +0530</pubDate>
       
-      <guid>http://abhishekl.in/Tech/hugo/</guid>
+      <guid>http://abhishekl.in/post/Tech/hugo/</guid>
       <description>&lt;p&gt;Moved my blog from pelican to &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;. Though there was nothing
 wrong with pelican as such, mostly I found a problem with my
 blog/theme not as update with pelican upstream. Hugo is a static site
@@ -30,10 +30,10 @@ should keep me interested in blogging for a while!&lt;/p&gt;
     
     <item>
       <title>Running Go ci tests in a docker</title>
-      <link>http://abhishekl.in/Tech/go-docker-ci/</link>
+      <link>http://abhishekl.in/post/Tech/go-docker-ci/</link>
       <pubDate>Mon, 25 May 2015 23:45:44 +0530</pubDate>
       
-      <guid>http://abhishekl.in/Tech/go-docker-ci/</guid>
+      <guid>http://abhishekl.in/post/Tech/go-docker-ci/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;ve been toying around with the idea of using containers for running
