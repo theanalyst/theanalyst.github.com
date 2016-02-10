@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on Often Bearing Metaphoric Tense</title>
-    <link>http://abhishekl.in/tags/linux/</link>
-    <description>Recent content in Linux on Often Bearing Metaphoric Tense</description>
+    <title>Opensuse on Often Bearing Metaphoric Tense</title>
+    <link>http://abhishekl.in/tags/opensuse/</link>
+    <description>Recent content in Opensuse on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Tue, 09 Feb 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://abhishekl.in/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://abhishekl.in/tags/opensuse/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Fixing my Root partition full on btrfs</title>
@@ -40,24 +40,6 @@ Trimmed old logs using the following command:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Deleting all the snapshots except for the current and the first snapshot, I finally ended up getting 16 Gigs of free space. Hopefully I&amp;rsquo;ll not run out of root space for sometime :)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Copy Paste in URxvt Clipboard!</title>
-      <link>http://abhishekl.in/post/Tech/xsel/</link>
-      <pubDate>Wed, 16 Dec 2015 23:27:08 +0530</pubDate>
-      
-      <guid>http://abhishekl.in/post/Tech/xsel/</guid>
-      <description>&lt;p&gt;If you&amp;rsquo;re using Rxvt Unicode as a terminal emulator, chances are while doing
-copy paste with &lt;code&gt;Ctrl+Shift+C&lt;/code&gt; or &lt;code&gt;Ctrl+Shift+V&lt;/code&gt;, you need to use the &lt;a href=&#34;https://github.com/muennich/urxvt-perls/blob/master/clipboard&#34;&gt;perl
-clipboard module&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;If you put the module in the right path &lt;code&gt;/usr/lib&amp;lt;arch&amp;gt;/urxvt/perl/&lt;/code&gt; or the user
-director and still couldn&amp;rsquo;t the get the clipboard functioning properly, then
-make sure that &lt;code&gt;xsel&lt;/code&gt; package is installed in your system. It isn&amp;rsquo;t default in
-most systems (tested on Ubuntu, Debian &amp;amp; OpenSUSE so far) and will save you from
-pulling some hair&lt;/p&gt;
 </description>
     </item>
     

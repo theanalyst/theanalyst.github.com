@@ -35,8 +35,8 @@ Scrapinghub&amp;rsquo;s
 makes it easy enough to get started. Running a devpi server is as
 simple as:&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;docker pull scrapinghub/devpi
- &lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;docker run -d --name devpi -p 3141:3141 scrapinghub/devpi
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt; $ docker pull scrapinghub/devpi
+ $ docker run -d --name devpi -p 3141:3141 scrapinghub/devpi
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 

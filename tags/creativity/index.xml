@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Creativity on Often Bearing Metaphoric Tense</title>
+    <link>http://localhost:1313/tags/creativity/</link>
+    <description>Recent content in Creativity on Often Bearing Metaphoric Tense</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved 2012-15</copyright>
+    <lastBuildDate>Tue, 02 Feb 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/creativity/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>On Creativity</title>
+      <link>http://localhost:1313/post/Rants/creativity/</link>
+      <pubDate>Tue, 02 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/Rants/creativity/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

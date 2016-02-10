@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Fixing my Root partition full on btrfs &middot;  Often Bearing Metaphoric Tense" />
+  	<meta property="og:site_name" content="Often Bearing Metaphoric Tense" />
+  	<meta property="og:url" content="http://abhishekl.in/post/Tech/btrfs-snapper/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2016-02-09T00:00:00Z" />
+
+    
+    <meta property="og:article:tag" content="snapper" />
+    
+    <meta property="og:article:tag" content="btrfs" />
+    
+    <meta property="og:article:tag" content="openSUSE" />
+    
+    <meta property="og:article:tag" content="linux" />
+    
+    
+
+  <title>
+     Fixing my Root partition full on btrfs &middot;  Often Bearing Metaphoric Tense
+  </title>
+
+    <meta name="description" content="code,coffee &amp; stuff" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://abhishekl.in/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://abhishekl.in/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="http://abhishekl.in/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://abhishekl.in/post/Tech/btrfs-snapper/" />
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="http://abhishekl.in">Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/theanalyst">Github</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://abhishekl.in/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Fixing my Root partition full on btrfs</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2016-02-09T00:00:00Z">
+            Feb 9, 2016
+          </time>
+        
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/snapper/">#snapper</a></span>
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/btrfs/">#btrfs</a></span>
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/opensuse/">#openSUSE</a></span>
+         
+          <span class="post-tag small"><a href="http://abhishekl.in/tags/linux/">#linux</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>For the past 2 days my Laptop running openSUSE tumbleweed was complaining of
+root system full, I was on a spree deleting packages which tend to be on the
+heavier side, generally clearing TeX alone would suffice, however this time the
+root partition of around 28 G was showing 99% utilization</p>
+
+<p>After clearing up many development headers, killing of java etc. I managed to
+free a good 2G of space, however within a few minutes, <code>df</code> again revealed the
+root partition was full, also cleared out the obvious logs in <code>/var/log</code> and a
+coredump that was in the 100 MB ranges. Funnily enough after removal of a few
+packages the root partition seemed to be growing in usage rather than shrinking.
+The systemd journal was around 800 MB in size, since I assumed this was growing
+as a result of many packages getting killed etc, I found out that the journal
+was around 800 MB in size, not much, but still enough to get a breathing space.
+Trimmed old logs using the following command:</p>
+
+<pre><code># journalctl --vacuum-size=200M 
+</code></pre>
+
+<p>However even this was shortlived (running a du on the <code>/var/log</code> folder revealed that there wasn&rsquo;t any space occupied by logs at all). Finally assumed it because of the root filesystem btrfs doing something funny. Initially assumed it was some metadata mismanagement, (as the installed applications were around 8-10G, in a 28 G partition), tried various options according to <a href="http://marc.merlins.org/perso/btrfs/post_2014-05-04_Fixing-Btrfs-Filesystem-Full-Problems.html">this blog</a>, but in my case data was itself shown as using around 27G. Finally remembered the snapshotting feature of btrfs. So found out that the OS takes a snapshot before and after any system update activity, which is of course convenient if an update ends up screwing the system as you can always boot from a different snapshot. However in my case, I&rsquo;m really not very keen on keeping a lot of snapshots, as most of the development I do has moved to some sort of virtualenv wherever possible, and also since all my data lives in a different home and data partition, I&rsquo;m kind of okay to reinstall the OS, in case an upgrade does end up bringing the system to an unusable state. So in order to clean up the snapshot <code>snapper</code>  is the tool that helps manage snapshots (has a GUI too I think). Doing a <code>snapper ls</code> revealed that I had around close to 30 snapshots, which explained why the root partition got full. The command to delete the snapshot is</p>
+
+<pre><code># snapper rm &lt;snapid&gt;
+</code></pre>
+
+<p>Deleting all the snapshots except for the current and the first snapshot, I finally ended up getting 16 Gigs of free space. Hopefully I&rsquo;ll not run out of root space for sometime :)</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://abhishekl.in/"></a></h4>
+  
+  <p>Read <a href="http://abhishekl.in/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    
+    
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Fixing%20my%20Root%20partition%20full%20on%20btrfs&amp;url=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fbtrfs-snapper%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fbtrfs-snapper%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fbtrfs-snapper%2f&amp;description=Fixing%20my%20Root%20partition%20full%20on%20btrfs"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fabhishekl.in%2fpost%2fTech%2fbtrfs-snapper%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'hyperbolicmonologues';
+  var disqus_url = 'http:\/\/abhishekl.in\/post\/Tech\/btrfs-snapper\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Often Bearing Metaphoric Tense</a> All rights reserved 2012-15</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://abhishekl.in/js/jquery.js"></script>
+    <script type="text/javascript" src="http://abhishekl.in/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://abhishekl.in/js/index.js"></script>
+    
+</body>
+</html>
+

@@ -83,7 +83,7 @@ Cleanest method. This is what &lt;a href=&#34;https://github.com/ceph/ceph-docke
 
 &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;ENV&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt; CEPH_VERSION giant&lt;/span&gt;
 
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;RUN&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;echo &lt;/span&gt;deb http://ceph.com/debian-&lt;span style=&#34;color: #B8860B&#34;&gt;$CEPH_VERSION&lt;/span&gt;/ wheezy main | tee /etc/apt/sources.list.d/ceph-&lt;span style=&#34;color: #B8860B&#34;&gt;$CEPH_VERSION&lt;/span&gt;.list
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;RUN&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; deb http://ceph.com/debian-&lt;span style=&#34;color: #B8860B&#34;&gt;$CE&lt;/span&gt;PH_VERSION/ wheezy main | tee /etc/apt/sources.list.d/ceph-&lt;span style=&#34;color: #B8860B&#34;&gt;$CE&lt;/span&gt;PH_VERSION.list
 
 &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Running wget with no certificate checks, alternatively ssl-cert package should be installed&lt;/span&gt;
 &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;RUN&lt;/span&gt; wget --no-check-certificate -q -O- &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc&amp;#39;&lt;/span&gt; | apt-key add - &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&lt;/span&gt;

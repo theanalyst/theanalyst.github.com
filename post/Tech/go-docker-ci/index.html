@@ -183,7 +183,7 @@ Cleanest method. This is what <a href="https://github.com/ceph/ceph-docker">ceph
 
 <span style="color: #AA22FF; font-weight: bold">ENV</span><span style="color: #BB4444"> CEPH_VERSION giant</span>
 
-<span style="color: #AA22FF; font-weight: bold">RUN</span> <span style="color: #AA22FF">echo </span>deb http://ceph.com/debian-<span style="color: #B8860B">$CEPH_VERSION</span>/ wheezy main | tee /etc/apt/sources.list.d/ceph-<span style="color: #B8860B">$CEPH_VERSION</span>.list
+<span style="color: #AA22FF; font-weight: bold">RUN</span> <span style="color: #AA22FF">echo</span> deb http://ceph.com/debian-<span style="color: #B8860B">$CE</span>PH_VERSION/ wheezy main | tee /etc/apt/sources.list.d/ceph-<span style="color: #B8860B">$CE</span>PH_VERSION.list
 
 <span style="color: #008800; font-style: italic"># Running wget with no certificate checks, alternatively ssl-cert package should be installed</span>
 <span style="color: #AA22FF; font-weight: bold">RUN</span> wget --no-check-certificate -q -O- <span style="color: #BB4444">&#39;https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc&#39;</span> | apt-key add - <span style="color: #666666">&amp;&amp;</span><span style="color: #BB6622; font-weight: bold">\</span>
