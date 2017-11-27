@@ -2,127 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Consul on Often Bearing Metaphoric Tense</title>
-    <link>http://abhishekl.in/tags/consul/</link>
+    <link>http://includeio.stream/tags/consul/</link>
     <description>Recent content in Consul on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Thu, 11 Jun 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://abhishekl.in/tags/consul/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://includeio.stream/tags/consul/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>The very basics of service discovery</title>
-      <link>http://abhishekl.in/post/Tech/service-discovery/</link>
+      <link>http://includeio.stream/tech/service-discovery/</link>
       <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://abhishekl.in/post/Tech/service-discovery/</guid>
-      <description>
-
-&lt;p&gt;This is meant to be an introductory post to a series of posts about
-Service Discovery and Distributed Consensus. Hopefully this will be
-series of posts on more aspects of service discovery &amp;amp; &lt;a href=&#34;https://consul.io&#34;&gt;Consul&lt;/a&gt; etc.&lt;/p&gt;
-
-&lt;h3 id=&#34;service-discovery:dca48032d3580a06a140039e549b7e48&#34;&gt;Service Discovery&lt;/h3&gt;
-
-&lt;p&gt;We begin with the simple problem of identifying which host/port
-services are running. For eg. in a small webapp, a simple static conf
-file could point to the DB node. As functionality grows you would have
-various (preferably stateless) services talking on different ports
-(and even different servers). Continuing with a static configuration
-will mean that every time a new service is introduced, a lot of
-configuration change is expected. Also typically nodes go down, will
-reappear with a new address etc. new services will appear
-etc. Basically it is a problem of every service being in agreement on
-the environment which it is in.&lt;/p&gt;
-
-&lt;p&gt;One way of solving this problem includes having a sort of service
-registry, which could be something like a simple key value store where
-all services can query &amp;amp; use for coordination. Since this store will
-be the basis of other distributed systems, it will need to be
-consistent in face of network partitions etc., thus typically
-requiring a quorum of writes for commiting a value in the registry,
-typically using something like Paxos at its core. If that sounded
-greek to you, let us assume that you host something that is just a
-simple key/value store service. Since you can&amp;rsquo;t trust hosting this
-service on a single node, as it may go down, become unreachable
-etc. you need to host it in multiple nodes, say 3. Now writing a key
-in this store has to be consistent across all the 3 nodes, or else bad
-things may happen as the client will try to read value and start
-making decisions based on that. So every write to the store sort of
-goes to one of the nodes, which will be designated as the leader
-&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:dca48032d3580a06a140039e549b7e48:paxos&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:dca48032d3580a06a140039e549b7e48:paxos&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, and the leader ensures that every entry is passed on to its
-follower nodes. Any query reaching any of the other two nodes will be
-forwarded to the leader. The leader has the responsibility of ensuring
-that all entries are atleast written by a majority of nodes so that if
-something bad happens, a network partition for example, writes cannot
-be made until there is a majority &amp;amp; once the partition heals there can
-only be one view of the world. (Also the emphasis on odd number of
-nodes for quorum as the system can take the loss of n-&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt; nodes)&lt;/p&gt;
-
-&lt;p&gt;Currently the tools for doing this kind of service discovery &amp;amp;
-coordination include Apache Zookeeper, CoreOS&amp;rsquo; etcd, and now
-Consul. Here I&amp;rsquo;ll try to explore a little bit into the paper that
-started it all, Google&amp;rsquo;s Chubby paper.&lt;/p&gt;
-
-&lt;h3 id=&#34;chubby:dca48032d3580a06a140039e549b7e48&#34;&gt;Chubby&lt;/h3&gt;
-
-&lt;p&gt;Google&amp;rsquo;s &lt;a href=&#34;http://research.google.com/archive/chubby.html&#34;&gt;Chubby&lt;/a&gt;, is described as a coarse grained &lt;em&gt;Lock Service&lt;/em&gt;
-&amp;amp; a low volume datastore for aiding loosely coupled distributed
-systems. It was sort of like a Paxos as a Service for other systems to
-coordinate and reach a consenus about its environment &amp;amp; in electing
-leaders among a set of similar nodes etc.  Chubby also provided a
-filesystem like interface, which applications could use to share
-details about its configuration etc. Chubby was deployed in sets of
-Chubby Cells, which contained a set of 5 nodes with a master and 4
-replica nodes.&lt;/p&gt;
-
-&lt;h4 id=&#34;locks:dca48032d3580a06a140039e549b7e48&#34;&gt;Locks&lt;/h4&gt;
-
-&lt;p&gt;Chubby provided advisory locks, ie. locks only conflict with others
-trying to acquire the same lock. The locks could be used as a leader
-election primitive, for eg. by giving leadership to the lock
-holder.(Consul&amp;rsquo;s &lt;a href=&#34;http://www.consul.io/docs/internals/sessions.html&#34;&gt;session&lt;/a&gt; &amp;amp; leader election primitives are
-heavily based on this)&lt;/p&gt;
-
-&lt;h4 id=&#34;sessions-keepalives:dca48032d3580a06a140039e549b7e48&#34;&gt;Sessions &amp;amp; Keepalives&lt;/h4&gt;
-
-&lt;p&gt;In order to check for membership of clients, (so as to know what
-services are up, nodes are up etc.) each client maintained a sesion
-with a Chubby Cell, with periodic handshakes called KeepAlives. As a
-sessions lease expires the client is expected to respond, lest its
-locks, cached data etc. could be invalidated.&lt;/p&gt;
-
-&lt;h3 id=&#34;uses:dca48032d3580a06a140039e549b7e48&#34;&gt;Uses&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Allowed services to use distributed consensus primitives (like
-Paxos) without redesigning the application for it&lt;/li&gt;
-&lt;li&gt;FileSystem interface was used for managing configuration files,
-metadata etc. by services&lt;/li&gt;
-&lt;li&gt;Used as a nameserver to discover other services etc.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In further posts I&amp;rsquo;ll try to cover how tools like consul implement
-many of these features and how they can aid service discovery &amp;amp;
-coordination.&lt;/p&gt;
-
-&lt;h3 id=&#34;other-links-to-read:dca48032d3580a06a140039e549b7e48&#34;&gt;Other links to read&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://jasonwilder.com/blog/2014/02/04/service-discovery-in-the-cloud/&#34;&gt;Open Source Service Discovery&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://research.google.com/archive/chubby.html&#34;&gt;Consul Service Discovery with Docker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/papers-we-love/papers-we-love/issues/169&#34;&gt;Camille Fournier&amp;rsquo;s Chubby Presentation @ Papers we Love&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:dca48032d3580a06a140039e549b7e48:paxos&#34;&gt;Paxos doesn&amp;rsquo;t technically require a leader for commits, but explaining things is kind of more easier with a leader.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:dca48032d3580a06a140039e549b7e48:paxos&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
+      <guid>http://includeio.stream/tech/service-discovery/</guid>
+      <description>This is meant to be an introductory post to a series of posts about Service Discovery and Distributed Consensus. Hopefully this will be series of posts on more aspects of service discovery &amp;amp; Consul etc.
+Service Discovery We begin with the simple problem of identifying which host/port services are running. For eg. in a small webapp, a simple static conf file could point to the DB node. As functionality grows you would have various (preferably stateless) services talking on different ports (and even different servers).</description>
     </item>
     
   </channel>

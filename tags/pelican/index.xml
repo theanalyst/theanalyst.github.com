@@ -2,45 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pelican on Often Bearing Metaphoric Tense</title>
-    <link>http://abhishekl.in/tags/pelican/</link>
+    <link>http://includeio.stream/tags/pelican/</link>
     <description>Recent content in Pelican on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Mon, 01 Jun 2015 23:57:05 +0530</lastBuildDate>
-    <atom:link href="http://abhishekl.in/tags/pelican/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://includeio.stream/tags/pelican/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>HuGo!</title>
-      <link>http://abhishekl.in/post/Tech/hugo/</link>
+      <link>http://includeio.stream/tech/hugo/</link>
       <pubDate>Mon, 01 Jun 2015 23:57:05 +0530</pubDate>
       
-      <guid>http://abhishekl.in/post/Tech/hugo/</guid>
-      <description>&lt;p&gt;Moved my blog from pelican to &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;. Though there was nothing
-wrong with pelican as such, mostly I found a problem with my
-blog/theme not as update with pelican upstream. Hugo is a static site
-generator written by Steve Francia (&lt;a href=&#34;https://github.com/spf13&#34;&gt;@spf13&lt;/a&gt;). It is written in Go
-&amp;amp; amazingly fast to generate a site. Developing sites with hugo
-is kind of fun; running hugo in watch mode, you get to see the site as
-you write. Also hugo has a nice set of themes and rather simplistic
-approach to organizing content. Hopefully the new avatar of the blog
-should keep me interested in blogging for a while!&lt;/p&gt;
-</description>
+      <guid>http://includeio.stream/tech/hugo/</guid>
+      <description>Moved my blog from pelican to Hugo. Though there was nothing wrong with pelican as such, mostly I found a problem with my blog/theme not as update with pelican upstream. Hugo is a static site generator written by Steve Francia (@spf13). It is written in Go &amp;amp; amazingly fast to generate a site. Developing sites with hugo is kind of fun; running hugo in watch mode, you get to see the site as you write.</description>
     </item>
     
     <item>
       <title>Pelican updated!</title>
-      <link>http://abhishekl.in/post/Rants/pelican/</link>
+      <link>http://includeio.stream/rants/pelican/</link>
       <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://abhishekl.in/post/Rants/pelican/</guid>
-      <description>&lt;p&gt;It has been a significant time between the posts. This time the reason
-moslty being me lazy enough not to fix the blog after a pelican
-update. Surpisingly though there wasn&amp;rsquo;t much of a change required
-other than tweaking a couple of configuration variables &amp;amp; renaming the
-&lt;code&gt;pelicanconf&lt;/code&gt; file. Hope to start blogging again soon. This time for
-real and hopefully more tech posts. C ya :)&lt;/p&gt;
-</description>
+      <guid>http://includeio.stream/rants/pelican/</guid>
+      <description>It has been a significant time between the posts. This time the reason moslty being me lazy enough not to fix the blog after a pelican update. Surpisingly though there wasn&amp;rsquo;t much of a change required other than tweaking a couple of configuration variables &amp;amp; renaming the pelicanconf file. Hope to start blogging again soon. This time for real and hopefully more tech posts. C ya :)</description>
     </item>
     
   </channel>

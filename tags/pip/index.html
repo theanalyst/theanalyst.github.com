@@ -5,42 +5,101 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  	<meta property="og:title" content=" Pip &middot;  Often Bearing Metaphoric Tense" />
+    
+    <meta name="twitter:card" content="summary"/>
+    
+    <meta name="twitter:image" content="/images/code.png"/>
+    
+
+
+
+<meta name="twitter:title" content="Pip"/>
+<meta name="twitter:description" content="code,coffee &amp; stuff"/>
+<meta name="twitter:site" content="@abhishekl"/>
+
+
+
+  	<meta property="og:title" content="Pip &middot; Often Bearing Metaphoric Tense" />
   	<meta property="og:site_name" content="Often Bearing Metaphoric Tense" />
-  	<meta property="og:url" content="http://abhishekl.in/tags/pip/" />
+  	<meta property="og:url" content="http://includeio.stream/tags/pip/" />
+
+    
+        
+            <meta property="og:image" content="/images/code.png"/>
+        
+    
 
     
     <meta property="og:type" content="website" />
+    <meta property="og:description" content="code,coffee &amp; stuff" />
     
 
-  <title>
-     Pip &middot;  Often Bearing Metaphoric Tense
-  </title>
+    <title>Pip &middot; Often Bearing Metaphoric Tense</title>
 
+    
     <meta name="description" content="code,coffee &amp; stuff" />
+    
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="http://abhishekl.in/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="http://abhishekl.in/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="http://includeio.stream/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://includeio.stream/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/nav.css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+    <link rel="stylesheet" type="text/css" href="http://includeio.stream/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://includeio.stream/css/nav.css" />
 
+    
+
+    
 
     
       
-          <link href="http://abhishekl.in/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
+          <link href="http://includeio.stream/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
       
       
-        <link href="http://abhishekl.in/tags/pip/index.xml" rel="alternate" type="application/rss+xml" title="Pip &middot; Often Bearing Metaphoric Tense" />
+        <link href="http://includeio.stream/tags/pip/index.xml" rel="alternate" type="application/rss+xml" title="Pip &middot; Often Bearing Metaphoric Tense" />
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.31.1" />
 
-    <link rel="canonical" href="http://abhishekl.in/tags/pip/" />
+    <link rel="canonical" href="http://includeio.stream/tags/pip/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name": ,
+        
+        "url": ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": http://includeio.stream/,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://includeio.stream/
+    },
+    "description": code,coffee &amp; stuff
+}
+  </script>
+    
+
+
+    
 
     
 
@@ -59,18 +118,19 @@
         
             
             <li class="nav-opened" role="presentation">
-            	<a href="http://abhishekl.in">Blog</a>
+            	<a href="https://github.com/theanalyst">Github</a>
             </li>
         
             
             <li class="nav-opened" role="presentation">
-            	<a href="https://github.com/theanalyst">Github</a>
+            	<a href="http://includeio.stream">Blog</a>
             </li>
         
+        
     </ul>
+
     
-    
-    <a class="subscribe-button icon-feed" href="http://abhishekl.in/tags/pip/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="http://includeio.stream/tags/pip/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -81,7 +141,9 @@
 
 
 
-	<header class="main-header tag-head" style="background-image: url(http://abhishekl.in/images/code.png)">
+	 
+  <header class="main-header tag-head" style="background-image: url(/images/code.png)">
+  
 
     <nav class="main-nav overlay clearfix">
       
@@ -112,27 +174,29 @@
 	</div>
 
 	
-	   
-<article class="post post">
+	   <article class="post Tech">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://abhishekl.in/post/Tech/devpi-docker">Caching pip packages using devpi &amp; docker</a></h2>
+        <h2 class="post-title"><a href="http://includeio.stream/tech/devpi-docker/">Caching pip packages using devpi &amp; docker</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>If you&rsquo;re using python packages &amp; virtualenvs a lot, you can drastically speed up the time to setup your environment, (which mostly involves download of pip packages, which tend to be network intensive &amp; time consuming) by caching pip packages. Similar to other caching proxies like apt, python has its own caching proxy in the form of devpi, which allows you to run a pypi mirror in your laptop. (devpi is much more than just a pip mirror, for more on its capabilities read the link) Though running devpi by downloading the pip package is easy enough, running it permanently requires steps like configuring nginx etc. <a class="read-more" href="http://abhishekl.in/post/Tech/devpi-docker">&raquo;</a></p>
+        
+            <p>If you&rsquo;re using python packages &amp; virtualenvs a lot, you can drastically speed up the time to setup your environment, (which mostly involves download of pip packages, which tend to be network intensive &amp; time consuming) by caching pip packages. Similar to other caching proxies like apt, python has its own caching proxy in the form of devpi, which allows you to run a pypi mirror in your laptop. (devpi is much more than just a pip mirror, for more on its capabilities read the link) <a class="read-more" href="http://includeio.stream/tech/devpi-docker/">&raquo;</a></p>
+        
     </section>
     <footer class="post-meta">
         
+
         
-        
+
         on
             
-                <a href="http://abhishekl.in/tags/python/">#python</a>,
+                <a href="http://includeio.stream//tags/python/">#python</a>,
             
-                <a href="http://abhishekl.in/tags/docker/">#docker</a>,
+                <a href="http://includeio.stream//tags/docker/">#docker</a>,
             
-                <a href="http://abhishekl.in/tags/pip/">#pip</a>,
+                <a href="http://includeio.stream//tags/pip/">#pip</a>,
             
-                <a href="http://abhishekl.in/tags/devpi/">#devpi</a>,
+                <a href="http://includeio.stream//tags/devpi/">#devpi</a>,
             
         
         <time class="post-date" datetime="2015-07-28T00:03:28&#43;05:30">
@@ -160,9 +224,9 @@
         
     </footer>
     </div>
-    <script type="text/javascript" src="http://abhishekl.in/js/jquery.js"></script>
-    <script type="text/javascript" src="http://abhishekl.in/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="http://abhishekl.in/js/index.js"></script>
+    <script type="text/javascript" src="http://includeio.stream/js/jquery.js"></script>
+    <script type="text/javascript" src="http://includeio.stream/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://includeio.stream/js/index.js"></script>
     
 </body>
 </html>

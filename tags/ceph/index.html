@@ -5,42 +5,101 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  	<meta property="og:title" content=" Ceph &middot;  Often Bearing Metaphoric Tense" />
+    
+    <meta name="twitter:card" content="summary"/>
+    
+    <meta name="twitter:image" content="/images/code.png"/>
+    
+
+
+
+<meta name="twitter:title" content="Ceph"/>
+<meta name="twitter:description" content="code,coffee &amp; stuff"/>
+<meta name="twitter:site" content="@abhishekl"/>
+
+
+
+  	<meta property="og:title" content="Ceph &middot; Often Bearing Metaphoric Tense" />
   	<meta property="og:site_name" content="Often Bearing Metaphoric Tense" />
-  	<meta property="og:url" content="http://abhishekl.in/tags/ceph/" />
+  	<meta property="og:url" content="http://includeio.stream/tags/ceph/" />
+
+    
+        
+            <meta property="og:image" content="/images/code.png"/>
+        
+    
 
     
     <meta property="og:type" content="website" />
+    <meta property="og:description" content="code,coffee &amp; stuff" />
     
 
-  <title>
-     Ceph &middot;  Often Bearing Metaphoric Tense
-  </title>
+    <title>Ceph &middot; Often Bearing Metaphoric Tense</title>
 
+    
     <meta name="description" content="code,coffee &amp; stuff" />
+    
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="http://abhishekl.in/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="http://abhishekl.in/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="http://includeio.stream/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://includeio.stream/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="http://abhishekl.in/css/nav.css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+    <link rel="stylesheet" type="text/css" href="http://includeio.stream/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://includeio.stream/css/nav.css" />
 
+    
+
+    
 
     
       
-          <link href="http://abhishekl.in/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
+          <link href="http://includeio.stream/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
       
       
-        <link href="http://abhishekl.in/tags/ceph/index.xml" rel="alternate" type="application/rss+xml" title="Ceph &middot; Often Bearing Metaphoric Tense" />
+        <link href="http://includeio.stream/tags/ceph/index.xml" rel="alternate" type="application/rss+xml" title="Ceph &middot; Often Bearing Metaphoric Tense" />
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.31.1" />
 
-    <link rel="canonical" href="http://abhishekl.in/tags/ceph/" />
+    <link rel="canonical" href="http://includeio.stream/tags/ceph/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name": ,
+        
+        "url": ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": http://includeio.stream/,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://includeio.stream/
+    },
+    "description": code,coffee &amp; stuff
+}
+  </script>
+    
+
+
+    
 
     
 
@@ -59,18 +118,19 @@
         
             
             <li class="nav-opened" role="presentation">
-            	<a href="http://abhishekl.in">Blog</a>
+            	<a href="https://github.com/theanalyst">Github</a>
             </li>
         
             
             <li class="nav-opened" role="presentation">
-            	<a href="https://github.com/theanalyst">Github</a>
+            	<a href="http://includeio.stream">Blog</a>
             </li>
         
+        
     </ul>
+
     
-    
-    <a class="subscribe-button icon-feed" href="http://abhishekl.in/tags/ceph/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="http://includeio.stream/tags/ceph/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -81,7 +141,9 @@
 
 
 
-	<header class="main-header tag-head" style="background-image: url(http://abhishekl.in/images/code.png)">
+	 
+  <header class="main-header tag-head" style="background-image: url(/images/code.png)">
+  
 
     <nav class="main-nav overlay clearfix">
       
@@ -112,27 +174,30 @@
 	</div>
 
 	
-	   
-<article class="post post">
+	   <article class="post Tech">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://abhishekl.in/post/Tech/go-docker-ci">Running Go ci tests in a docker</a></h2>
+        <h2 class="post-title"><a href="http://includeio.stream/tech/go-docker-ci/">Running Go ci tests in a docker</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>I&rsquo;ve been toying around with the idea of using containers for running ci tests, primarily to have a quicker feedback loop; instead of setups that involve VMs etc. They are ideal for getting an environment up and running quickly and cheap to throw away too. A project which I&rsquo;m spending some time lately go-ceph, which provides Go bindings for ceph/rados, kind of ideally fit the bill for using this, since testing this project locally, usually needed something like a VM running a ceph cluster, or a locally running ceph. <a class="read-more" href="http://abhishekl.in/post/Tech/go-docker-ci">&raquo;</a></p>
+        
+            <p>I&rsquo;ve been toying around with the idea of using containers for running ci tests, primarily to have a quicker feedback loop; instead of setups that involve VMs etc. They are ideal for getting an environment up and running quickly and cheap to throw away too.
+A project which I&rsquo;m spending some time lately go-ceph, which provides Go bindings for ceph/rados, kind of ideally fit the bill for using this, since testing this project locally, usually needed something like a VM running a ceph cluster, or a locally running ceph. <a class="read-more" href="http://includeio.stream/tech/go-docker-ci/">&raquo;</a></p>
+        
     </section>
     <footer class="post-meta">
         
+
         
-        
+
         on
             
-                <a href="http://abhishekl.in/tags/docker/">#docker</a>,
+                <a href="http://includeio.stream//tags/docker/">#docker</a>,
             
-                <a href="http://abhishekl.in/tags/go/">#Go</a>,
+                <a href="http://includeio.stream//tags/go/">#Go</a>,
             
-                <a href="http://abhishekl.in/tags/ci/">#ci</a>,
+                <a href="http://includeio.stream//tags/ci/">#ci</a>,
             
-                <a href="http://abhishekl.in/tags/ceph/">#ceph</a>,
+                <a href="http://includeio.stream//tags/ceph/">#ceph</a>,
             
         
         <time class="post-date" datetime="2015-05-25T23:45:44&#43;05:30">
@@ -160,9 +225,9 @@
         
     </footer>
     </div>
-    <script type="text/javascript" src="http://abhishekl.in/js/jquery.js"></script>
-    <script type="text/javascript" src="http://abhishekl.in/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="http://abhishekl.in/js/index.js"></script>
+    <script type="text/javascript" src="http://includeio.stream/js/jquery.js"></script>
+    <script type="text/javascript" src="http://includeio.stream/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://includeio.stream/js/index.js"></script>
     
 </body>
 </html>
