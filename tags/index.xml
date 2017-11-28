@@ -2,247 +2,246 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Often Bearing Metaphoric Tense</title>
-    <link>http://includeio.stream/tags/</link>
+    <link>http://www.includeio.stream/tags/</link>
     <description>Recent content in Tags on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Mon, 01 Jun 2015 23:57:05 +0530</lastBuildDate>
     
-	<atom:link href="http://includeio.stream/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.includeio.stream/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blog</title>
-      <link>http://includeio.stream/tags/blog/</link>
+      <link>http://www.includeio.stream/tags/blog/</link>
       <pubDate>Mon, 01 Jun 2015 23:57:05 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/blog/</guid>
+      <guid>http://www.includeio.stream/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ceph</title>
-      <link>http://includeio.stream/tags/ceph/</link>
+      <link>http://www.includeio.stream/tags/ceph/</link>
       <pubDate>Mon, 25 May 2015 23:45:44 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/ceph/</guid>
+      <guid>http://www.includeio.stream/tags/ceph/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Chubby</title>
-      <link>http://includeio.stream/tags/chubby/</link>
+      <link>http://www.includeio.stream/tags/chubby/</link>
       <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/chubby/</guid>
+      <guid>http://www.includeio.stream/tags/chubby/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ci</title>
-      <link>http://includeio.stream/tags/ci/</link>
+      <link>http://www.includeio.stream/tags/ci/</link>
       <pubDate>Mon, 25 May 2015 23:45:44 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/ci/</guid>
+      <guid>http://www.includeio.stream/tags/ci/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Consul</title>
-      <link>http://includeio.stream/tags/consul/</link>
+      <link>http://www.includeio.stream/tags/consul/</link>
       <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/consul/</guid>
+      <guid>http://www.includeio.stream/tags/consul/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Devpi</title>
-      <link>http://includeio.stream/tags/devpi/</link>
+      <link>http://www.includeio.stream/tags/devpi/</link>
       <pubDate>Tue, 28 Jul 2015 00:03:28 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/devpi/</guid>
+      <guid>http://www.includeio.stream/tags/devpi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Distributed Systems</title>
-      <link>http://includeio.stream/tags/distributed-systems/</link>
+      <link>http://www.includeio.stream/tags/distributed-systems/</link>
       <pubDate>Fri, 17 Jul 2015 23:10:55 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/distributed-systems/</guid>
+      <guid>http://www.includeio.stream/tags/distributed-systems/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>http://includeio.stream/tags/docker/</link>
+      <link>http://www.includeio.stream/tags/docker/</link>
       <pubDate>Tue, 28 Jul 2015 00:03:28 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/docker/</guid>
+      <guid>http://www.includeio.stream/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Emacs</title>
-      <link>http://includeio.stream/tags/emacs/</link>
+      <link>http://www.includeio.stream/tags/emacs/</link>
       <pubDate>Sat, 22 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/emacs/</guid>
+      <guid>http://www.includeio.stream/tags/emacs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Go</title>
-      <link>http://includeio.stream/tags/go/</link>
+      <link>http://www.includeio.stream/tags/go/</link>
       <pubDate>Mon, 01 Jun 2015 23:57:05 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/go/</guid>
+      <guid>http://www.includeio.stream/tags/go/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Goodreads</title>
-      <link>http://includeio.stream/tags/goodreads/</link>
+      <link>http://www.includeio.stream/tags/goodreads/</link>
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/goodreads/</guid>
+      <guid>http://www.includeio.stream/tags/goodreads/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hy</title>
-      <link>http://includeio.stream/tags/hy/</link>
+      <link>http://www.includeio.stream/tags/hy/</link>
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/hy/</guid>
+      <guid>http://www.includeio.stream/tags/hy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kindle</title>
-      <link>http://includeio.stream/tags/kindle/</link>
+      <link>http://www.includeio.stream/tags/kindle/</link>
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/kindle/</guid>
+      <guid>http://www.includeio.stream/tags/kindle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Learn</title>
-      <link>http://includeio.stream/tags/learn/</link>
+      <link>http://www.includeio.stream/tags/learn/</link>
       <pubDate>Sat, 22 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/learn/</guid>
+      <guid>http://www.includeio.stream/tags/learn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Links</title>
-      <link>http://includeio.stream/tags/links/</link>
+      <link>http://www.includeio.stream/tags/links/</link>
       <pubDate>Fri, 17 Jul 2015 23:10:55 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/links/</guid>
+      <guid>http://www.includeio.stream/tags/links/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pandas</title>
-      <link>http://includeio.stream/tags/pandas/</link>
+      <link>http://www.includeio.stream/tags/pandas/</link>
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/pandas/</guid>
+      <guid>http://www.includeio.stream/tags/pandas/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pelican</title>
-      <link>http://includeio.stream/tags/pelican/</link>
+      <link>http://www.includeio.stream/tags/pelican/</link>
       <pubDate>Mon, 01 Jun 2015 23:57:05 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/pelican/</guid>
+      <guid>http://www.includeio.stream/tags/pelican/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pip</title>
-      <link>http://includeio.stream/tags/pip/</link>
+      <link>http://www.includeio.stream/tags/pip/</link>
       <pubDate>Tue, 28 Jul 2015 00:03:28 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/pip/</guid>
+      <guid>http://www.includeio.stream/tags/pip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Procrastination</title>
-      <link>http://includeio.stream/tags/procrastination/</link>
+      <link>http://www.includeio.stream/tags/procrastination/</link>
       <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/procrastination/</guid>
+      <guid>http://www.includeio.stream/tags/procrastination/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>http://includeio.stream/tags/python/</link>
+      <link>http://www.includeio.stream/tags/python/</link>
       <pubDate>Tue, 28 Jul 2015 00:03:28 +0530</pubDate>
       
-      <guid>http://includeio.stream/tags/python/</guid>
+      <guid>http://www.includeio.stream/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rants</title>
-      <link>http://includeio.stream/tags/rants/</link>
+      <link>http://www.includeio.stream/tags/rants/</link>
       <pubDate>Mon, 01 Apr 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/rants/</guid>
+      <guid>http://www.includeio.stream/tags/rants/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Service Discovery</title>
-      <link>http://includeio.stream/tags/service-discovery/</link>
+      <link>http://www.includeio.stream/tags/service-discovery/</link>
       <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/service-discovery/</guid>
+      <guid>http://www.includeio.stream/tags/service-discovery/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tech</title>
-      <link>http://includeio.stream/tags/tech/</link>
+      <link>http://www.includeio.stream/tags/tech/</link>
       <pubDate>Sat, 22 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/tech/</guid>
+      <guid>http://www.includeio.stream/tags/tech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Travis</title>
-      <link>http://includeio.stream/tags/travis/</link>
+      <link>http://www.includeio.stream/tags/travis/</link>
       <pubDate>Sun, 01 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/travis/</guid>
+      <guid>http://www.includeio.stream/tags/travis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Twitter</title>
-      <link>http://includeio.stream/tags/twitter/</link>
+      <link>http://www.includeio.stream/tags/twitter/</link>
       <pubDate>Mon, 01 Apr 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/twitter/</guid>
+      <guid>http://www.includeio.stream/tags/twitter/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Writing</title>
-      <link>http://includeio.stream/tags/writing/</link>
+      <link>http://www.includeio.stream/tags/writing/</link>
       <pubDate>Mon, 01 Apr 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://includeio.stream/tags/writing/</guid>
+      <guid>http://www.includeio.stream/tags/writing/</guid>
       <description></description>
     </item>
     

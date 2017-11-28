@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="">
 <head>
 
     <meta charset="utf-8" />
@@ -22,7 +22,7 @@
 
   	<meta property="og:title" content="Running Go ci tests in a docker &middot; Often Bearing Metaphoric Tense" />
   	<meta property="og:site_name" content="Often Bearing Metaphoric Tense" />
-  	<meta property="og:url" content="http://includeio.stream/tech/go-docker-ci/" />
+  	<meta property="og:url" content="http://www.includeio.stream/tech/go-docker-ci/" />
 
     
        <meta property="og:image" content="/images/docker.jpg"/>
@@ -53,11 +53,11 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="http://includeio.stream/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="http://includeio.stream/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="http://www.includeio.stream/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://www.includeio.stream/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="http://includeio.stream/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="http://includeio.stream/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.includeio.stream/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.includeio.stream/css/nav.css" />
 
     
 
@@ -65,13 +65,13 @@
 
     
       
-          <link href="http://includeio.stream/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
+          <link href="http://www.includeio.stream/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
       
       
     
     <meta name="generator" content="Hugo 0.31.1" />
 
-    <link rel="canonical" href="http://includeio.stream/tech/go-docker-ci/" />
+    <link rel="canonical" href="http://www.includeio.stream/tech/go-docker-ci/" />
 
     
       
@@ -108,13 +108,13 @@
       "@type": "Language",
       "alternateName": en
     },
-    "url": http://includeio.stream/tech/go-docker-ci/,
+    "url": http://www.includeio.stream/tech/go-docker-ci/,
     "datePublished": 2015-05-25T23:45Z,
     "dateModified": 2015-05-25T23:45Z,
     
     "image": {
         "@type": "ImageObject",
-        "url": http://includeio.stream/images/docker.jpg,
+        "url": http://www.includeio.stream/images/docker.jpg,
         "width": 3000,
         "height": 1445
     },
@@ -123,7 +123,7 @@
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": http://includeio.stream/tech/go-docker-ci/
+        "@id": http://www.includeio.stream/tech/go-docker-ci/
     }
 }
     </script>
@@ -154,14 +154,14 @@
         
             
             <li class="nav-opened" role="presentation">
-            	<a href="http://includeio.stream">Blog</a>
+            	<a href="#ZgotmplZ">Blog</a>
             </li>
         
         
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="http://includeio.stream/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="http://www.includeio.stream/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -200,13 +200,13 @@
         <section class="post-meta">
         
          
-          <span class="post-tag small"><a href="http://includeio.stream//tags/docker/">#docker</a></span>
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/docker/">#docker</a></span>
          
-          <span class="post-tag small"><a href="http://includeio.stream//tags/go/">#Go</a></span>
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/go/">#Go</a></span>
          
-          <span class="post-tag small"><a href="http://includeio.stream//tags/ci/">#ci</a></span>
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/ci/">#ci</a></span>
          
-          <span class="post-tag small"><a href="http://includeio.stream//tags/ceph/">#ceph</a></span>
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/ceph/">#ceph</a></span>
          
         </section>
     </header>
@@ -256,24 +256,24 @@ Cleanest method. This is what <a href="https://github.com/ceph/ceph-docker">ceph
 
 <p>A third alternative is to run a shell script as the entrypoint; finishing off the script with an <code>exec</code>, note that this method will fail when the entrypoint is overridden. However since all I wanted was a minimally working ceph cluster; this hack was used to run a shell script that basically started all the necessary processes and finished off with an <code>exec</code> call running <code>go test -v</code> for the package. This is how the dockerfile looked ultimately</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#a2f;font-weight:bold">FROM</span><span style="color:#b44"> golang:1.3-wheezy</span><span style="">
-</span><span style=""></span><span style="color:#a2f;font-weight:bold">MAINTAINER</span><span style="color:#b44"> Abhishek Lekshmanan &#34;abhishek.lekshmanan@gmail.com&#34;</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="color:#a2f;font-weight:bold">ENV</span><span style="color:#b44"> CEPH_VERSION giant</span><span style="">
-</span><span style="">
-</span><span style=""></span><span style="color:#a2f;font-weight:bold">RUN</span> <span style="color:#a2f">echo</span> deb http://ceph.com/debian-<span style="color:#b8860b">$CEPH_VERSION</span>/ wheezy main | tee /etc/apt/sources.list.d/ceph-<span style="color:#b8860b">$CEPH_VERSION</span>.list<span style="">
-</span><span style="">
-</span><span style=""></span><span style="color:#080;font-style:italic"># Running wget with no certificate checks, alternatively ssl-cert package should be installed</span><span style="">
-</span><span style=""></span><span style="color:#a2f;font-weight:bold">RUN</span> wget --no-check-certificate -q -O- <span style="color:#b44">&#39;https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc&#39;</span> | apt-key add - <span style="color:#666">&amp;&amp;</span><span style="color:#b62;font-weight:bold">\
-</span><span style="color:#b62;font-weight:bold"></span>    apt-get update <span style="color:#666">&amp;&amp;</span> <span style="color:#b62;font-weight:bold">\
-</span><span style="color:#b62;font-weight:bold"></span>    apt-get install -y ceph <span style="color:#b62;font-weight:bold">\
-</span><span style="color:#b62;font-weight:bold"></span>    librados-dev librbd-dev libcephfs-dev<span style="">
-</span><span style="">
-</span><span style=""></span><span style="color:#a2f;font-weight:bold">VOLUME</span><span style="color:#b44"> /go/src/github.com/noahdesu/go-ceph</span><span style="">
-</span><span style="">
-</span><span style=""></span>COPY ./ci/entrypoint.sh /tmp/entrypoint.sh<span style="">
-</span><span style="">
-</span><span style=""></span><span style="color:#a2f;font-weight:bold">ENTRYPOINT</span><span style="color:#b44"> [&#34;/tmp/entrypoint.sh&#34;, &#34;/tmp/micro-ceph&#34;]</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> golang:1.3-wheezy</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Abhishek Lekshmanan &#34;abhishek.lekshmanan@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span><span style="color:#e6db74"> CEPH_VERSION giant</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo deb http://ceph.com/debian-$CEPH_VERSION/ wheezy main | tee /etc/apt/sources.list.d/ceph-$CEPH_VERSION.list<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Running wget with no certificate checks, alternatively ssl-cert package should be installed</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> wget --no-check-certificate -q -O- <span style="color:#e6db74">&#39;https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc&#39;</span> | apt-key add - <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get install -y ceph <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    librados-dev librbd-dev libcephfs-dev<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">VOLUME</span><span style="color:#e6db74"> /go/src/github.com/noahdesu/go-ceph</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>COPY ./ci/entrypoint.sh /tmp/entrypoint.sh<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span><span style="color:#e6db74"> [&#34;/tmp/entrypoint.sh&#34;, &#34;/tmp/micro-ceph&#34;]</span></code></pre></div>
 
 <p>For those interested in ceph, the entrypoint script was a modification
 of <a href="http://dachary.org/?p=2374">Loic&rsquo;s micro-osd script</a>, with the only addition being getting the go dependencies and finishing of with an <code>exec</code> call of <code>go test</code>. For the gory details refer to the actuall <a href="https://github.com/noahdesu/go-ceph/pull/21">pull request</a> submitted to the upstream project.</p>
@@ -297,19 +297,19 @@ dependencies etc easily in a docker.</p>
     
 <section class="share">
   <h4>Share this Tech</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Running%20Go%20ci%20tests%20in%20a%20docker&nbsp;-&nbsp;Often%20Bearing%20Metaphoric%20Tense&amp;url=http%3a%2f%2fincludeio.stream%2ftech%2fgo-docker-ci%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Running%20Go%20ci%20tests%20in%20a%20docker&nbsp;-&nbsp;Often%20Bearing%20Metaphoric%20Tense&amp;url=http%3a%2f%2fwww.includeio.stream%2ftech%2fgo-docker-ci%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fincludeio.stream%2ftech%2fgo-docker-ci%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fwww.includeio.stream%2ftech%2fgo-docker-ci%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fincludeio.stream%2ftech%2fgo-docker-ci%2f&amp;description=Running%20Go%20ci%20tests%20in%20a%20docker"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fwww.includeio.stream%2ftech%2fgo-docker-ci%2f&amp;description=Running%20Go%20ci%20tests%20in%20a%20docker"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fincludeio.stream%2ftech%2fgo-docker-ci%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fwww.includeio.stream%2ftech%2fgo-docker-ci%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -326,8 +326,8 @@ dependencies etc easily in a docker.</p>
 
 
 var disqus_config = function () {
-this.page.url = "http:\/\/includeio.stream\/tech\/go-docker-ci\/";  
-this.page.identifier = "http:\/\/includeio.stream\/tech\/go-docker-ci\/"; 
+this.page.url = "http:\/\/www.includeio.stream\/tech\/go-docker-ci\/";  
+this.page.identifier = "http:\/\/www.includeio.stream\/tech\/go-docker-ci\/"; 
 };
 
 (function() { 
@@ -354,7 +354,7 @@ s.setAttribute('data-timestamp', +new Date());
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="http://includeio.stream/tech/hugo/">
+      <a class="read-next-story" style="no-cover" href="http://www.includeio.stream/tech/hugo/">
           <section class="post">
               <h2>HuGo!</h2>
               
@@ -362,7 +362,7 @@ s.setAttribute('data-timestamp', +new Date());
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="http://includeio.stream/tech/travis-builds/">
+      <a class="read-next-story prev" style="no-cover" href="http://www.includeio.stream/tech/travis-builds/">
           <section class="post">
               <h2>Faster python builds in Travis with container based infra</h2>
           </section>
@@ -379,9 +379,9 @@ s.setAttribute('data-timestamp', +new Date());
         
     </footer>
     </div>
-    <script type="text/javascript" src="http://includeio.stream/js/jquery.js"></script>
-    <script type="text/javascript" src="http://includeio.stream/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="http://includeio.stream/js/index.js"></script>
+    <script type="text/javascript" src="http://www.includeio.stream/js/jquery.js"></script>
+    <script type="text/javascript" src="http://www.includeio.stream/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://www.includeio.stream/js/index.js"></script>
     
 </body>
 </html>

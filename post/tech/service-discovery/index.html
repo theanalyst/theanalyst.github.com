@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:image" content="/images/signs.jpg"/>
+    
+
+
+
+<meta name="twitter:title" content="The very basics of service discovery"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@abhishekl"/>
+
+
+
+  	<meta property="og:title" content="The very basics of service discovery &middot; Often Bearing Metaphoric Tense" />
+  	<meta property="og:site_name" content="Often Bearing Metaphoric Tense" />
+  	<meta property="og:url" content="http://www.includeio.stream/post/tech/service-discovery/" />
+
+    
+       <meta property="og:image" content="/images/signs.jpg"/>
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2015-06-11T00:00:00Z" />
+
+    
+    <meta property="article:tag" content="consul" />
+    
+    <meta property="article:tag" content="distributed-systems" />
+    
+    <meta property="article:tag" content="service-discovery" />
+    
+    <meta property="article:tag" content="chubby" />
+    
+    
+
+    <title>The very basics of service discovery &middot; Often Bearing Metaphoric Tense</title>
+
+    
+    <meta name="description" content="This is meant to be an introductory post to a series of posts about Service Discovery and Distributed Consensus. Hopefully this will be series of posts on more " />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://www.includeio.stream/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://www.includeio.stream/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://www.includeio.stream/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.includeio.stream/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="http://www.includeio.stream/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.31.1" />
+
+    <link rel="canonical" href="http://www.includeio.stream/post/tech/service-discovery/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": 
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "url": ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": The very basics of service discovery,
+    "name": The very basics of service discovery,
+    "wordCount": 768,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://www.includeio.stream/post/tech/service-discovery/,
+    "datePublished": 2015-06-11T00:00Z,
+    "dateModified": 2015-06-11T00:00Z,
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": http://www.includeio.stream/images/signs.jpg,
+        "width": 3000,
+        "height": 1445
+    },
+    
+    "keywords": consul, distributed-systems, service-discovery, chubby,
+    "description": ,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://www.includeio.stream/post/tech/service-discovery/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/theanalyst">Github</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="#ZgotmplZ">Blog</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="http://www.includeio.stream/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+  
+  <header class="main-header post-head" style="background-image: url(/images/signs.jpg)">
+  
+  <nav class="main-nav overlay clearfix">
+
+
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">The very basics of service discovery</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2015-06-11T00:00:00Z">
+            Jun 11, 2015
+          </time>
+        
+         
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/consul/">#consul</a></span>
+         
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/distributed-systems/">#distributed-systems</a></span>
+         
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/service-discovery/">#service-discovery</a></span>
+         
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/chubby/">#chubby</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p>This is meant to be an introductory post to a series of posts about
+Service Discovery and Distributed Consensus. Hopefully this will be
+series of posts on more aspects of service discovery &amp; <a href="https://consul.io">Consul</a> etc.</p>
+
+<h3 id="service-discovery">Service Discovery</h3>
+
+<p>We begin with the simple problem of identifying which host/port
+services are running. For eg. in a small webapp, a simple static conf
+file could point to the DB node. As functionality grows you would have
+various (preferably stateless) services talking on different ports
+(and even different servers). Continuing with a static configuration
+will mean that every time a new service is introduced, a lot of
+configuration change is expected. Also typically nodes go down, will
+reappear with a new address etc. new services will appear
+etc. Basically it is a problem of every service being in agreement on
+the environment which it is in.</p>
+
+<p>One way of solving this problem includes having a sort of service
+registry, which could be something like a simple key value store where
+all services can query &amp; use for coordination. Since this store will
+be the basis of other distributed systems, it will need to be
+consistent in face of network partitions etc., thus typically
+requiring a quorum of writes for commiting a value in the registry,
+typically using something like Paxos at its core. If that sounded
+greek to you, let us assume that you host something that is just a
+simple key/value store service. Since you can&rsquo;t trust hosting this
+service on a single node, as it may go down, become unreachable
+etc. you need to host it in multiple nodes, say 3. Now writing a key
+in this store has to be consistent across all the 3 nodes, or else bad
+things may happen as the client will try to read value and start
+making decisions based on that. So every write to the store sort of
+goes to one of the nodes, which will be designated as the leader
+<sup class="footnote-ref" id="fnref:paxos"><a rel="footnote" href="#fn:paxos">1</a></sup>, and the leader ensures that every entry is passed on to its
+follower nodes. Any query reaching any of the other two nodes will be
+forwarded to the leader. The leader has the responsibility of ensuring
+that all entries are atleast written by a majority of nodes so that if
+something bad happens, a network partition for example, writes cannot
+be made until there is a majority &amp; once the partition heals there can
+only be one view of the world. (Also the emphasis on odd number of
+nodes for quorum as the system can take the loss of n-<sup>1</sup>&frasl;<sub>2</sub> nodes)</p>
+
+<p>Currently the tools for doing this kind of service discovery &amp;
+coordination include Apache Zookeeper, CoreOS&rsquo; etcd, and now
+Consul. Here I&rsquo;ll try to explore a little bit into the paper that
+started it all, Google&rsquo;s Chubby paper.</p>
+
+<h3 id="chubby">Chubby</h3>
+
+<p>Google&rsquo;s <a href="http://research.google.com/archive/chubby.html">Chubby</a>, is described as a coarse grained <em>Lock Service</em>
+&amp; a low volume datastore for aiding loosely coupled distributed
+systems. It was sort of like a Paxos as a Service for other systems to
+coordinate and reach a consenus about its environment &amp; in electing
+leaders among a set of similar nodes etc.  Chubby also provided a
+filesystem like interface, which applications could use to share
+details about its configuration etc. Chubby was deployed in sets of
+Chubby Cells, which contained a set of 5 nodes with a master and 4
+replica nodes.</p>
+
+<h4 id="locks">Locks</h4>
+
+<p>Chubby provided advisory locks, ie. locks only conflict with others
+trying to acquire the same lock. The locks could be used as a leader
+election primitive, for eg. by giving leadership to the lock
+holder.(Consul&rsquo;s <a href="http://www.consul.io/docs/internals/sessions.html">session</a> &amp; leader election primitives are
+heavily based on this)</p>
+
+<h4 id="sessions-keepalives">Sessions &amp; Keepalives</h4>
+
+<p>In order to check for membership of clients, (so as to know what
+services are up, nodes are up etc.) each client maintained a sesion
+with a Chubby Cell, with periodic handshakes called KeepAlives. As a
+sessions lease expires the client is expected to respond, lest its
+locks, cached data etc. could be invalidated.</p>
+
+<h3 id="uses">Uses</h3>
+
+<ul>
+<li>Allowed services to use distributed consensus primitives (like
+Paxos) without redesigning the application for it</li>
+<li>FileSystem interface was used for managing configuration files,
+metadata etc. by services</li>
+<li>Used as a nameserver to discover other services etc.</li>
+</ul>
+
+<p>In further posts I&rsquo;ll try to cover how tools like consul implement
+many of these features and how they can aid service discovery &amp;
+coordination.</p>
+
+<h3 id="other-links-to-read">Other links to read</h3>
+
+<ul>
+<li><a href="http://jasonwilder.com/blog/2014/02/04/service-discovery-in-the-cloud/">Open Source Service Discovery</a></li>
+<li><a href="http://research.google.com/archive/chubby.html">Consul Service Discovery with Docker</a></li>
+<li><a href="https://github.com/papers-we-love/papers-we-love/issues/169">Camille Fournier&rsquo;s Chubby Presentation @ Papers we Love</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:paxos">Paxos doesn&rsquo;t technically require a leader for commits, but explaining things is kind of more easier with a leader.
+ <a class="footnote-return" href="#fnref:paxos"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=The%20very%20basics%20of%20service%20discovery&nbsp;-&nbsp;Often%20Bearing%20Metaphoric%20Tense&amp;url=http%3a%2f%2fwww.includeio.stream%2fpost%2ftech%2fservice-discovery%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fwww.includeio.stream%2fpost%2ftech%2fservice-discovery%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fwww.includeio.stream%2fpost%2ftech%2fservice-discovery%2f&amp;description=The%20very%20basics%20of%20service%20discovery"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fwww.includeio.stream%2fpost%2ftech%2fservice-discovery%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http:\/\/www.includeio.stream\/post\/tech\/service-discovery\/";  
+this.page.identifier = "http:\/\/www.includeio.stream\/post\/tech\/service-discovery\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://hyperbolicmonologues.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="http://www.includeio.stream/post/tech/distributed-system-links/">
+          <section class="post">
+              <h2>Collecting distributed system links</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="http://www.includeio.stream/post/tech/hugo/">
+          <section class="post">
+              <h2>HuGo!</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Often Bearing Metaphoric Tense</a> All rights reserved 2012-15</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://www.includeio.stream/js/jquery.js"></script>
+    <script type="text/javascript" src="http://www.includeio.stream/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://www.includeio.stream/js/index.js"></script>
+    
+</body>
+</html>
+

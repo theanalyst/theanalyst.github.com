@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="">
 <head>
 
     <meta charset="utf-8" />
@@ -20,7 +20,7 @@
 
   	<meta property="og:title" content="Caching pip packages using devpi &amp; docker &middot; Often Bearing Metaphoric Tense" />
   	<meta property="og:site_name" content="Often Bearing Metaphoric Tense" />
-  	<meta property="og:url" content="http://includeio.stream/tech/devpi-docker/" />
+  	<meta property="og:url" content="http://www.includeio.stream/tech/devpi-docker/" />
 
     
         
@@ -53,11 +53,11 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="http://includeio.stream/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="http://includeio.stream/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="http://www.includeio.stream/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://www.includeio.stream/images/apple-touch-icon.png" />
 
-    <link rel="stylesheet" type="text/css" href="http://includeio.stream/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="http://includeio.stream/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.includeio.stream/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.includeio.stream/css/nav.css" />
 
     
 
@@ -65,13 +65,13 @@
 
     
       
-          <link href="http://includeio.stream/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
+          <link href="http://www.includeio.stream/index.xml" rel="alternate" type="application/rss+xml" title="Often Bearing Metaphoric Tense" />
       
       
     
     <meta name="generator" content="Hugo 0.31.1" />
 
-    <link rel="canonical" href="http://includeio.stream/tech/devpi-docker/" />
+    <link rel="canonical" href="http://www.includeio.stream/tech/devpi-docker/" />
 
     
       
@@ -108,7 +108,7 @@
       "@type": "Language",
       "alternateName": en
     },
-    "url": http://includeio.stream/tech/devpi-docker/,
+    "url": http://www.includeio.stream/tech/devpi-docker/,
     "datePublished": 2015-07-28T00:03Z,
     "dateModified": 2015-07-28T00:03Z,
     
@@ -116,7 +116,7 @@
     "description": ,
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": http://includeio.stream/tech/devpi-docker/
+        "@id": http://www.includeio.stream/tech/devpi-docker/
     }
 }
     </script>
@@ -147,14 +147,14 @@
         
             
             <li class="nav-opened" role="presentation">
-            	<a href="http://includeio.stream">Blog</a>
+            	<a href="#ZgotmplZ">Blog</a>
             </li>
         
         
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="http://includeio.stream/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="http://www.includeio.stream/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -191,13 +191,13 @@
         <section class="post-meta">
         
          
-          <span class="post-tag small"><a href="http://includeio.stream//tags/python/">#python</a></span>
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/python/">#python</a></span>
          
-          <span class="post-tag small"><a href="http://includeio.stream//tags/docker/">#docker</a></span>
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/docker/">#docker</a></span>
          
-          <span class="post-tag small"><a href="http://includeio.stream//tags/pip/">#pip</a></span>
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/pip/">#pip</a></span>
          
-          <span class="post-tag small"><a href="http://includeio.stream//tags/devpi/">#devpi</a></span>
+          <span class="post-tag small"><a href="http://www.includeio.stream//tags/devpi/">#devpi</a></span>
          
         </section>
     </header>
@@ -222,15 +222,15 @@ Scrapinghub&rsquo;s
 makes it easy enough to get started. Running a devpi server is as
 simple as:</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"> $ docker pull scrapinghub/devpi
- $ docker run -d --name devpi -p <span style="color:#666">3141</span>:3141 scrapinghub/devpi</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"> $ docker pull scrapinghub/devpi
+ $ docker run -d --name devpi -p <span style="color:#ae81ff">3141</span>:3141 scrapinghub/devpi</code></pre></div>
 
 <p>Next configure your pip to pull from here. This is as simple as
 sticking the following line into your pip.conf (which should reside in
 ~/.pip/pip.conf, if there is no file, create it)</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cfg" data-lang="cfg"><span style="color:#a2f;font-weight:bold">[global]</span>
-<span style="color:#b44">index-url</span> <span style="color:#666">=</span> <span style="color:#b44">http://localhost:3141/root/pypi/+simple/</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cfg" data-lang="cfg"><span style="color:#66d9ef">[global]</span>
+<span style="color:#a6e22e">index-url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">http://localhost:3141/root/pypi/+simple/</span></code></pre></div>
 
 <p>Next downloading a pip package will be mirrored, trying to install it
 again (even in other virtualenvs) should be almost instantaneous.</p>
@@ -243,10 +243,10 @@ would be something like <code>/etc/init/devpi-docker.conf</code> with contents
 similiar to below. After adding the script, you would have to do an
 <code>initctl reload-configuration</code> for upstart to see the script.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">description <span style="color:#b44">&#34;Devpi Docker&#34;</span>
-author <span style="color:#b44">&#34;You&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">description <span style="color:#e6db74">&#34;Devpi Docker&#34;</span>
+author <span style="color:#e6db74">&#34;You&#34;</span>
 start on filesystem and started docker
-stop on runlevel <span style="color:#666">[</span>!2345<span style="color:#666">]</span>
+stop on runlevel <span style="color:#f92672">[</span>!2345<span style="color:#f92672">]</span>
 respawn
 script
   /usr/bin/docker start devpi
@@ -270,19 +270,19 @@ system starts.</p>
     
 <section class="share">
   <h4>Share this Tech</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Caching%20pip%20packages%20using%20devpi%20%26%20docker&nbsp;-&nbsp;Often%20Bearing%20Metaphoric%20Tense&amp;url=http%3a%2f%2fincludeio.stream%2ftech%2fdevpi-docker%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Caching%20pip%20packages%20using%20devpi%20%26%20docker&nbsp;-&nbsp;Often%20Bearing%20Metaphoric%20Tense&amp;url=http%3a%2f%2fwww.includeio.stream%2ftech%2fdevpi-docker%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fincludeio.stream%2ftech%2fdevpi-docker%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fwww.includeio.stream%2ftech%2fdevpi-docker%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fincludeio.stream%2ftech%2fdevpi-docker%2f&amp;description=Caching%20pip%20packages%20using%20devpi%20%26%20docker"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fwww.includeio.stream%2ftech%2fdevpi-docker%2f&amp;description=Caching%20pip%20packages%20using%20devpi%20%26%20docker"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fincludeio.stream%2ftech%2fdevpi-docker%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fwww.includeio.stream%2ftech%2fdevpi-docker%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -299,8 +299,8 @@ system starts.</p>
 
 
 var disqus_config = function () {
-this.page.url = "http:\/\/includeio.stream\/tech\/devpi-docker\/";  
-this.page.identifier = "http:\/\/includeio.stream\/tech\/devpi-docker\/"; 
+this.page.url = "http:\/\/www.includeio.stream\/tech\/devpi-docker\/";  
+this.page.identifier = "http:\/\/www.includeio.stream\/tech\/devpi-docker\/"; 
 };
 
 (function() { 
@@ -328,7 +328,7 @@ s.setAttribute('data-timestamp', +new Date());
   <aside class="read-next">
   
   
-      <a class="read-next-story prev" style="no-cover" href="http://includeio.stream/tech/distributed-system-links/">
+      <a class="read-next-story prev" style="no-cover" href="http://www.includeio.stream/tech/distributed-system-links/">
           <section class="post">
               <h2>Collecting distributed system links</h2>
           </section>
@@ -345,9 +345,9 @@ s.setAttribute('data-timestamp', +new Date());
         
     </footer>
     </div>
-    <script type="text/javascript" src="http://includeio.stream/js/jquery.js"></script>
-    <script type="text/javascript" src="http://includeio.stream/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="http://includeio.stream/js/index.js"></script>
+    <script type="text/javascript" src="http://www.includeio.stream/js/jquery.js"></script>
+    <script type="text/javascript" src="http://www.includeio.stream/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://www.includeio.stream/js/index.js"></script>
     
 </body>
 </html>

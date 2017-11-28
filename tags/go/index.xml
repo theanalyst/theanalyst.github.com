@@ -2,31 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go on Often Bearing Metaphoric Tense</title>
-    <link>http://includeio.stream/tags/go/</link>
+    <link>http://www.includeio.stream/tags/go/</link>
     <description>Recent content in Go on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Mon, 01 Jun 2015 23:57:05 +0530</lastBuildDate>
     
-	<atom:link href="http://includeio.stream/tags/go/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.includeio.stream/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>HuGo!</title>
-      <link>http://includeio.stream/tech/hugo/</link>
+      <link>http://www.includeio.stream/post/tech/hugo/</link>
       <pubDate>Mon, 01 Jun 2015 23:57:05 +0530</pubDate>
       
-      <guid>http://includeio.stream/tech/hugo/</guid>
+      <guid>http://www.includeio.stream/post/tech/hugo/</guid>
       <description>Moved my blog from pelican to Hugo. Though there was nothing wrong with pelican as such, mostly I found a problem with my blog/theme not as update with pelican upstream. Hugo is a static site generator written by Steve Francia (@spf13). It is written in Go &amp;amp; amazingly fast to generate a site. Developing sites with hugo is kind of fun; running hugo in watch mode, you get to see the site as you write.</description>
     </item>
     
     <item>
       <title>Running Go ci tests in a docker</title>
-      <link>http://includeio.stream/tech/go-docker-ci/</link>
+      <link>http://www.includeio.stream/post/tech/go-docker-ci/</link>
       <pubDate>Mon, 25 May 2015 23:45:44 +0530</pubDate>
       
-      <guid>http://includeio.stream/tech/go-docker-ci/</guid>
+      <guid>http://www.includeio.stream/post/tech/go-docker-ci/</guid>
       <description>I&amp;rsquo;ve been toying around with the idea of using containers for running ci tests, primarily to have a quicker feedback loop; instead of setups that involve VMs etc. They are ideal for getting an environment up and running quickly and cheap to throw away too.
 A project which I&amp;rsquo;m spending some time lately go-ceph, which provides Go bindings for ceph/rados, kind of ideally fit the bill for using this, since testing this project locally, usually needed something like a VM running a ceph cluster, or a locally running ceph.</description>
     </item>
