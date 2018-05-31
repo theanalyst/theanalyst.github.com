@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Often Bearing Metaphoric Tense</title>
-    <link>http://www.includeio.stream/tags/python/</link>
+    <link>https://www.includeio.stream/tags/python/</link>
     <description>Recent content in Python on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Tue, 28 Jul 2015 00:03:28 +0530</lastBuildDate>
     
-	<atom:link href="http://www.includeio.stream/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.includeio.stream/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Caching pip packages using devpi &amp; docker</title>
-      <link>http://www.includeio.stream/post/tech/devpi-docker/</link>
+      <link>https://www.includeio.stream/post/tech/devpi-docker/</link>
       <pubDate>Tue, 28 Jul 2015 00:03:28 +0530</pubDate>
       
-      <guid>http://www.includeio.stream/post/tech/devpi-docker/</guid>
+      <guid>https://www.includeio.stream/post/tech/devpi-docker/</guid>
       <description>If you&amp;rsquo;re using python packages &amp;amp; virtualenvs a lot, you can drastically speed up the time to setup your environment, (which mostly involves download of pip packages, which tend to be network intensive &amp;amp; time consuming) by caching pip packages. Similar to other caching proxies like apt, python has its own caching proxy in the form of devpi, which allows you to run a pypi mirror in your laptop. (devpi is much more than just a pip mirror, for more on its capabilities read the link)</description>
     </item>
     
     <item>
       <title>Faster python builds in Travis with container based infra</title>
-      <link>http://www.includeio.stream/post/tech/travis-builds/</link>
+      <link>https://www.includeio.stream/post/tech/travis-builds/</link>
       <pubDate>Sun, 01 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.includeio.stream/post/tech/travis-builds/</guid>
+      <guid>https://www.includeio.stream/post/tech/travis-builds/</guid>
       <description>Lately, travis CI has started supporting builds using container based infrastructure which run much faster due to more available resources and good use of caching. This is currently possible only for projects that don&amp;rsquo;t use sudo atm . For more details read this post. Of late, I have been submitting Pull Requests to various projects to use this feature wherever possible. This post is primarily oriented towards Python projects.
 For many python projects, a significant amount of time is spent in installing &amp;amp; building the dependencies.</description>
     </item>
     
     <item>
       <title>Static site generators &amp; Everything else</title>
-      <link>http://www.includeio.stream/post/tech/myblog/</link>
+      <link>https://www.includeio.stream/post/tech/myblog/</link>
       <pubDate>Mon, 03 Dec 2012 14:23:00 +0000</pubDate>
       
-      <guid>http://www.includeio.stream/post/tech/myblog/</guid>
+      <guid>https://www.includeio.stream/post/tech/myblog/</guid>
       <description>This post lists the details of my blog, which is powered by gh-pages and pelican. In short another guy puts up his blog at GitHub and blogs about it. It initially started as a Lorem Ipsum content while I was testing out my rough and edgy pelican theme. You have been warned!
 Welcome to the new avatar of my blog which is powered by pelican, just another static site generator.</description>
     </item>

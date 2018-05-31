@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Often Bearing Metaphoric Tense</title>
-    <link>http://www.includeio.stream/tags/blog/</link>
+    <link>https://www.includeio.stream/tags/blog/</link>
     <description>Recent content in Blog on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Mon, 01 Jun 2015 23:57:05 +0530</lastBuildDate>
     
-	<atom:link href="http://www.includeio.stream/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.includeio.stream/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>HuGo!</title>
-      <link>http://www.includeio.stream/post/tech/hugo/</link>
+      <link>https://www.includeio.stream/post/tech/hugo/</link>
       <pubDate>Mon, 01 Jun 2015 23:57:05 +0530</pubDate>
       
-      <guid>http://www.includeio.stream/post/tech/hugo/</guid>
+      <guid>https://www.includeio.stream/post/tech/hugo/</guid>
       <description>Moved my blog from pelican to Hugo. Though there was nothing wrong with pelican as such, mostly I found a problem with my blog/theme not as update with pelican upstream. Hugo is a static site generator written by Steve Francia (@spf13). It is written in Go &amp;amp; amazingly fast to generate a site. Developing sites with hugo is kind of fun; running hugo in watch mode, you get to see the site as you write.</description>
     </item>
     
     <item>
       <title>Pelican updated!</title>
-      <link>http://www.includeio.stream/post/rants/pelican/</link>
+      <link>https://www.includeio.stream/post/rants/pelican/</link>
       <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.includeio.stream/post/rants/pelican/</guid>
+      <guid>https://www.includeio.stream/post/rants/pelican/</guid>
       <description>It has been a significant time between the posts. This time the reason moslty being me lazy enough not to fix the blog after a pelican update. Surpisingly though there wasn&amp;rsquo;t much of a change required other than tweaking a couple of configuration variables &amp;amp; renaming the pelicanconf file. Hope to start blogging again soon. This time for real and hopefully more tech posts. C ya :)</description>
     </item>
     

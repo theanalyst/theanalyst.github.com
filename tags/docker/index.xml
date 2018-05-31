@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on Often Bearing Metaphoric Tense</title>
-    <link>http://www.includeio.stream/tags/docker/</link>
+    <link>https://www.includeio.stream/tags/docker/</link>
     <description>Recent content in Docker on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Tue, 28 Jul 2015 00:03:28 +0530</lastBuildDate>
     
-	<atom:link href="http://www.includeio.stream/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.includeio.stream/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Caching pip packages using devpi &amp; docker</title>
-      <link>http://www.includeio.stream/post/tech/devpi-docker/</link>
+      <link>https://www.includeio.stream/post/tech/devpi-docker/</link>
       <pubDate>Tue, 28 Jul 2015 00:03:28 +0530</pubDate>
       
-      <guid>http://www.includeio.stream/post/tech/devpi-docker/</guid>
+      <guid>https://www.includeio.stream/post/tech/devpi-docker/</guid>
       <description>If you&amp;rsquo;re using python packages &amp;amp; virtualenvs a lot, you can drastically speed up the time to setup your environment, (which mostly involves download of pip packages, which tend to be network intensive &amp;amp; time consuming) by caching pip packages. Similar to other caching proxies like apt, python has its own caching proxy in the form of devpi, which allows you to run a pypi mirror in your laptop. (devpi is much more than just a pip mirror, for more on its capabilities read the link)</description>
     </item>
     
     <item>
       <title>Running Go ci tests in a docker</title>
-      <link>http://www.includeio.stream/post/tech/go-docker-ci/</link>
+      <link>https://www.includeio.stream/post/tech/go-docker-ci/</link>
       <pubDate>Mon, 25 May 2015 23:45:44 +0530</pubDate>
       
-      <guid>http://www.includeio.stream/post/tech/go-docker-ci/</guid>
+      <guid>https://www.includeio.stream/post/tech/go-docker-ci/</guid>
       <description>I&amp;rsquo;ve been toying around with the idea of using containers for running ci tests, primarily to have a quicker feedback loop; instead of setups that involve VMs etc. They are ideal for getting an environment up and running quickly and cheap to throw away too.
 A project which I&amp;rsquo;m spending some time lately go-ceph, which provides Go bindings for ceph/rados, kind of ideally fit the bill for using this, since testing this project locally, usually needed something like a VM running a ceph cluster, or a locally running ceph.</description>
     </item>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Service Discovery on Often Bearing Metaphoric Tense</title>
-    <link>http://www.includeio.stream/tags/service-discovery/</link>
+    <link>https://www.includeio.stream/tags/service-discovery/</link>
     <description>Recent content in Service Discovery on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Thu, 11 Jun 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.includeio.stream/tags/service-discovery/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.includeio.stream/tags/service-discovery/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The very basics of service discovery</title>
-      <link>http://www.includeio.stream/post/tech/service-discovery/</link>
+      <link>https://www.includeio.stream/post/tech/service-discovery/</link>
       <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.includeio.stream/post/tech/service-discovery/</guid>
+      <guid>https://www.includeio.stream/post/tech/service-discovery/</guid>
       <description>This is meant to be an introductory post to a series of posts about Service Discovery and Distributed Consensus. Hopefully this will be series of posts on more aspects of service discovery &amp;amp; Consul etc.
 Service Discovery We begin with the simple problem of identifying which host/port services are running. For eg. in a small webapp, a simple static conf file could point to the DB node. As functionality grows you would have various (preferably stateless) services talking on different ports (and even different servers).</description>
     </item>

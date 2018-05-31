@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Goodreads on Often Bearing Metaphoric Tense</title>
-    <link>http://www.includeio.stream/tags/goodreads/</link>
+    <link>https://www.includeio.stream/tags/goodreads/</link>
     <description>Recent content in Goodreads on Often Bearing Metaphoric Tense</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>All rights reserved 2012-15</copyright>
     <lastBuildDate>Sun, 21 Dec 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.includeio.stream/tags/goodreads/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.includeio.stream/tags/goodreads/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2014: the year in books, using Goodreads, pandas &amp; Hy</title>
-      <link>http://www.includeio.stream/post/tech/goodreads/</link>
+      <link>https://www.includeio.stream/post/tech/goodreads/</link>
       <pubDate>Sun, 21 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.includeio.stream/post/tech/goodreads/</guid>
+      <guid>https://www.includeio.stream/post/tech/goodreads/</guid>
       <description>Note: The content has been updated to reflect the new kwargs style in Hy, as such the snippets only work with the current Hy master
 As 2014 is coming to a close, I thought it would be a nice time to review the year as far as reading was concerned. Since I track the books I read using Goodreads, I felt it would be an interesting experiment to see some numbers from Goodreads.</description>
     </item>
