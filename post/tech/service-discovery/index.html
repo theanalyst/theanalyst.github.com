@@ -69,7 +69,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.31.1" />
+    <meta name="generator" content="Hugo 0.41" />
 
     <link rel="canonical" href="https://www.includeio.stream/post/tech/service-discovery/" />
 
@@ -250,7 +250,7 @@ in this store has to be consistent across all the 3 nodes, or else bad
 things may happen as the client will try to read value and start
 making decisions based on that. So every write to the store sort of
 goes to one of the nodes, which will be designated as the leader
-<sup class="footnote-ref" id="fnref:paxos"><a rel="footnote" href="#fn:paxos">1</a></sup>, and the leader ensures that every entry is passed on to its
+<sup class="footnote-ref" id="fnref:paxos"><a href="#fn:paxos">1</a></sup>, and the leader ensures that every entry is passed on to its
 follower nodes. Any query reaching any of the other two nodes will be
 forwarded to the leader. The leader has the responsibility of ensuring
 that all entries are atleast written by a majority of nodes so that if
